@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-!assets/.gitignore
-=======
->>>>>>> subcategorias
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
