@@ -18,7 +18,8 @@
         }
     ],
     "require": {
-        "composer-plugin-api": "1.0.0"
+        "composer-plugin-api": "1.0.0",
+		"yiisoft/yii2-jui": "*"
     },
     "autoload": {
         "psr-4": { "yii\\composer\\": "" }

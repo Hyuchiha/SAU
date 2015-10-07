@@ -2,10 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\ActiveField;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Request */
 /* @var $form yii\widgets\ActiveForm */
+
+/*<?= $form->field($model, 'creation_date')->textInput() ?>*/
 ?>
 
 <div class="request-form">
@@ -18,11 +22,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'creation_date')->textInput() ?>
+	<?= $form->field($model, 'creation_date')->widget(\yii\jui\DatePicker::classname(), [
+		'dateFormat' => 'yyyy-MM-dd',
+	]) ?>
 
-    <?= $form->field($model, 'completion_date')->textInput() ?>
+    <?= $form->field($model, 'completion_date')->widget(\yii\jui\DatePicker::classname(), [
+		'dateFormat' => 'yyyy-MM-dd',
+	]) ?>
 
     <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
 
