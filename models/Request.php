@@ -42,7 +42,8 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'service_id', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
+            //[['user_id', 'service_id', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
+			[['subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
             [['user_id', 'service_id'], 'integer'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 100],
