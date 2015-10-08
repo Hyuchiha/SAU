@@ -50,11 +50,11 @@ class Areas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'area_id' => Yii::t('app', 'Area ID'),
-            'id_responsable' => Yii::t('app', 'Id Responsable'),
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
+            'id' => 'ID',
+            'area_id' => 'Area ID',
+            'id_responsable' => 'Id Responsable',
+            'name' => 'Name',
+            'description' => 'Description',
         ];
     }
 
