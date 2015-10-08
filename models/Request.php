@@ -43,7 +43,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             //[['user_id', 'service_id', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
-			[['subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
+			[['subject', 'description', 'creation_date', 'completion_date','service_id'], 'required'],
             [['user_id', 'service_id'], 'integer'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 100],
