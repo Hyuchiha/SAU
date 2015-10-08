@@ -33,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_area',
             'name',
             'description',
-            'service_level_agreement',
+            'service_level_agreement_asignment',
+            'service_level_agreement_completion',
         ],
     ]) ?>
 

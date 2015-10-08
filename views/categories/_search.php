@@ -25,7 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
-    <?php // echo $form->field($model, 'service_level_agreement') ?>
+    <?php // echo $form->field($model, 'service_level_agreement_asignment') ?>
+
+    <?php // echo $form->field($model, 'service_level_agreement_completion') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

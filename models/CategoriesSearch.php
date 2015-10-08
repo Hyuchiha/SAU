@@ -18,8 +18,8 @@ class CategoriesSearch extends Categories
     public function rules()
     {
         return [
-            [['id', 'category_id', 'id_area'], 'integer'],
-            [['name', 'description', 'service_level_agreement'], 'safe'],
+            [['id', 'category_id', 'id_area', 'service_level_agreement_asignment', 'service_level_agreement_completion'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -59,7 +59,8 @@ class CategoriesSearch extends Categories
             'id' => $this->id,
             'category_id' => $this->category_id,
             'id_area' => $this->id_area,
-            'service_level_agreement' => $this->service_level_agreement,
+            'service_level_agreement_asignment' => $this->service_level_agreement_asignment,
+            'service_level_agreement_completion' => $this->service_level_agreement_completion,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
