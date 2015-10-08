@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Categories;
+use app\models\Areas;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Categories */
@@ -16,7 +17,7 @@ use app\models\Categories;
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Categories::find()->all(),'id','name'))   ?>
 
-    <?= $form->field($model, 'id_area')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id_area')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name')) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
