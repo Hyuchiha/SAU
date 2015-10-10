@@ -49,8 +49,8 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'id_area' => Yii::t('app', 'Id Area'),
+            'category_id' => Yii::t('app', 'Category'),
+            'id_area' => Yii::t('app', 'Area'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
             'service_level_agreement_asignment' => Yii::t('app', 'Service Level Agreement Asignment'),

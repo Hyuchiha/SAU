@@ -25,9 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'category_id',
-            'id_area',
+            //'id_area',
+            [
+                'attribute' => 'id_area',
+                'value' => 'idArea.name',
+            ],
             'name',
             'description',
             // 'service_level_agreement_asignment',
