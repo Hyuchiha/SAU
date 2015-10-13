@@ -18,8 +18,8 @@ class CategoriesSearch extends Categories
     public function rules()
     {
         return [
-            [['id', 'category_id', 'id_area'], 'integer'],
-            [['name', 'description', 'service_level_agreement'], 'safe'],
+            [['id', 'category_id', 'service_level_agreement_asignment', 'service_level_agreement_completion'], 'integer'],
+            [['name','description','id_area'], 'safe'],
         ];
     }
 
@@ -54,16 +54,19 @@ class CategoriesSearch extends Categories
             // $query->where('0=1');
             return $dataProvider;
         }
+       //$query->joinWith('idArea');
 
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'id_area' => $this->id_area,
-            'service_level_agreement' => $this->service_level_agreement,
+            // 'id_area' => $this->id_area,
+            'service_level_agreement_asignment' => $this->service_level_agreement_asignment,
+            'service_level_agreement_completion' => $this->service_level_agreement_completion,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description]);
+            // ->andFilterWhere(['like', 'areas.name', $this->id_area]);
 
         return $dataProvider;
     }

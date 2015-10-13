@@ -7,14 +7,14 @@ use Yii;
 /**
  * This is the model class for table "areas_request".
  *
- * @property string $solicitude_id
+ * @property string $request_id
  * @property string $area_id
  * @property string $completion_date
  * @property string $acceptance_date
  * @property string $assignment_date
  *
  * @property Areas $area
- * @property Request $solicitude
+ * @property Request $request
  */
 class AreasRequest extends \yii\db\ActiveRecord
 {
@@ -32,8 +32,8 @@ class AreasRequest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['solicitude_id', 'area_id'], 'required'],
-            [['solicitude_id', 'area_id'], 'integer'],
+            [['request_id', 'area_id'], 'required'],
+            [['request_id', 'area_id'], 'integer'],
             [['completion_date', 'acceptance_date', 'assignment_date'], 'safe']
         ];
     }
@@ -44,7 +44,7 @@ class AreasRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'solicitude_id' => 'Solicitude ID',
+            'request_id' => 'Request ID',
             'area_id' => 'Area ID',
             'completion_date' => 'Completion Date',
             'acceptance_date' => 'Acceptance Date',
@@ -63,8 +63,8 @@ class AreasRequest extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSolicitude()
+    public function getRequest()
     {
-        return $this->hasOne(Request::className(), ['id' => 'solicitude_id']);
+        return $this->hasOne(Request::className(), ['id' => 'request_id']);
     }
 }

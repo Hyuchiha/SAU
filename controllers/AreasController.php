@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Request;
-use app\models\AreasRequest;
-use app\models\RequestSearch;
+use app\models\Areas;
+use app\models\AreasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RequestController implements the CRUD actions for Request model.
+ * AreasController implements the CRUD actions for Areas model.
  */
-class RequestController extends Controller
+class AreasController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +27,12 @@ class RequestController extends Controller
     }
 
     /**
-     * Lists all Request models.
+     * Lists all Areas models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RequestSearch();
+        $searchModel = new AreasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +42,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Displays a single Request model.
+     * Displays a single Areas model.
      * @param string $id
      * @return mixed
      */
@@ -55,39 +54,25 @@ class RequestController extends Controller
     }
 
     /**
-     * Creates a new Request model.
+     * Creates a new Areas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $request = new Request();
-		$areasRequest = new AreasRequest();
+        $model = new Areas();
 
-        if ($request->load(Yii::$app->request->post()) && $request->save()) {
-            return $this->redirect(['view', 'id' => $request->id]);
-			
-			$valid = true;
-			$valid = $valid && $request->validate();
-			if($valid){
-			var_dump($request->save());
-				if($request->save()){
-					$areasRequest->solicitude_id = $request->id;
-					$areasRequest->area_id = $request->area_id;
-					if($areasRequest->save()){
-						return $this->redirect(['view', 'id' => $request->id]);
-					}	
-				}
-			}
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'request' => $request,
+                'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing Request model.
+     * Updates an existing Areas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -106,7 +91,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Deletes an existing Request model.
+     * Deletes an existing Areas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -119,15 +104,15 @@ class RequestController extends Controller
     }
 
     /**
-     * Finds the Request model based on its primary key value.
+     * Finds the Areas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Request the loaded model
+     * @return Areas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Request::findOne($id)) !== null) {
+        if (($model = Areas::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

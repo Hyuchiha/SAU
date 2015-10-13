@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Request;
+use app\models\Areas;
 
 /**
- * RequestSearch represents the model behind the search form about `app\models\Request`.
+ * AreasSearch represents the model behind the search form about `app\models\Areas`.
  */
-class RequestSearch extends Request
+class AreasSearch extends Areas
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class RequestSearch extends Request
     public function rules()
     {
         return [
-            [['id', 'user_id', 'area_id'], 'integer'],
-            [['subject', 'description', 'creation_date', 'completion_date', 'status'], 'safe'],
+            [['id', 'area_id', 'id_responsable'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class RequestSearch extends Request
      */
     public function search($params)
     {
-        $query = Request::find();
+        $query = Areas::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,15 +57,12 @@ class RequestSearch extends Request
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'area_id' => $this->area_id,
-            'creation_date' => $this->creation_date,
-            'completion_date' => $this->completion_date,
+            'id_responsable' => $this->id_responsable,
         ]);
 
-        $query->andFilterWhere(['like', 'subject', $this->subject])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'status', $this->status]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

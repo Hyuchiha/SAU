@@ -7,17 +7,17 @@ use Yii;
 /**
  * This is the model class for table "categories".
  *
- * @property integer $id
- * @property integer $category_id
- * @property integer $id_area
+ * @property string $id
+ * @property string $category_id
+ * @property string $id_area
  * @property string $name
  * @property string $description
- * @property string $service_level_agreement
+ * @property integer $service_level_agreement_asignment
+ * @property integer $service_level_agreement_completion
  *
  * @property Areas $idArea
- * @property CategorySolicitude[] $categorySolicitudes
- * @property Solicitudes[] $solicitudes
- * @property Solicitudes[] $solicitudes0
+ * @property CategoryRequest[] $categoryRequests
+ * @property Request[] $requests
  */
 class Categories extends \yii\db\ActiveRecord
 {
@@ -35,9 +35,8 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'id_area'], 'integer'],
-            [['id_area', 'name', 'description'], 'required'],
-            [['service_level_agreement'], 'safe'],
+            [['category_id', 'id_area', 'service_level_agreement_asignment', 'service_level_agreement_completion'], 'integer'],
+            [['id_area', 'name'], 'required'],
             [['name'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 150]
         ];
@@ -50,11 +49,12 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'id_area' => Yii::t('app', 'Id Area'),
+            'category_id' => Yii::t('app', 'Category'),
+            'id_area' => Yii::t('app', 'Area'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
-            'service_level_agreement' => Yii::t('app', 'Service Level Agreement'),
+            'service_level_agreement_asignment' => Yii::t('app', 'Service Level Agreement Asignment'),
+            'service_level_agreement_completion' => Yii::t('app', 'Service Level Agreement Completion'),
         ];
     }
 
@@ -69,24 +69,16 @@ class Categories extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategorySolicitudes()
+    public function getCategoryRequests()
     {
-        return $this->hasMany(CategorySolicitude::className(), ['category_id' => 'id']);
+        return $this->hasMany(CategoryRequest::className(), ['category_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSolicitudes()
+    public function getRequests()
     {
-        return $this->hasMany(Solicitudes::className(), ['id' => 'solicitude_id'])->viaTable('category_solicitude', ['category_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSolicitudes0()
-    {
-        return $this->hasMany(Solicitudes::className(), ['service_id' => 'id']);
+        return $this->hasMany(Request::className(), ['id' => 'request_id'])->viaTable('category_request', ['category_id' => 'id']);
     }
 }

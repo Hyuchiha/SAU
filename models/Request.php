@@ -9,7 +9,7 @@ use Yii;
  *
  * @property string $id
  * @property string $user_id
- * @property string $service_id
+ * @property string $area_id
  * @property string $subject
  * @property string $description
  * @property string $creation_date
@@ -21,7 +21,7 @@ use Yii;
  * @property AttachedFiles[] $attachedFiles
  * @property CategoryRequest[] $categoryRequests
  * @property Categories[] $categories
- * @property Categories $service
+ * @property Areas $area
  * @property Users $user
  * @property UsersRequest[] $usersRequests
  * @property Users[] $users
@@ -42,12 +42,11 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['user_id', 'service_id', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
-			[['subject', 'description', 'creation_date', 'completion_date', 'status'], 'required'],
-            [['user_id', 'service_id'], 'integer'],
+            [['area_id', 'subject', 'description'], 'required'],
+            [['user_id', 'area_id'], 'integer'],
+            [['description'], 'string'],
             [['creation_date', 'completion_date'], 'safe'],
-            [['subject'], 'string', 'max' => 100],
-            [['description'], 'string', 'max' => 150],
+            [['subject'], 'string', 'max' => 500],
             [['status'], 'string', 'max' => 50]
         ];
     }
@@ -60,7 +59,7 @@ class Request extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'service_id' => 'Service ID',
+            'area_id' => 'Area ID',
             'subject' => 'Subject',
             'description' => 'Description',
             'creation_date' => 'Creation Date',
@@ -74,7 +73,7 @@ class Request extends \yii\db\ActiveRecord
      */
     public function getAreasRequests()
     {
-        return $this->hasMany(AreasRequest::className(), ['solicitude_id' => 'id']);
+        return $this->hasMany(AreasRequest::className(), ['request_id' => 'id']);
     }
 
     /**
@@ -82,7 +81,7 @@ class Request extends \yii\db\ActiveRecord
      */
     public function getAreas()
     {
-        return $this->hasMany(Areas::className(), ['id' => 'area_id'])->viaTable('areas_request', ['solicitude_id' => 'id']);
+        return $this->hasMany(Areas::className(), ['id' => 'area_id'])->viaTable('areas_request', ['request_id' => 'id']);
     }
 
     /**
@@ -112,9 +111,9 @@ class Request extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getService()
+    public function getArea()
     {
-        return $this->hasOne(Categories::className(), ['id' => 'service_id']);
+        return $this->hasOne(Areas::className(), ['id' => 'area_id']);
     }
 
     /**
@@ -130,7 +129,7 @@ class Request extends \yii\db\ActiveRecord
      */
     public function getUsersRequests()
     {
-        return $this->hasMany(UsersRequest::className(), ['solicitude_id' => 'id']);
+        return $this->hasMany(UsersRequest::className(), ['request_id' => 'id']);
     }
 
     /**
@@ -138,6 +137,39 @@ class Request extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['id' => 'user_id'])->viaTable('users_request', ['solicitude_id' => 'id']);
+        return $this->hasMany(Users::className(), ['id' => 'user_id'])->viaTable('users_request', ['request_id' => 'id']);
     }
+	
+	public function beforeSave($insert){
+		if(parent::beforeSave($insert)){
+			/*$fileNamePaymentReceipt = uniqid() . '.' . $this->file_payment_receipt->extension;
+			$this->file_payment_receipt->saveAs('files/payment/'.$fileNamePaymentReceipt);
+			$this->payment_receipt = $fileNamePaymentReceipt;
+							
+			$fileNameStudentId = uniqid() . '.' . $this->file_student_id->extension;
+			$this->file_student_id->saveAs('files/studentid/'.$fileNameStudentId);
+			$this->student_id = $fileNameStudentId;
+			
+			if(empty($this->student_id))
+				$this->student_id = null;
+			
+			if(empty($this->token)){
+				$this->token = Yii::$app->getSecurity()->generateRandomString();
+			}	*/
+			
+			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
+			$this->creation_date = $formatedDateTime;
+			//$this->completion_date = $formatedDateTime;
+			if(empty($this->completion_date)){
+				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
+			}
+			if(empty($this->status)){
+				$this->status = "Nuevo";
+			}
+			
+			return true;
+		}
+		return false;
+	}
+	
 }
