@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Request;
+use app\models\AreasRequest;
 use app\models\RequestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -60,13 +61,26 @@ class RequestController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Request();
+        $request = new Request();
+		$areasRequest = new AreasRequest();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($request->load(Yii::$app->request->post()) && $request->save()) {
+            return $this->redirect(['view', 'id' => $request->id]);
+			
+			$valid = true;
+			$valid = $valid && $registration->validate();
+			if($valid){
+				if($registration->save()){
+					$areasRequest->solicitude_id = $request->id;
+					$areasRequest->area_id = $request->area_id;
+					if($areasRequest->save()){
+						return $this->redirect(['view', 'id' => $request->id]);
+					}	
+				}
+			}
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'request' => $request,
             ]);
         }
     }
