@@ -68,9 +68,10 @@ class RequestController extends Controller
             return $this->redirect(['view', 'id' => $request->id]);
 			
 			$valid = true;
-			$valid = $valid && $registration->validate();
+			$valid = $valid && $request->validate();
 			if($valid){
-				if($registration->save()){
+			var_dump($request->save());
+				if($request->save()){
 					$areasRequest->solicitude_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
 					if($areasRequest->save()){
