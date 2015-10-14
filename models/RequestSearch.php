@@ -18,7 +18,7 @@ class RequestSearch extends Request
     public function rules()
     {
         return [
-            [['id', 'user_id', 'service_id'], 'integer'],
+            [['id', 'user_id', 'area_id'], 'integer'],
             [['subject', 'description', 'creation_date', 'completion_date', 'status'], 'safe'],
         ];
     }
@@ -58,7 +58,7 @@ class RequestSearch extends Request
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'service_id' => $this->service_id,
+            'area_id' => $this->area_id,
             'creation_date' => $this->creation_date,
             'completion_date' => $this->completion_date,
         ]);
