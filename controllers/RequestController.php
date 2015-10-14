@@ -6,7 +6,9 @@ use Yii;
 use app\models\Request;
 use app\models\AreasRequest;
 use app\models\RequestSearch;
+use app\models\AttachedFiles;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -63,25 +65,35 @@ class RequestController extends Controller
     {
         $request = new Request();
 		$areasRequest = new AreasRequest();
+		$attachedFiles = new AttachedFiles();
 
-        if ($request->load(Yii::$app->request->post()) && $request->save()) {
-            return $this->redirect(['view', 'id' => $request->id]);
+        if ($request->load(Yii::$app->request->post())) {
+			$request->requestFile = UploadedFile::getInstance($request, 'requestFile');
 			
 			$valid = true;
 			$valid = $valid && $request->validate();
 			if($valid){
-			var_dump($request->save());
 				if($request->save()){
-					$areasRequest->solicitude_id = $request->id;
+					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
+					$attachedFiles->request_id = $request->id;
+					$attachedFiles->url = $request->fileNameAttached;
 					if($areasRequest->save()){
-						return $this->redirect(['view', 'id' => $request->id]);
+					$valid = $valid && $attachedFiles->validate();
+						if($valid && $attachedFiles->save()){
+							return $this->redirect(['view', 'id' => $request->id]);
+						}
+						else{
+						return $this->render('create', [
+                'request' => $request, 'attachedFiles' => $attachedFiles,
+            ]);
+						}
 					}	
 				}
 			}
         } else {
             return $this->render('create', [
-                'request' => $request,
+                'request' => $request, 'attachedFiles' => $attachedFiles,
             ]);
         }
     }

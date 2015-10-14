@@ -18,6 +18,7 @@ use Yii;
  */
 class AreasRequest extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -67,4 +68,8 @@ class AreasRequest extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Request::className(), ['id' => 'request_id']);
     }
+	
+	
 }
+
+

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use app\models\Areas;
+use app\models\AttachedFiles;
 //use yii\widgets\ActiveForm;
 use yii\widgets\ActiveField;
 use yii\jui\DatePicker;
@@ -14,7 +15,9 @@ use yii\jui\DatePicker;
 
 <div class="request-form">
 	
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+		'options' => ['enctype' => 'multipart/form-data']
+	]) ?>
 
     <?= $form->field($request, 'user_id')->textInput(['maxlength' => true]) ?>
 
@@ -23,7 +26,7 @@ use yii\jui\DatePicker;
 			Areas::find()->all(),
 			'id',
 			'name'
-		)) ?>
+		), array('prompt'=> "")) ?>
 
     <?= $form->field($request, 'subject')->textInput(['maxlength' => true]) ?>
 
@@ -32,7 +35,9 @@ use yii\jui\DatePicker;
     <?= $form->field($request, 'completion_date')->widget(\yii\jui\DatePicker::classname(), [
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
-
+	
+	<?= $form->field($request, 'requestFile')->fileInput() ?>
+	
     <?= $form->field($request, 'status')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
