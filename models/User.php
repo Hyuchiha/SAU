@@ -62,7 +62,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             if($this->isNewRecord)
             {
                 $this->hash_password = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
-                //$this->auth_key = Yii::$app->getSecurity()->generateRandomString();
+                //$this->auth_key = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
                 //$this->access_token = Yii::$app->getSecurity()->generateRandomString();
             }
             else
@@ -121,7 +121,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        return $this->hash_password;
     }
 
     /**
