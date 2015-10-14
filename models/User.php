@@ -34,7 +34,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['first_name', 'lastname', 'hash_password', 'user_name', 'email'], 'required'],
             [['hash_password'], 'required', 'except' => ['update']],
-            [['first_name', 'lastname', 'username'], 'string', 'max' => 128],
+            [['first_name', 'lastname', 'user_name'], 'string', 'max' => 128],
             [['hash_password'], 'string', 'max' => 20]
         ];
     }
@@ -61,15 +61,15 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         {
             if($this->isNewRecord)
             {
-                $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
-                $this->auth_key = Yii::$app->getSecurity()->generateRandomString();
-                $this->access_token = Yii::$app->getSecurity()->generateRandomString();
+                $this->hash_password = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
+                //$this->auth_key = Yii::$app->getSecurity()->generateRandomString();
+                //$this->access_token = Yii::$app->getSecurity()->generateRandomString();
             }
             else
             {
-                if(!empty($this->password))
+                if(!empty($this->hash_password))
                 {
-                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                    $this->hash_password = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
                 }
             }
             return true;
@@ -98,14 +98,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
-     * Finds user by username
+     * Finds user by user_name
      *
-     * @param  string      $username
+     * @param  string      $user_name
      * @return static|null
      */
-    public static function findByUsername($user_name)
+    public static function findByUserName($user_name)
     {
-        return self::findOne(['user_name'=>$username]);
+        return self::findOne(['user_name'=>$user_name]);
     }
 
     /**
