@@ -31,7 +31,6 @@ use app\models\AttachedFiles;
 class Request extends \yii\db\ActiveRecord
 {	
 	public $requestFile;
-	//public $requestFile;
 	public $fileNameAttached;
 	
     /**
@@ -54,7 +53,7 @@ class Request extends \yii\db\ActiveRecord
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
             [['status', 'fileNameAttached'], 'string', 'max' => 50],
-			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx'],
+			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			
         ];
     }
@@ -153,14 +152,6 @@ class Request extends \yii\db\ActiveRecord
 			
 			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
 			$this->creation_date = $formatedDateTime;
-			//$this->completion_date = $formatedDateTime;
-			
-			//$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
-			//$this->requestFile->saveAs('files/'.$fileNameAttached);
-			
-			$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
-			$this->requestFile->saveAs('files/'.$this->fileNameAttached);
-			//$this->url = $fileNameAttached;
 			
 			if(empty($this->completion_date)){
 				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
@@ -174,4 +165,19 @@ class Request extends \yii\db\ActiveRecord
 		return false;
 	}
 	
+	public function upload(){
+		if($this->validate()){
+			foreach ($this->requestFile as $file){
+				$this->fileNameAttached = uniqid() . '.' . $file->extension;
+				$file->saveAs('files/'.$this->fileNameAttached);
+				$attachedFiles = new AttachedFiles();
+				$attachedFiles->request_id = $this->id;
+				$attachedFiles->url = $this->fileNameAttached;
+				$attachedFiles->save();
+			}
+			return true;
+		} else{
+			return false;
+		}
+	}
 }
