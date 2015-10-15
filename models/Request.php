@@ -32,6 +32,8 @@ class Request extends \yii\db\ActiveRecord
 {	
 	public $requestFile;
 	public $fileNameAttached;
+	public $category_id;
+	public $assigned_id;
 	
     /**
      * @inheritdoc
@@ -48,11 +50,11 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             [['area_id', 'subject', 'description'], 'required'],
-            [['user_id', 'area_id'], 'integer'],
+            [['assigned_id', 'area_id', 'category_id','user_id'], 'integer'],
             [['description'], 'string'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
-            [['status', 'fileNameAttached'], 'string', 'max' => 50],
+            [['fileNameAttached'], 'string', 'max' => 50],
 			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			
         ];
@@ -66,7 +68,9 @@ class Request extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'area_id' => 'Area ID',
+            'area_id' => 'Area',
+			'category_id' => 'Category',
+			'assigned_id' => 'Assign',
             'subject' => 'Subject',
             'description' => 'Description',
             'creation_date' => 'Creation Date',
@@ -152,9 +156,12 @@ class Request extends \yii\db\ActiveRecord
 			
 			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
 			$this->creation_date = $formatedDateTime;
-			
+
 			if(empty($this->completion_date)){
 				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
+			}
+			if(empty($this->user_id)){
+				$this->user_id = 1;
 			}
 			if(empty($this->status)){
 				$this->status = "Nuevo";

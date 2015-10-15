@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Request;
 use app\models\AreasRequest;
+use app\models\CategoryRequest;
+use app\models\UsersRequest;
 use app\models\RequestSearch;
 use app\models\AttachedFiles;
 use yii\web\Controller;
@@ -65,32 +67,53 @@ class RequestController extends Controller
     {
         $request = new Request();
 		$areasRequest = new AreasRequest();
+		$categoryRequest = new CategoryRequest();
+		$usersRequest = new UsersRequest();
 
         if ($request->load(Yii::$app->request->post())) {
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
-			
+
+			$request->user_id = \Yii::$app->user->identity->id;
 			$valid = true;
 			$valid = $valid && $request->validate();
 			if($valid){
 				if($request->save() && $request->upload()){
 					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
+					
+					$categoryRequest->request_id = $request->id;
+					$categoryRequest->category_id = $request->category_id;
+					
+					$usersRequest->request_id = $request->id;
+					$usersRequest->user_id = $request->assigned_id;
+					
+					if(!empty($request->category_id)){
+						$categoryRequest->save();
+					}
+					
+					if(!empty($request->assigned_id)){
+						$usersRequest->save();
+					}
+					
 					if($areasRequest->save()){
 
 						if($valid){
 							return $this->redirect(['view', 'id' => $request->id]);
 						
+						}else{
+							return $this->render('create', ['request' => $request,]);
 						}
-						else{
-						return $this->render('create', ['request' => $request,
-            ]);
-						}
+					}else {
+						return $this->render('create', ['request' => $request,]);
 					}	
+				}else {
+					return $this->render('create', ['request' => $request, ]);
 				}
+			}else {
+				return $this->render('create', ['request' => $request,]);
 			}
         } else {
-            return $this->render('create', ['request' => $request, 
-            ]);
+            return $this->render('create', ['request' => $request,]);
         }
     }
 
