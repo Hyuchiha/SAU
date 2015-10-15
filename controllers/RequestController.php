@@ -65,36 +65,35 @@ class RequestController extends Controller
     {
         $request = new Request();
 		$areasRequest = new AreasRequest();
-		//$attachedFiles = new AttachedFiles();
+		$attachedFiles = new AttachedFiles();
 
         if ($request->load(Yii::$app->request->post())) {
-			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
+			$request->requestFile = UploadedFile::getInstance($request, 'requestFile');
 			
 			$valid = true;
 			$valid = $valid && $request->validate();
 			if($valid){
-				if($request->save() && $request->upload()){
+				if($request->save()){
 					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
-					
-					//$attachedFiles->request_id = $request->id;
-					//$attachedFiles->url = $request->fileNameAttached;
+					$attachedFiles->request_id = $request->id;
+					$attachedFiles->url = $request->fileNameAttached;
 					if($areasRequest->save()){
-					//$valid = $valid && $attachedFiles->validate();
-						//if($valid && $attachedFiles->save()){
-						if($valid){
+					$valid = $valid && $attachedFiles->validate();
+						if($valid && $attachedFiles->save()){
 							return $this->redirect(['view', 'id' => $request->id]);
-						//}
 						}
 						else{
-						return $this->render('create', ['request' => $request,
+						return $this->render('create', [
+                'request' => $request, 'attachedFiles' => $attachedFiles,
             ]);
 						}
 					}	
 				}
 			}
         } else {
-            return $this->render('create', ['request' => $request, 
+            return $this->render('create', [
+                'request' => $request, 'attachedFiles' => $attachedFiles,
             ]);
         }
     }

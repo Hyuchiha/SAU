@@ -54,7 +54,7 @@ class Request extends \yii\db\ActiveRecord
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
             [['status', 'fileNameAttached'], 'string', 'max' => 50],
-			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
+			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx'],
 			
         ];
     }
@@ -158,6 +158,8 @@ class Request extends \yii\db\ActiveRecord
 			//$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
 			//$this->requestFile->saveAs('files/'.$fileNameAttached);
 			
+			$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
+			$this->requestFile->saveAs('files/'.$this->fileNameAttached);
 			//$this->url = $fileNameAttached;
 			
 			if(empty($this->completion_date)){
@@ -172,19 +174,4 @@ class Request extends \yii\db\ActiveRecord
 		return false;
 	}
 	
-	public function upload(){
-		if($this->validate()){
-			foreach ($this->requestFile as $file){
-				$this->fileNameAttached = uniqid() . '.' . $file->extension;
-				$file->saveAs('files/'.$this->fileNameAttached);
-				$attachedFiles = new AttachedFiles();
-				$attachedFiles->request_id = $this->id;
-				$attachedFiles->url = $this->fileNameAttached;
-				$attachedFiles->save();
-			}
-			return true;
-		} else{
-			return false;
-		}
-	}
 }

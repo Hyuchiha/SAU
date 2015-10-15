@@ -36,7 +36,7 @@ use yii\jui\DatePicker;
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
 	
-	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
+	<?= $form->field($request, 'requestFile')->fileInput() ?>
 	
     <?= $form->field($request, 'status')->textInput(['maxlength' => true]) ?>
 
