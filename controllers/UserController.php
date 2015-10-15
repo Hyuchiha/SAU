@@ -3,19 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Request;
-use app\models\AreasRequest;
-use app\models\RequestSearch;
-use app\models\AttachedFiles;
+use app\models\User;
+use app\models\UserSearch;
 use yii\web\Controller;
-use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RequestController implements the CRUD actions for Request model.
+ * UserController implements the CRUD actions for User model.
  */
-class RequestController extends Controller
+class UserController extends Controller
 {
     public function behaviors()
     {
@@ -30,12 +27,12 @@ class RequestController extends Controller
     }
 
     /**
-     * Lists all Request models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RequestSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +42,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Displays a single Request model.
+     * Displays a single User model.
      * @param string $id
      * @return mixed
      */
@@ -57,49 +54,25 @@ class RequestController extends Controller
     }
 
     /**
-     * Creates a new Request model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $request = new Request();
-		$areasRequest = new AreasRequest();
-		$attachedFiles = new AttachedFiles();
+        $model = new User();
 
-        if ($request->load(Yii::$app->request->post())) {
-			$request->requestFile = UploadedFile::getInstance($request, 'requestFile');
-			
-			$valid = true;
-			$valid = $valid && $request->validate();
-			if($valid){
-				if($request->save()){
-					$areasRequest->request_id = $request->id;
-					$areasRequest->area_id = $request->area_id;
-					$attachedFiles->request_id = $request->id;
-					$attachedFiles->url = $request->fileNameAttached;
-					if($areasRequest->save()){
-					$valid = $valid && $attachedFiles->validate();
-						if($valid && $attachedFiles->save()){
-							return $this->redirect(['view', 'id' => $request->id]);
-						}
-						else{
-						return $this->render('create', [
-                'request' => $request, 'attachedFiles' => $attachedFiles,
-            ]);
-						}
-					}	
-				}
-			}
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
-                'request' => $request, 'attachedFiles' => $attachedFiles,
+                'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing Request model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -118,7 +91,7 @@ class RequestController extends Controller
     }
 
     /**
-     * Deletes an existing Request model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -131,15 +104,15 @@ class RequestController extends Controller
     }
 
     /**
-     * Finds the Request model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Request the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Request::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

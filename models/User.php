@@ -7,11 +7,13 @@ use Yii;
 /**
  * This is the model class for table "users".
  *
- * @property string $id
- * @property string $username
- * @property string $password_hash
- * @property string $auth_key
- * @property string $access_token
+ * @property int $id
+ * @property string $first_name
+ * @property string $lastname
+ * @property string $hash_password
+ * @property string $user_name
+ * @property string $email
+ * @property string $status
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -30,10 +32,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
-            [['password'], 'required', 'except' => ['update']],
-            [['username'], 'string', 'max' => 128],
-            [['password'], 'string', 'max' => 20]
+            [['first_name', 'lastname', 'hash_password', 'user_name', 'email'], 'required'],
+            [['hash_password'], 'required', 'except' => ['update']],
+            [['first_name', 'lastname', 'user_name'], 'string', 'max' => 128],
+            [['hash_password'], 'string', 'max' => 20]
         ];
     }
 
@@ -44,10 +46,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Usuario'),
-            'password' => Yii::t('app', 'Contraseña'),
-            'auth_key' => Yii::t('app', 'Auth Key'),
-            'access_token' => Yii::t('app', 'Access Token'),
+            'first_name' => Yii::t('app', 'Nombre'),
+            'lastname' => Yii::t('app', 'Apellido'),
+            'hash_password' => Yii::t('app', 'Contraseña'),
+            'user_name' => Yii::t('app', 'Usuario'),
+            'email' => Yii::t('app', 'Correo electrónico'),
+            'status' => Yii::t('app', 'Estado'),
         ];
     }
 
@@ -57,15 +61,15 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         {
             if($this->isNewRecord)
             {
-                $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
-                $this->auth_key = Yii::$app->getSecurity()->generateRandomString();
-                $this->access_token = Yii::$app->getSecurity()->generateRandomString();
+                $this->hash_password = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
+                //$this->auth_key = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
+                //$this->access_token = Yii::$app->getSecurity()->generateRandomString();
             }
             else
             {
-                if(!empty($this->password))
+                if(!empty($this->hash_password))
                 {
-                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                    $this->hash_password = Yii::$app->getSecurity()->generatePasswordHash($this->hash_password);
                 }
             }
             return true;
@@ -94,14 +98,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
-     * Finds user by username
+     * Finds user by user_name
      *
-     * @param  string      $username
+     * @param  string      $user_name
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUserName($user_name)
     {
-        return self::findOne(['username'=>$username]);
+        return self::findOne(['user_name'=>$user_name]);
     }
 
     /**
@@ -117,7 +121,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        return $this->hash_password;
     }
 
     /**
@@ -137,6 +141,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         //return $this->password === $password;
-        return Yii::$app->getSecurity()->validatePassword($password,$this->password_hash);
+        return Yii::$app->getSecurity()->validatePassword($password,$this->hash_password);
     }
 }

@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 
+use app\models\AttachedFiles;
+
 /**
  * This is the model class for table "request".
  *
@@ -27,7 +29,11 @@ use Yii;
  * @property Users[] $users
  */
 class Request extends \yii\db\ActiveRecord
-{
+{	
+	public $requestFile;
+	//public $requestFile;
+	public $fileNameAttached;
+	
     /**
      * @inheritdoc
      */
@@ -47,7 +53,9 @@ class Request extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
-            [['status'], 'string', 'max' => 50]
+            [['status', 'fileNameAttached'], 'string', 'max' => 50],
+			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx'],
+			
         ];
     }
 
@@ -142,24 +150,18 @@ class Request extends \yii\db\ActiveRecord
 	
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
-			/*$fileNamePaymentReceipt = uniqid() . '.' . $this->file_payment_receipt->extension;
-			$this->file_payment_receipt->saveAs('files/payment/'.$fileNamePaymentReceipt);
-			$this->payment_receipt = $fileNamePaymentReceipt;
-							
-			$fileNameStudentId = uniqid() . '.' . $this->file_student_id->extension;
-			$this->file_student_id->saveAs('files/studentid/'.$fileNameStudentId);
-			$this->student_id = $fileNameStudentId;
-			
-			if(empty($this->student_id))
-				$this->student_id = null;
-			
-			if(empty($this->token)){
-				$this->token = Yii::$app->getSecurity()->generateRandomString();
-			}	*/
 			
 			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
 			$this->creation_date = $formatedDateTime;
 			//$this->completion_date = $formatedDateTime;
+			
+			//$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
+			//$this->requestFile->saveAs('files/'.$fileNameAttached);
+			
+			$this->fileNameAttached = uniqid() . '.' . $this->requestFile->extension;
+			$this->requestFile->saveAs('files/'.$this->fileNameAttached);
+			//$this->url = $fileNameAttached;
+			
 			if(empty($this->completion_date)){
 				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
 			}
