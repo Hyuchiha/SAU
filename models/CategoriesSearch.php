@@ -59,7 +59,6 @@ class CategoriesSearch extends Categories
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'id_area' => $this->id_area,
             'service_level_agreement_asignment' => $this->service_level_agreement_asignment,
             'service_level_agreement_completion' => $this->service_level_agreement_completion,
         ]);
