@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'request'  => $request,
-		'attachedFiles'=> $attachedFiles,
+		
     ]) ?>
 
 </div>
