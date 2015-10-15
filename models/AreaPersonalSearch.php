@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categories;
+use app\models\AreaPersonal;
 
 /**
- * CategoriesSearch represents the model behind the search form about `app\models\Categories`.
+ * AreaPersonalSearch represents the model behind the search form about `app\models\AreaPersonal`.
  */
-class CategoriesSearch extends Categories
+class AreaPersonalSearch extends AreaPersonal
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class CategoriesSearch extends Categories
     public function rules()
     {
         return [
-            [['id', 'category_id', 'service_level_agreement_asignment', 'service_level_agreement_completion'], 'integer'],
-            [['name','description','id_area'], 'safe'],
+            [['area_id', 'user_id', 'permission'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class CategoriesSearch extends Categories
      */
     public function search($params)
     {
-        $query = Categories::find();
+        $query = AreaPersonal::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -54,19 +53,12 @@ class CategoriesSearch extends Categories
             // $query->where('0=1');
             return $dataProvider;
         }
-        $query->joinWith(['idArea']);
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'category_id' => $this->category_id,
-            'id_area' => $this->id_area,
-            'service_level_agreement_asignment' => $this->service_level_agreement_asignment,
-            'service_level_agreement_completion' => $this->service_level_agreement_completion,
+            'area_id' => $this->area_id,
+            'user_id' => $this->user_id,
+            'permission' => $this->permission,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'name', $this->id_area]);
 
         return $dataProvider;
     }

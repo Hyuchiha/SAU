@@ -10,7 +10,7 @@ use app\models\AttachedFiles;
 use yii\widgets\ActiveField;
 use yii\jui\DatePicker;
 /* @var $this yii\web\View */
-/* @var $request app\requests\Request */
+/* @var $request app\models\Request */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
