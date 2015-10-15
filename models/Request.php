@@ -32,6 +32,8 @@ class Request extends \yii\db\ActiveRecord
 {	
 	public $requestFile;
 	public $fileNameAttached;
+	public $category_id;
+	public $assigned_id;
 	
     /**
      * @inheritdoc
@@ -48,7 +50,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             [['area_id', 'subject', 'description'], 'required'],
-            [['user_id', 'area_id'], 'integer'],
+            [['assigned_id', 'area_id', 'category_id','user_id'], 'integer'],
             [['description'], 'string'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
@@ -66,7 +68,9 @@ class Request extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'area_id' => 'Area ID',
+            'area_id' => 'Area',
+			'category_id' => 'Category',
+			'assigned_id' => 'Assign',
             'subject' => 'Subject',
             'description' => 'Description',
             'creation_date' => 'Creation Date',

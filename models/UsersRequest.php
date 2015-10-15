@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "users_request".
  *
- * @property string $solicitude_id
+ * @property string $request_id
  * @property string $user_id
  *
- * @property Request $solicitude
+ * @property Request $request
  * @property Users $user
  */
 class UsersRequest extends \yii\db\ActiveRecord
@@ -29,8 +29,8 @@ class UsersRequest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['solicitude_id', 'user_id'], 'required'],
-            [['solicitude_id', 'user_id'], 'integer']
+            [['request_id', 'user_id'], 'required'],
+            [['request_id', 'user_id'], 'integer']
         ];
     }
 
@@ -40,7 +40,7 @@ class UsersRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'solicitude_id' => 'Solicitude ID',
+            'request_id' => 'Request ID',
             'user_id' => 'User ID',
         ];
     }
@@ -48,9 +48,9 @@ class UsersRequest extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSolicitude()
+    public function getRequest()
     {
-        return $this->hasOne(Request::className(), ['id' => 'solicitude_id']);
+        return $this->hasOne(Request::className(), ['id' => 'request_id']);
     }
 
     /**
