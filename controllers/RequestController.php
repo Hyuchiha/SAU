@@ -68,7 +68,10 @@ class RequestController extends Controller
 
         if ($request->load(Yii::$app->request->post())) {
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
-			
+			$session = Yii::$app->session;
+			$user_id = $session['id'];
+
+			$request->user_id = \Yii::$app->user->identity->id;
 			$valid = true;
 			$valid = $valid && $request->validate();
 			if($valid){
@@ -80,17 +83,20 @@ class RequestController extends Controller
 						if($valid){
 							return $this->redirect(['view', 'id' => $request->id]);
 						
+						}else{
+							return $this->render('create', ['request' => $request,]);
 						}
-						else{
-						return $this->render('create', ['request' => $request,
-            ]);
-						}
+					}else {
+						return $this->render('create', ['request' => $request,]);
 					}	
+				}else {
+					return $this->render('create', ['request' => $request, ]);
 				}
+			}else {
+				return $this->render('create', ['request' => $request,]);
 			}
         } else {
-            return $this->render('create', ['request' => $request, 
-            ]);
+            return $this->render('create', ['request' => $request,]);
         }
     }
 
