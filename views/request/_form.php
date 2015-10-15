@@ -10,8 +10,42 @@ use app\models\AttachedFiles;
 use yii\widgets\ActiveField;
 use yii\jui\DatePicker;
 /* @var $this yii\web\View */
-/* @var $request app\requests\Request */
+/* @var $request app\models\Request */
 /* @var $form yii\widgets\ActiveForm */
+?>
+
+<?php
+$this->registerJs('
+
+    var MaxInputs       = 8; //Número Maximo de Campos
+    var contenedor       = $("#contenedor"); //ID del contenedor
+    var AddButton       = $("#agregarCampo"); //ID del Botón
+
+    //var x = número de campos existentes en el contenedor
+    var x = $("#contenedor div").length + 1;
+    var FieldCount = x-1; //para el seguimiento de los campos
+
+    $(AddButton).click(function (e) {
+        if(x <= MaxInputs) //max input box allowed
+        {
+            FieldCount++;
+            //agregar campo
+            $(contenedor).append(\'<div><input type="file" name="Request[requestFile][]"><a class="eliminar">&times;</a></div>\');
+            x++; //text box increment
+        }
+        });
+
+     $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent("div").remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+
+
+');
+
 ?>
 
 <div class="request-form">
@@ -51,6 +85,15 @@ use yii\jui\DatePicker;
 	]) ?>
 	
 	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
+
+    <a id="agregarCampo" class="btn btn-info" >Agregar Archivo</a>
+    <div id="contenedor">
+        <div class="added">
+            <!--<input type="file" name="Request[requestFile][]" id="campo_1" placeholder="Texto 1"/><a href="#" class="eliminar">&times;</a>-->
+        </div>
+    </div>
+
+    <br>
 
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
