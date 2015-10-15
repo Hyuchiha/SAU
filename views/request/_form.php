@@ -5,7 +5,6 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use app\models\Areas;
 use app\models\AttachedFiles;
-//use yii\widgets\ActiveForm;
 use yii\widgets\ActiveField;
 use yii\jui\DatePicker;
 /* @var $this yii\web\View */
@@ -36,7 +35,7 @@ use yii\jui\DatePicker;
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
 	
-	<?= $form->field($request, 'requestFile')->fileInput() ?>
+	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
 	
     <?= $form->field($request, 'status')->textInput(['maxlength' => true]) ?>
 
