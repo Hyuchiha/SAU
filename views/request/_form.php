@@ -8,10 +8,14 @@ use app\models\Categories;
 use app\models\User;
 use app\models\AttachedFiles;
 use yii\widgets\ActiveField;
+use yii\captcha\Captcha;
 use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $request app\models\Request */
 /* @var $form yii\widgets\ActiveForm */
+ /*   <?= $form->field($request, 'completion_date')->widget(\yii\jui\DatePicker::classname(), [
+		'dateFormat' => 'yyyy-MM-dd',
+	]) ?>*/
 ?>
 
 <?php
@@ -79,12 +83,12 @@ $this->registerJs('
     <?= $form->field($request, 'subject')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($request, 'description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($request, 'completion_date')->widget(\yii\jui\DatePicker::classname(), [
-		'dateFormat' => 'yyyy-MM-dd',
-	]) ?>
 	
 	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
+	
+	<?= $form->field($request, 'verifyCode')->widget(Captcha::className(), [
+        'template' => '<div class="row"><div class="col-lg-1.5">{image}</div><div class="col-lg-2">{input}</div></div>',
+    ]) ?>
 
     <a id="agregarCampo" class="btn btn-info" >Agregar Archivo</a>
     <div id="contenedor">
