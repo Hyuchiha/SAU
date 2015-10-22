@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+!assets/.gitignore
+=======
+>>>>>>> 2c547a791ed46a519d89c468045e2ddb6f4590b2
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/

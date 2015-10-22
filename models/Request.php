@@ -10,7 +10,6 @@ use app\models\AttachedFiles;
  * This is the model class for table "request".
  *
  * @property string $id
- * @property string $user_id
  * @property string $area_id
  * @property string $subject
  * @property string $description
@@ -24,7 +23,6 @@ use app\models\AttachedFiles;
  * @property CategoryRequest[] $categoryRequests
  * @property Categories[] $categories
  * @property Areas $area
- * @property Users $user
  * @property UsersRequest[] $usersRequests
  * @property Users[] $users
  */
@@ -33,7 +31,6 @@ class Request extends \yii\db\ActiveRecord
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
-	public $assigned_id;
 	
     /**
      * @inheritdoc
@@ -49,13 +46,14 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['area_id', 'subject', 'description'], 'required'],
-            [['assigned_id', 'area_id', 'category_id','user_id'], 'integer'],
+            [['email', 'name','area_id', 'subject', 'description'], 'required'],
+            [['area_id', 'category_id'], 'integer'],
             [['description'], 'string'],
             [['creation_date', 'completion_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
             [['fileNameAttached'], 'string', 'max' => 50],
-			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
+			[['name', 'email'], 'string', 'max' => 150],
+			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			
         ];
     }
@@ -67,10 +65,11 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            //'user_id' => 'User ID',
+			'name' => 'Name',
+			'email' => 'Email',
             'area_id' => 'Area',
 			'category_id' => 'Category',
-			'assigned_id' => 'Assign',
             'subject' => 'Subject',
             'description' => 'Description',
             'creation_date' => 'Creation Date',
@@ -127,13 +126,6 @@ class Request extends \yii\db\ActiveRecord
         return $this->hasOne(Areas::className(), ['id' => 'area_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
-    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -160,9 +152,7 @@ class Request extends \yii\db\ActiveRecord
 			if(empty($this->completion_date)){
 				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
 			}
-			if(empty($this->user_id)){
-				$this->user_id = 1;
-			}
+			
 			if(empty($this->status)){
 				$this->status = "Nuevo";
 			}

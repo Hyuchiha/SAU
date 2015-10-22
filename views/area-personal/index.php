@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\RequestSearch */
+/* @var $searchModel app\models\AreaPersonalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Requests';
+$this->title = Yii::t('app', 'Area Personals');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="request-index">
+<div class="area-personal-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Request', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Area Personal'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,15 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'area_id',
-			'name', 
-			'email:email', 
-            'subject',
-            'description:ntext',
-            // 'creation_date',
-            // 'completion_date',
-            // 'status',
+            'user_id',
+            'permission',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
