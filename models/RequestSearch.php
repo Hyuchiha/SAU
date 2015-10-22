@@ -18,8 +18,8 @@ class RequestSearch extends Request
     public function rules()
     {
         return [
-            [['id', 'user_id', 'area_id'], 'integer'],
-            [['subject', 'description', 'creation_date', 'completion_date', 'status'], 'safe'],
+            [['id', 'area_id'], 'integer'],
+            [['name', 'email', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'safe'],
         ];
     }
 
@@ -57,13 +57,14 @@ class RequestSearch extends Request
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'area_id' => $this->area_id,
             'creation_date' => $this->creation_date,
             'completion_date' => $this->completion_date,
         ]);
 
-        $query->andFilterWhere(['like', 'subject', $this->subject])
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status]);
 

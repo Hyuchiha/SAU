@@ -31,18 +31,6 @@ class RequestController extends Controller
         ];
     }
 	
-	public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
 
     /**
      * Lists all Request models.
@@ -81,31 +69,30 @@ class RequestController extends Controller
         $request = new Request();
 		$areasRequest = new AreasRequest();
 		$categoryRequest = new CategoryRequest();
-		$usersRequest = new UsersRequest();
+		//$usersRequest = new UsersRequest();
 
         if ($request->load(Yii::$app->request->post())) {
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
-
-			$request->user_id = \Yii::$app->user->identity->id;
+			
 			$valid = true;
 			$valid = $valid && $request->validate();
+			
+			
 			if($valid){
-				if($request->save() && $request->upload()){
+				if($request->save()){
+				if($valid && !empty($request->requestFile)){
+				$request->upload();
+			}
 					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
 					
 					$categoryRequest->request_id = $request->id;
 					$categoryRequest->category_id = $request->category_id;
 					
-					$usersRequest->request_id = $request->id;
-					$usersRequest->user_id = $request->assigned_id;
+					
 					
 					if(!empty($request->category_id)){
 						$categoryRequest->save();
-					}
-					
-					if(!empty($request->assigned_id)){
-						$usersRequest->save();
 					}
 					
 					if($areasRequest->save()){

@@ -34,7 +34,7 @@ $this->registerJs('
         {
             FieldCount++;
             //agregar campo
-            $(contenedor).append(\'<div><input type="file" name="Request[requestFile][]"><a class="eliminar">&times;</a></div>\');
+            $(contenedor).append(\'<div><a class="eliminar">&times;</a><input type="file" name="Request[requestFile][]"></div>\');
             x++; //text box increment
         }
         });
@@ -57,7 +57,22 @@ $this->registerJs('
     <?php $form = ActiveForm::begin([
 		'options' => ['enctype' => 'multipart/form-data']
 	]) ?>
-
+	
+		<?php
+		if(Yii::$app->user->isGuest){
+			$nameValue = "";
+			$emailValue = "";
+		}else{
+			$user = User::findOne(\Yii::$app->user->identity->id);
+			$nameValue = $user->first_name . " " . $user->lastname;
+			$emailValue = $user->email;
+		}
+	?>
+	
+	<?= $form->field($request, 'name')->textInput(['value'=>$nameValue,'maxlength' => true]) ?>
+	
+	<?= $form->field($request, 'email')->textInput(['value'=> $emailValue,'maxlength' => true]) ?>
+	
     <?= $form->field($request, 'area_id')->dropDownList(
 		ArrayHelper::map(
 			Areas::find()->all(),
@@ -72,23 +87,11 @@ $this->registerJs('
 			'name'
 		), array('prompt'=> "")) ?>
 		
-	<?= $form->field($request, 'assigned_id')->dropDownList(
-		ArrayHelper::map(
-			User::find()->all(),
-			'id',
-			'first_name',
-			'lastname'
-		), array('prompt'=> "")) ?>
 
     <?= $form->field($request, 'subject')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($request, 'description')->textarea(['rows' => 6]) ?>
 	
-	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
-	
-	<?= $form->field($request, 'verifyCode')->widget(Captcha::className(), [
-        'template' => '<div class="row"><div class="col-lg-1.5">{image}</div><div class="col-lg-2">{input}</div></div>',
-    ]) ?>
 
     <a id="agregarCampo" class="btn btn-info" >Agregar Archivo</a>
     <div id="contenedor">
@@ -98,6 +101,8 @@ $this->registerJs('
     </div>
 
     <br>
+	
+
 
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
