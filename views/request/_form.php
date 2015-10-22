@@ -84,7 +84,7 @@ $this->registerJs('
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
 	
-	<?= $form->field($request, 'requestFile[]')->fileInput(['multiple' => true]) ?>
+
 
     <a id="agregarCampo" class="btn btn-info" >Agregar Archivo</a>
     <div id="contenedor">
@@ -100,5 +100,7 @@ $this->registerJs('
     </div>
 
     <?php ActiveForm::end(); ?>
+
+
 
 </div>
