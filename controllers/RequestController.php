@@ -31,6 +31,18 @@ class RequestController extends Controller
         ];
     }
 	
+		public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
 
     /**
      * Lists all Request models.
@@ -75,14 +87,14 @@ class RequestController extends Controller
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
 			
 			$valid = true;
-			$valid = $valid && $request->validate();
+			//$valid = $valid && $request->validate();
 			
 			
 			if($valid){
 				if($request->save()){
-				if($valid && !empty($request->requestFile)){
-				$request->upload();
-			}
+					if($valid && !empty($request->requestFile)){
+						$request->upload();
+					}
 					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
 					
