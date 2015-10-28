@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Area Personals');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="area-personal-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

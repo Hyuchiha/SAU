@@ -15,6 +15,8 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
+    'unclead\\widgets\\examples\\' => array($vendorDir . '/unclead/yii2-multiple-input/examples'),
+    'unclead\\widgets\\' => array($vendorDir . '/unclead/yii2-multiple-input/src'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

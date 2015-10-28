@@ -1,6 +1,10 @@
 <?php
 
 use app\models\User;
+use unclead\widgets\MultipleInput;
+use unclead\widgets\MultipleInputColumn;
+use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use app\models\Areas;
@@ -20,15 +24,22 @@ use yii\widgets\ActiveForm;
             Areas::find()->all(),
             'id',
             'name'
-        ), array('prompt'=> "")) ?>
+        ), array('prompt' => "")) ?>
 
-    <?= $form->field($model, 'user_id')->dropDownList(
-        ArrayHelper::map(
-            User::find()->all(),
-            'id',
-            'first_name'
-        ), array('prompt'=> "")
-    ) ?>
+    <?= $form->field($model, 'usersToAssing')->widget(MultipleInput::className(), [
+        'limit' => 100,
+        'allowEmptyList' => false,
+        'columns'=> [
+          [
+              'name' => 'user_id',
+              'type' => MultipleInputColumn::TYPE_DROPDOWN,
+              'items'=>ArrayHelper::map(
+                  User::find()->all(),
+                  'id',
+                  'first_name'
+              ),
+          ]
+        ]]) ?>
 
     <?= $form->field($model, 'permission')->textInput() ?>
 

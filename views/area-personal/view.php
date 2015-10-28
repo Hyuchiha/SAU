@@ -10,6 +10,7 @@ $this->title = $model->area_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Area Personals'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="area-personal-view">
 
     <h1><?= Html::encode($this->title) ?></h1>

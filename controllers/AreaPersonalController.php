@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use app\models\AreaPersonal;
 use app\models\AreaPersonalSearch;
@@ -61,13 +62,27 @@ class AreaPersonalController extends Controller
      */
     public function actionCreate()
     {
-        $model = new AreaPersonal();
+        $areaPersonal = new AreaPersonal();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'area_id' => $model->area_id, 'user_id' => $model->user_id]);
+        if ($areaPersonal->load(Yii::$app->request->post())) {
+            $user = $areaPersonal->findOne(['user_id'=>$areaPersonal->user_id]);
+            $area = $areaPersonal->findOne(['area_id'=>$areaPersonal->area_id]);
+
+
+
+            if(empty($user) && empty($area)){
+                if($areaPersonal->save()){
+                    return $this->redirect(['view', 'area_id' => $areaPersonal->area_id, 'user_id' => $areaPersonal->user_id]);
+                }
+            }else{
+                return $this->render('create', [
+                    'model' => $areaPersonal,
+                ]);
+            }
+
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'model' => $areaPersonal,
             ]);
         }
     }

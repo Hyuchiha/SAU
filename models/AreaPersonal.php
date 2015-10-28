@@ -16,6 +16,8 @@ use Yii;
  */
 class AreaPersonal extends \yii\db\ActiveRecord
 {
+    public $usersToAssing;
+
     /**
      * @inheritdoc
      */
@@ -30,11 +32,18 @@ class AreaPersonal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['area_id', 'user_id', 'permission'], 'required'],
-            [['area_id', 'user_id', 'permission'], 'integer']
+            [['area_id', 'permission'], 'required'],
+            [['area_id', 'user_id', 'permission'], 'integer'],
+            [['usersToAssing'], 'checkIsArray'],
         ];
     }
 
+
+    public function checkIsArray(){
+        if(!is_array($this->usersToAssing)){
+
+        }
+    }
     /**
      * @inheritdoc
      */
