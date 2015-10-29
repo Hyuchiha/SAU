@@ -30,8 +30,8 @@ class RequestController extends Controller
             ],
         ];
     }
-
-    public function actions()
+	
+		public function actions()
     {
         return [
             'error' => [
@@ -43,6 +43,7 @@ class RequestController extends Controller
             ],
         ];
     }
+
     /**
      * Lists all Request models.
      * @return mixed
@@ -55,11 +56,8 @@ class RequestController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-
-
         ]);
     }
-
 
     /**
      * Displays a single Request model.
@@ -89,14 +87,14 @@ class RequestController extends Controller
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
 			
 			$valid = true;
-			$valid = $valid;
+			//$valid = $valid && $request->validate();
 			
 			
 			if($valid){
 				if($request->save()){
-				if($valid && !empty($request->requestFile)){
-				$request->upload();
-			}
+					if($valid && !empty($request->requestFile)){
+						$request->upload();
+					}
 					$areasRequest->request_id = $request->id;
 					$areasRequest->area_id = $request->area_id;
 					

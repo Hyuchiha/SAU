@@ -31,7 +31,7 @@ class Request extends \yii\db\ActiveRecord
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
-    public $verifyCode;
+	public $verifyCode;
 	
     /**
      * @inheritdoc
@@ -55,8 +55,7 @@ class Request extends \yii\db\ActiveRecord
             [['fileNameAttached'], 'string', 'max' => 50],
 			[['name', 'email'], 'string', 'max' => 150],
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
-            ['verifyCode', 'captcha'],
-			
+			[['verifyCode'], 'captcha'],
         ];
     }
 
@@ -76,9 +75,8 @@ class Request extends \yii\db\ActiveRecord
             'description' => 'Description',
             'creation_date' => 'Creation Date',
             'completion_date' => 'Completion Date',
+			'verifyCode' => 'Verification Code',
             'status' => 'Status',
-            'verifyCode' => 'Verification Code',
-
         ];
     }
 
@@ -167,7 +165,6 @@ class Request extends \yii\db\ActiveRecord
 	}
 	
 	public function upload(){
-		if($this->validate()){
 			foreach ($this->requestFile as $file){
 				$this->fileNameAttached = uniqid() . '.' . $file->extension;
 				$file->saveAs('files/'.$this->fileNameAttached);
@@ -176,9 +173,5 @@ class Request extends \yii\db\ActiveRecord
 				$attachedFiles->url = $this->fileNameAttached;
 				$attachedFiles->save();
 			}
-			return true;
-		} else{
-			return false;
-		}
 	}
 }
