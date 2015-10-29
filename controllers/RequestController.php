@@ -28,7 +28,7 @@ class RequestController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['requester'],
+                        'roles' => ['?', '@'],
                     ],
                     [
                         'allow' => true,

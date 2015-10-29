@@ -55,5 +55,17 @@ class RbacController extends Controller
         $auth->assign($requester, #);
         */
     }
+    public function actionTest1()
+    {
+        $auth = Yii::$app->authManager;
+        $administrator = $auth->getRole('administrator');
+        $auth->assign($administrator, 1);
+    }
+    public function actionTest2()
+    {
+        $auth = Yii::$app->authManager;
+        $employeeArea = $auth->getRole('employeeArea');
+        $auth->assign($employeeArea, 4);
+    }
 }
 ?>

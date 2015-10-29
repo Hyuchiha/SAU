@@ -23,22 +23,22 @@ class CategoriesController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['?', '@'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator'],
                     ],
                 ],
             ],*/
