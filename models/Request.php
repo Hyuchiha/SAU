@@ -31,6 +31,7 @@ class Request extends \yii\db\ActiveRecord
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
+    public $verifyCode;
 	
     /**
      * @inheritdoc
@@ -54,6 +55,7 @@ class Request extends \yii\db\ActiveRecord
             [['fileNameAttached'], 'string', 'max' => 50],
 			[['name', 'email'], 'string', 'max' => 150],
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
+            ['verifyCode', 'captcha'],
 			
         ];
     }
@@ -75,6 +77,8 @@ class Request extends \yii\db\ActiveRecord
             'creation_date' => 'Creation Date',
             'completion_date' => 'Completion Date',
             'status' => 'Status',
+            'verifyCode' => 'Verification Code',
+
         ];
     }
 

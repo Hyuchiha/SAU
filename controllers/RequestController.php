@@ -30,8 +30,19 @@ class RequestController extends Controller
             ],
         ];
     }
-	
 
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
     /**
      * Lists all Request models.
      * @return mixed
@@ -44,8 +55,11 @@ class RequestController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+
+
         ]);
     }
+
 
     /**
      * Displays a single Request model.
@@ -75,7 +89,7 @@ class RequestController extends Controller
 			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
 			
 			$valid = true;
-			$valid = $valid && $request->validate();
+			$valid = $valid;
 			
 			
 			if($valid){
