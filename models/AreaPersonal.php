@@ -16,7 +16,7 @@ use Yii;
  */
 class AreaPersonal extends \yii\db\ActiveRecord
 {
-    public $usersToAssing;
+    public $usersToAssing = array();
 
     /**
      * @inheritdoc
@@ -34,16 +34,29 @@ class AreaPersonal extends \yii\db\ActiveRecord
         return [
             [['area_id', 'permission'], 'required'],
             [['area_id', 'user_id', 'permission'], 'integer'],
-            [['usersToAssing'], 'checkIsArray'],
+            [['usersToAssing'], 'validateArray'],
         ];
     }
 
-
-    public function checkIsArray(){
-        if(!is_array($this->usersToAssing)){
-
+    public function validateArray($attribute)
+    {
+        $items = $attribute;
+        if (!is_array($items)) {
+            $items = [];
+        }
+        foreach ($items as $index => $item) {
+            $validator = $this->findOne(['user_id', $item]);
+            $error = null;
+            if(!empty($validator)){
+                $validator->validate($item['usersToAssing'], $error);
+                if (!empty($error)) {
+                    $key = $attribute . '[' . $index . ']';
+                    $this->addError($key, $error);
+                }
+            }
         }
     }
+
     /**
      * @inheritdoc
      */
@@ -62,6 +75,28 @@ class AreaPersonal extends \yii\db\ActiveRecord
     public function getArea()
     {
         return $this->hasOne(Areas::className(), ['id' => 'area_id']);
+    }
+
+    public function getFirtsElmentOfUsers(){
+        $user = array_pop($this->usersToAssing);
+
+        unset($this->usersToAssing[$user]);
+
+        return $user;
+    }
+
+    /**
+     * @param $user
+     */
+    public function setUser($user){
+        $this->user_id = $user;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUsersToAssing(){
+        return $this->usersToAssing;
     }
 
     /**

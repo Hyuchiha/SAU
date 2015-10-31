@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
         'allowEmptyList' => false,
         'columns'=> [
           [
-              'name' => 'user_id',
+              'name' => 'usersToAssing',
               'type' => MultipleInputColumn::TYPE_DROPDOWN,
               'items'=>ArrayHelper::map(
                   User::find()->all(),

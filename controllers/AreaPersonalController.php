@@ -65,12 +65,22 @@ class AreaPersonalController extends Controller
         $areaPersonal = new AreaPersonal();
 
         if ($areaPersonal->load(Yii::$app->request->post())) {
-            $user = $areaPersonal->findOne(['user_id'=>$areaPersonal->user_id]);
-            $area = $areaPersonal->findOne(['area_id'=>$areaPersonal->area_id]);
 
+            if(!empty($areaPersonal->usersToAssing)){
 
+                $user1 = $areaPersonal->getFirtsElmentOfUsers();
+                $areaPersonal->setUser($user1);
 
-            if(empty($user) && empty($area)){
+                foreach($areaPersonal->getUsersToAssing() as $user){
+                    $areaPersonalNew = new AreaPersonal();
+
+                    $areaPersonalNew->area_id = $areaPersonal->area_id;
+                    $areaPersonalNew->user_id = $user;
+                    $areaPersonalNew->permission = $areaPersonal->permission;
+
+                    $areaPersonalNew->save();
+                }
+
                 if($areaPersonal->save()){
                     return $this->redirect(['view', 'area_id' => $areaPersonal->area_id, 'user_id' => $areaPersonal->user_id]);
                 }
