@@ -22,34 +22,50 @@ class RbacController extends Controller
         $auth->add($responsibleArea);
         $auth->add($requester);
     }
+    public function actionParentChild()
+    {
+        $auth = Yii::$app->authManager;
+        $administrator = $auth->getRole('administrator');
+        $executive = $auth->getRole('executive');
+        $employeeArea = $auth->getRole('employeeArea');
+        $responsibleArea = $auth->getRole('responsibleArea');
+        $requester = $auth->getRole('requester');
+        $auth->addChild($requester, $administrator);
+        $auth->addChild($requester, $executive);
+        $auth->addChild($requester, $employeeArea);
+        $auth->addChild($requester, $responsibleArea);
+    }
     public function actionAsignRoles()
     {
         /*
         $auth = Yii::$app->authManager;
-
+        
         // Obtención de los roles
         $administrator = $auth->getRole('administrator');
         $executive = $auth->getRole('executive');
         $employeeArea = $auth->getRole('employeeArea');
         $responsibleArea = $auth->getRole('responsibleArea');
         $requester = $auth->getRole('requester');
-
+        
         // Asignación de roles
         $auth->assign($administrator, #);
         $auth->assign($executive, #);
         $auth->assign($employeeArea, #);
         $auth->assign($responsibleArea, #);
         $auth->assign($requester, #);
-*/
+        */
     }
-    public function actionThird()
+    public function actionTest1()
     {
         $auth = Yii::$app->authManager;
-        $superuser = $auth->createRole('superuser');
-        $auth->add($superuser);
         $administrator = $auth->getRole('administrator');
-        $auth->addChild($superuser, $administrator);
-        $auth->assign($superuser, 3);
+        $auth->assign($administrator, 1);
+    }
+    public function actionTest2()
+    {
+        $auth = Yii::$app->authManager;
+        $employeeArea = $auth->getRole('employeeArea');
+        $auth->assign($employeeArea, 4);
     }
 }
 ?>
