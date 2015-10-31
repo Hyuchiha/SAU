@@ -12,7 +12,7 @@ use Yii;
  * @property integer $permission
  *
  * @property Areas $area
- * @property Users $user
+ * @property User $user
  */
 class AreaPersonal extends \yii\db\ActiveRecord
 {
@@ -55,6 +55,19 @@ class AreaPersonal extends \yii\db\ActiveRecord
                 }
             }
         }
+    }
+
+    /**
+     *
+     */
+    public function beforeSave($insert){
+        if(parent::beforeSave($insert)){
+
+            //Aqui se agregan los permisos al usuario
+
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -104,6 +117,6 @@ class AreaPersonal extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
