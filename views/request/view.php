@@ -2,12 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Request */
 
-$this->title = $model->subject;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Requests', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,12 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'id',
-            //'area_id',
-			[
-				'label' => 'Area',
-				'value' => $model->area->name,
-			],
+            'id',
+            'area_id',
 			'name', 
 			'email:email',
             'subject',
@@ -44,34 +39,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
         ],
     ]) ?>
-	
-	<?php if(!empty ($model->attachedFiles)):	?>
-	
-	<h2>Attached files</h2>
-	<?php foreach ($model->attachedFiles as $attachedFile): ?>
-	<?= DetailView::widget([
-		'model' => $attachedFile,
-		'attributes' => [
-			[
-				'label' => 'url',
-				'value' => Html::a($attachedFile->url,'@web/files/'.$attachedFile->url),
-				'format' => 'html',
-			],
-		],
-    ]) ?>
-	<?php endforeach; ?>
-	<?php endif; ?>
-	
-	<?php 
 
-		$model->status = "Finalizado";
-		
-	?>
-	
-	<?php $form = ActiveForm::begin()?>
-	<div class="form-group">
-        <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
-    </div>
-	<?php ActiveForm::end(); ?>
-	
 </div>
