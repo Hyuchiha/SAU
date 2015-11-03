@@ -18,7 +18,7 @@ class AreaPersonalSearch extends AreaPersonal
     public function rules()
     {
         return [
-            [['area_id', 'user_id', 'permission'], 'integer'],
+            [['area_id', 'user_id', 'permission'], 'safe'],
         ];
     }
 
@@ -59,14 +59,10 @@ class AreaPersonalSearch extends AreaPersonal
         $query->joinWith('user');
 
         $query->andFilterWhere([
-            'area_id' => $this->area_id,
-            'user_id' => $this->user_id,
+            'name' => $this->area_id,
+            'first_name' => $this->user_id,
             'permission' => $this->permission,
         ]);
-
-        $query->andFilterWhere(['like', 'area_id', $this->area_id])
-            ->andFilterWhere(['like', 'user_id', $this->user_id])
-            ->andFilterWhere(['like', 'permission', $this->permission]);
 
         return $dataProvider;
     }

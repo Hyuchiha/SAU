@@ -41,12 +41,11 @@ use yii\widgets\ActiveForm;
           ]
         ]]) ?>
 
-    <?= $form->field($model, 'permission')->dropDownList(
-        ArrayHelper::map(
-            $auth = Yii::$app->authManager->getRoles(),
-            'type',
-            'name'
-        )
+    <?= $form->field($model, 'permission')->radioList(
+        [
+            1 => 'Si',
+            0 => 'No',
+        ]
     ) ?>
 
     <div class="form-group">
