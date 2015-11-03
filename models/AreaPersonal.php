@@ -64,6 +64,9 @@ class AreaPersonal extends \yii\db\ActiveRecord
         if(parent::beforeSave($insert)){
 
             //Aqui se agregan los permisos al usuario
+            $auth = Yii::$app->authManager;
+
+
 
             return true;
         }

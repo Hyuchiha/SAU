@@ -41,7 +41,13 @@ use yii\widgets\ActiveForm;
           ]
         ]]) ?>
 
-    <?= $form->field($model, 'permission')->textInput() ?>
+    <?= $form->field($model, 'permission')->dropDownList(
+        ArrayHelper::map(
+            $auth = Yii::$app->authManager->getRoles(),
+            'type',
+            'name'
+        )
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

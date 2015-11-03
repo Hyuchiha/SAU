@@ -22,7 +22,7 @@ class RequestController extends Controller
     public function behaviors()
     {
         return [
-            /*'access' => [
+            'access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
@@ -46,7 +46,7 @@ class RequestController extends Controller
                         'roles' => ['responsibleArea', 'administrator'],
                     ],
                 ],
-            ],*/
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

@@ -107,7 +107,8 @@ class AreaPersonalController extends Controller
                 }
 
                 if($areaPersonal->save()){
-                    return $this->redirect(['view', 'area_id' => $areaPersonal->area_id, 'user_id' => $areaPersonal->user_id]);
+                    //return $this->redirect(['view', 'area_id' => $areaPersonal->area_id, 'user_id' => $areaPersonal->user_id]);
+                    return $this->redirect(['index']);
                 }
             }else{
                 return $this->render('create', [

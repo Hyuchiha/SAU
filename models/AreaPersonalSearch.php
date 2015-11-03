@@ -54,11 +54,19 @@ class AreaPersonalSearch extends AreaPersonal
             return $dataProvider;
         }
 
+        $query->joinWith('area');
+
+        $query->joinWith('user');
+
         $query->andFilterWhere([
             'area_id' => $this->area_id,
             'user_id' => $this->user_id,
             'permission' => $this->permission,
         ]);
+
+        $query->andFilterWhere(['like', 'area_id', $this->area_id])
+            ->andFilterWhere(['like', 'user_id', $this->user_id])
+            ->andFilterWhere(['like', 'permission', $this->permission]);
 
         return $dataProvider;
     }
