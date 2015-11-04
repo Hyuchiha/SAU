@@ -14,8 +14,8 @@ use Yii;
  * @property string $description
  *
  * @property AreaPersonal[] $areaPersonals
- * @property Users[] $users
- * @property Users $idResponsable
+ * @property User[] $users
+ * @property User $idResponsable
  * @property AreasRequest[] $areasRequests
  * @property Request[] $requests
  * @property Categories[] $categories
@@ -71,7 +71,7 @@ class Areas extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['id' => 'user_id'])->viaTable('area_personal', ['area_id' => 'id']);
+        return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('area_personal', ['area_id' => 'id']);
     }
 
     /**
@@ -79,7 +79,7 @@ class Areas extends \yii\db\ActiveRecord
      */
     public function getIdResponsable()
     {
-        return $this->hasOne(Users::className(), ['id' => 'id_responsable']);
+        return $this->hasOne(User::className(), ['id' => 'id_responsable']);
     }
 
     /**
