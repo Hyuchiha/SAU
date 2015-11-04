@@ -26,6 +26,8 @@ use yii\widgets\ActiveForm;
             'name'
         ), array('prompt' => "")) ?>
 
+    <?php if($model->isNewRecord){ ?>
+
     <?= $form->field($model, 'usersToAssing')->widget(MultipleInput::className(), [
         'limit' => 100,
         'allowEmptyList' => false,
@@ -40,6 +42,19 @@ use yii\widgets\ActiveForm;
               ),
           ]
         ]]) ?>
+
+    <?php }else{ ?>
+
+    <?= $form->field($model, 'user_id')->dropDownList(
+        ArrayHelper::map(
+            User::find()->all(),
+            'id',
+            'first_name'
+        )
+    ) ?>
+
+    <?php } ?>
+
 
     <?= $form->field($model, 'permission')->radioList(
         [

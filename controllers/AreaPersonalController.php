@@ -18,7 +18,7 @@ class AreaPersonalController extends Controller
     public function behaviors()
     {
         return [
-            /*'access' => [
+            'access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
@@ -42,7 +42,7 @@ class AreaPersonalController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ],*/
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
