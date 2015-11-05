@@ -103,7 +103,7 @@ class RequestController extends Controller
      */
     public function actionCreate()
     {
-        $request = new Request();
+        $request = new Request(['scenario'=>'Create']);
 		$areasRequest = new AreasRequest();
 		$categoryRequest = new CategoryRequest();
 		//$usersRequest = new UsersRequest();
@@ -162,13 +162,40 @@ class RequestController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $request = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($request->load(Yii::$app->request->post()) && $request->save()) {
+            return $this->redirect(['view', 'id' => $request->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'request' => $request,
+            ]);
+        }
+    }
+	
+	    public function actionAdvancedOptions($id)
+    {
+        $request = $this->findModel($id);
+
+        if ($request->load(Yii::$app->request->post()) && $request->save()) {
+			if(!empty($request->listAreas)){
+				if($request->assignAreas()){
+				
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			if(!empty($request->listCategories)){
+				if($request->assignCategories()){
+
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			return $this->redirect(['view', 'id' => $request->id]);
+        } else {
+            return $this->render('advanced-options', [
+                'request' => $request,
             ]);
         }
     }

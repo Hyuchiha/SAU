@@ -10,6 +10,8 @@ use app\models\AttachedFiles;
  * This is the model class for table "request".
  *
  * @property string $id
+ * @property string $name 
+ * @property string $email
  * @property string $area_id
  * @property string $subject
  * @property string $description
@@ -25,6 +27,8 @@ use app\models\AttachedFiles;
  * @property Areas $area
  * @property UsersRequest[] $usersRequests
  * @property Users[] $users
+ * @property string $scheduled_start_date
+ * @property string $scheduled_end_date
  */
 class Request extends \yii\db\ActiveRecord
 {	
@@ -32,6 +36,8 @@ class Request extends \yii\db\ActiveRecord
 	public $fileNameAttached;
 	public $category_id;
 	public $verifyCode;
+	public $listAreas;
+	public $listCategories;
 	
     /**
      * @inheritdoc
@@ -50,12 +56,13 @@ class Request extends \yii\db\ActiveRecord
             [['email', 'name','area_id', 'subject', 'description'], 'required'],
             [['area_id', 'category_id'], 'integer'],
             [['description'], 'string'],
-            [['creation_date', 'completion_date'], 'safe'],
+            [['creation_date', 'completion_date', 'scheduled_start_date', 'scheduled_end_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
-            [['fileNameAttached'], 'string', 'max' => 50],
+            [['fileNameAttached', 'status'], 'string', 'max' => 50],
 			[['name', 'email'], 'string', 'max' => 150],
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
-			[['verifyCode'], 'captcha'],
+			[['verifyCode'], 'captcha', 'on'=>'Create'],
+			[['listAreas', 'listCategories'],'each', 'rule' => ['integer']],
         ];
     }
 
@@ -77,6 +84,10 @@ class Request extends \yii\db\ActiveRecord
             'completion_date' => 'Completion Date',
 			'verifyCode' => 'Verification Code',
             'status' => 'Status',
+			'scheduled_start_date' => 'Scheduled Start Date', 
+			'scheduled_end_date' => 'Scheduled End Date', 
+			'listAreas' => 'Assign Areas',
+			'listCategories' => 'Assign Categories',
         ];
     }
 
@@ -148,12 +159,24 @@ class Request extends \yii\db\ActiveRecord
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
 			
-			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
-			$this->creation_date = $formatedDateTime;
-
-			if(empty($this->completion_date)){
-				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
+			if($this->isNewRecord){
+				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
+				$this->creation_date = $formatedDateTime;
 			}
+			
+			if(!empty($this->scheduled_start_date)){
+				$formatedDateTime = date_format(date_create($this->scheduled_start_date ." 00:00:00"),"Y/m/d H:i:s");
+				$this->scheduled_start_date = $formatedDateTime;
+			}
+			
+			if(!empty($this->scheduled_end_date)){
+				$formatedDateTime = date_format(date_create($this->scheduled_end_date ." 00:00:00"),"Y/m/d H:i:s");
+				$this->scheduled_end_date = $formatedDateTime;
+			}
+
+			//if(empty($this->completion_date)){
+			//	$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
+			//}
 			
 			if(empty($this->status)){
 				$this->status = "Nuevo";
@@ -173,5 +196,33 @@ class Request extends \yii\db\ActiveRecord
 				$attachedFiles->url = $this->fileNameAttached;
 				$attachedFiles->save();
 			}
+	}
+	
+	public function assignAreas(){
+		foreach ($this->listAreas as $area){
+			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
+			//$file->saveAs('files/'.$this->fileNameAttached);
+			$area_request = new AreasRequest();
+			$area_request->request_id = $this->id;
+			$area_request->area_id = $area;
+			$area_request->save();
+		}
+		return true;
+	}
+	
+	public function assignCategories(){
+		foreach ($this->listCategories as $category){
+			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
+			//$file->saveAs('files/'.$this->fileNameAttached);
+			$category_request = new CategoryRequest();
+			$category_request->request_id = $this->id;
+			$category_request->category_id = $category;
+			$category_request->save();
+		}
+		return true;
+	}
+	
+	public function assignPersonel(){
+		//TODO
 	}
 }

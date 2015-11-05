@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Request */
 
-$this->title = $model->id;
+$this->title = $model->subject;
 $this->params['breadcrumbs'][] = ['label' => 'Requests', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -23,21 +24,87 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+		<?= Html::a(Yii::t('app', 'Advanced options'), ['advanced-options', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
+	
+<?php	
+	
+	if(empty ($model->scheduled_start_date)){
+		$start_date = "--";
+	}else{
+		$start_date = $model->scheduled_start_date;
+	}
+	
+	if(empty ($model->scheduled_end_date)){
+		$end_date = "--";
+	}else{
+		$end_date = $model->scheduled_end_date;
+	}
+
+	$area_name="";
+	if(!empty ($model->areas)){
+		foreach($model->areas as $area){
+			$area_name = $area_name . $area->name . ", ";
+		}
+	}
+	
+	$category_name="";
+	if(!empty ($model->categories)){
+		foreach($model->categories as $category){
+			$category_name = $category_name . $category->name . ", ";
+		}
+	}
+
+?>
 
     <?= DetailView::widget([
-        'model' => $model,
+ 'model' => $model,
         'attributes' => [
-            'id',
-            'area_id',
+            //'id',
+            //'area_id',
+			[
+				'label' => 'Area',
+				'value' => $model->area->name,
+			],
 			'name', 
 			'email:email',
             'subject',
-            'description:ntext',
-            'creation_date',
-            'completion_date',
+			[
+				'label' => 'Assigned areas',
+				'value' => $area_name,
+			],
+			[
+				'label' => 'Assigned categories',
+				'value' => $category_name,
+			],
+			[
+				'label' => 'Scheduled start date',
+				'value' => $start_date,
+			],
+			[
+				'label' => 'Scheduled end date',
+				'value' => $end_date,
+			],
             'status',
         ],
     ]) ?>
-
+<?php if(!empty ($model->attachedFiles)):	?>
+	
+	<h2>Attached files</h2>
+	<?php foreach ($model->attachedFiles as $attachedFile): ?>
+	<?= DetailView::widget([
+		'model' => $attachedFile,
+		'attributes' => [
+			[
+				'label' => 'File',
+				'value' => Html::a($attachedFile->url,'@web/files/'.$attachedFile->url),
+				'format' => 'html',
+			],
+		],
+    ]) ?>
+	
+	<?php endforeach; ?>
+	<?php endif; ?>
+	
+	
 </div>
