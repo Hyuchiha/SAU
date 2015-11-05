@@ -24,7 +24,7 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea, executive, administrator'],
                     ],
                     [
                         'allow' => true,
@@ -34,12 +34,12 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea, executive, administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea, executive, administrator'],
                     ],
                 ],
             ],
@@ -152,7 +152,14 @@ class AreaPersonalController extends Controller
      */
     public function actionDelete($area_id, $user_id)
     {
-        $this->findModel($area_id, $user_id)->delete();
+        $authManager = Yii::$app->authManager;
+        $role = $authManager->getRole('employeeArea');
+
+        $model = $this->findModel($area_id, $user_id);
+
+        $authManager->revoke($role, $model->user_id);
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }
