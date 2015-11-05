@@ -1,5 +1,8 @@
 <?php
 
+use app\models\User;
+use yii\filters\VerbFilter;
+
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -45,6 +48,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        //Para la vista esta
+        'rbac' =>  [
+            'class' => 'johnitvn\rbacplus\Module',
+            'userModelClassName' => null,
+            'userModelIdField' => 'id',
+            'userModelLoginField' => 'user_name',
+        ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module',
+        ],
     ],
     'params' => $params,
 ];

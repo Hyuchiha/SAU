@@ -24,7 +24,7 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['responsibleArea, executive, administrator'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
@@ -34,12 +34,12 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['responsibleArea, executive, administrator'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['responsibleArea, executive, administrator'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -94,7 +94,6 @@ class AreaPersonalController extends Controller
             if(!empty($areaPersonal->usersToAssing)){
 
                 $user1 = $areaPersonal->getFirtsElmentOfUsers();
-                $areaPersonal->setUser($user1);
 
                 foreach($areaPersonal->getUsersToAssing() as $user){
                     $areaPersonalNew = new AreaPersonal();
@@ -105,6 +104,8 @@ class AreaPersonalController extends Controller
 
                     $areaPersonalNew->save();
                 }
+
+                $areaPersonal->setUser($user1);
 
                 if($areaPersonal->save()){
                     //return $this->redirect(['view', 'area_id' => $areaPersonal->area_id, 'user_id' => $areaPersonal->user_id]);

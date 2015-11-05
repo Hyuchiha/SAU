@@ -47,7 +47,7 @@ class AreaPersonal extends \yii\db\ActiveRecord
         foreach ($items as $index => $item) {
             $validator = $this->findOne(['user_id', $item]);
             $error = null;
-            if(!empty($validator)){
+            if (!empty($validator)) {
                 $validator->validate($item['usersToAssing'], $error);
                 if (!empty($error)) {
                     $key = $attribute . '[' . $index . ']';
@@ -60,21 +60,16 @@ class AreaPersonal extends \yii\db\ActiveRecord
     /**
      *
      */
-    public function beforeSave($insert){
-        if(parent::beforeSave($insert)){
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
 
             //Aqui se agregan los permisos al usuario
-            $user = $this->getUser();
+            $auth = Yii::$app->authManager;
+            $employeeArea = $auth->getRole('employeeArea');
+            $auth->assign($employeeArea, $this->user_id);
 
-            if($user != null){
-                $auth = Yii::$app->authManager;
-
-                $employeeArea = $auth->getRole('employeeArea');
-
-                $auth->assign($employeeArea, $user->id);
-
-                return true;
-            }
+            return true;
         }
         return false;
     }
@@ -99,7 +94,8 @@ class AreaPersonal extends \yii\db\ActiveRecord
         return $this->hasOne(Areas::className(), ['id' => 'area_id']);
     }
 
-    public function getFirtsElmentOfUsers(){
+    public function getFirtsElmentOfUsers()
+    {
         $user = array_pop($this->usersToAssing);
 
         unset($this->usersToAssing[$user]);
@@ -110,14 +106,16 @@ class AreaPersonal extends \yii\db\ActiveRecord
     /**
      * @param $user
      */
-    public function setUser($user){
+    public function setUser($user)
+    {
         $this->user_id = $user;
     }
 
     /**
      * @return array
      */
-    public function getUsersToAssing(){
+    public function getUsersToAssing()
+    {
         return $this->usersToAssing;
     }
 
