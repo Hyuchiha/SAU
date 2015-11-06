@@ -13,10 +13,56 @@ use app\models\Areas;
 
 <div class="categories-form">
 
+<?php 
+        $cat = Categories::find()->all();
+        $cat2 = Categories::find();
+        $numRecords = $cat2->count();
+       
+         //Crear espacios 
+        for ($i=0; $i < $numRecords ; $i++) { 
+
+                $parrent = $cat[$i]['category_id'];
+                $n = 0;
+                while ($parrent != NULL) {
+                    $parrentTemp = $cat2->where(['id'=>$parrent])->all();
+                    $parrent = $parrentTemp[0]['category_id'];
+                    $n = $n + 1;
+                }
+                $cat[$i]['name'] = str_repeat("--", $n)."\n".$cat[$i]['name'];
+        }
+
+      //Ordenar nodos
+        $order = array();
+    for ($i=0; $i < $numRecords ; $i++) { 
+        $parrent = $cat[$i]['category_id'];
+        if($parrent == NULL){
+            //es categoria
+            array_push($order,$cat[$i]);
+         }
+
+    }
+    for ($i=0; $i < $numRecords ; $i++) { 
+        $parrent = $cat[$i]['category_id'];
+         if ($parrent != NULL) {
+            //es subcategoria
+            $order2 = array();
+            foreach ($order as $val) {
+                if($val['id'] == $parrent){
+                 array_push($order2,$val);
+                 array_push($order2,$cat[$i]);
+
+                }else{
+                 array_push($order2,$val);  
+                }
+                $order = $order2;
+            }
+         }         
+    }   
+    ?>
     <?php $form = ActiveForm::begin();  ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(
-    ArrayHelper::map(Categories::find()->all(),'id','name'), array('prompt'=>''))?>
+    ArrayHelper::map($order2,'id','name'), array('prompt'=>''))?>
 
     <?= $form->field($model, 'id_area')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name')) ?>
 
