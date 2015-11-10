@@ -222,7 +222,7 @@ class Request extends \yii\db\ActiveRecord
 		return true;
 	}
 	
-	public function assignPersonel(){
+	public function assignPersonal(){
 		//TODO
 	}
 }
