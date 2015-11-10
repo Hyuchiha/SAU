@@ -2,6 +2,7 @@
 
 use app\models\User;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 $params = require(__DIR__ . '/params.php');
 
@@ -56,6 +57,27 @@ $config = [
             'userModelClassName' => null,
             'userModelIdField' => 'id',
             'userModelLoginField' => 'user_name',
+            'beforeAction'=>function($action){
+                /**
+                 *@var yii\base\Action $action the action to be executed.
+                 */
+                $authManager = Yii::$app->getAuthManager();
+                $Roles = $authManager->getRolesByUser(Yii::$app->user->getId());
+
+                $isRole = false;
+                foreach($Roles as $role){
+                    if($role->name == "administrator"){
+                        $isRole = true;
+                    }
+                }
+
+                if($isRole){
+                    return $isRole;
+                }
+
+                //throw new NotFoundHttpException('The requested page does not exist.');
+                return true;
+            }
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module',

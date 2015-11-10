@@ -125,9 +125,7 @@ class RequestController extends Controller
 					
 					$categoryRequest->request_id = $request->id;
 					$categoryRequest->category_id = $request->category_id;
-					
-					
-					
+
 					if(!empty($request->category_id)){
 						$categoryRequest->save();
 					}

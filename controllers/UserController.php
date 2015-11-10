@@ -17,7 +17,7 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
-            /*'access' => [
+            'access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
@@ -26,7 +26,7 @@ class UserController extends Controller
                         'roles' => ['administrator'],
                     ],
                 ],
-            ],*/
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
