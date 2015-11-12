@@ -11,7 +11,7 @@ use Yii;
  * @property string $user_id
  *
  * @property Request $request
- * @property Users $user
+ * @property User $user
  */
 class UsersRequest extends \yii\db\ActiveRecord
 {
@@ -58,6 +58,6 @@ class UsersRequest extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
