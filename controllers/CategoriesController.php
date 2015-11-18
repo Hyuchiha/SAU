@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     public function behaviors()
     {
         return [
-            /*'access' => [
+            'access' => [
                 'class' => 'yii\filters\AccessControl',
                 'rules' => [
                     [
@@ -28,7 +28,7 @@ class CategoriesController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['?', '@'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
@@ -41,7 +41,7 @@ class CategoriesController extends Controller
                         'roles' => ['administrator'],
                     ],
                 ],
-            ],*/
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

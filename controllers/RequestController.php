@@ -37,6 +37,11 @@ class RequestController extends Controller
                     ],
                     [
                         'allow' => true,
+                        'actions' => ['advanced-options'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['update'],
                         'roles' => ['responsibleArea', 'administrator', 'employeeArea'],
                     ],

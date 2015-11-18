@@ -37,8 +37,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            //['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Request', 'url' => ['/request/create']],
+            ['label' => 'Assign Request', 'url' => ['users-request/create']],
+            ['label' => 'Categories', 'url' => ['categories/index']],
+            ['label' => 'Areas', 'url' => ['areas/index']],
+            ['label' => 'Assign Personal', 'url' => ['area-personal/create']],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [
@@ -46,7 +50,6 @@ AppAsset::register($this);
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
-
         ],
     ]);
     NavBar::end();
