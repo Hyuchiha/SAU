@@ -12,13 +12,17 @@ use app\models\AreaPersonal;
  */
 class AreaPersonalSearch extends AreaPersonal
 {
+    public $area_Name;
+    public $user_Name;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['area_id', 'user_id', 'permission'], 'safe'],
+            [['area_id', 'user_id', 'permission'], 'integer'],
+            [['area_Name', 'user_Name'], 'safe']
         ];
     }
 
@@ -42,9 +46,22 @@ class AreaPersonalSearch extends AreaPersonal
     {
         $query = AreaPersonal::find();
 
+        $query->joinWith('area');
+        $query->joinWith('user');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['area_Name'] = [
+            'asc' => ['areas.name' => SORT_ASC],
+            'desc' => ['areas.name' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['user_Name'] = [
+            'asc' => ['users.first_name' => SORT_ASC],
+            'desc' => ['users.first_name' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -54,15 +71,12 @@ class AreaPersonalSearch extends AreaPersonal
             return $dataProvider;
         }
 
-        $query->joinWith('area');
-
-        $query->joinWith('user');
-
         $query->andFilterWhere([
             'name' => $this->area_id,
             'first_name' => $this->user_id,
             'permission' => $this->permission,
-        ]);
+        ])->andFilterWhere(['like', 'areas.name', $this->area_Name])
+        ->andFilterWhere(['like', 'user.first_name', $this->user_Name]);
 
         return $dataProvider;
     }

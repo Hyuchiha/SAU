@@ -26,7 +26,11 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
             ['class' => 'yii\grid\SerialColumn'],
 
             Yii::t('app', 'id'),
-            Yii::t('app', 'area_id'),
+            [
+                'attribute' => 'area_name',
+                'value' => 'area.name',
+                'label' => Yii::t('app', 'area_id')
+            ],
 			Yii::t('app', 'name'), 
 			Yii::t('app', 'email:email'), 
             Yii::t('app', 'subject'),

@@ -26,7 +26,7 @@ use app\models\AttachedFiles;
  * @property Categories[] $categories
  * @property Areas $area
  * @property UsersRequest[] $usersRequests
- * @property Users[] $users
+ * @property User[] $users
  * @property string $scheduled_start_date
  * @property string $scheduled_end_date
  */

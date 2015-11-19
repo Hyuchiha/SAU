@@ -27,11 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             [
-                'attribute' => 'area_id',
+                'attribute' => 'area_Name',
                 'value' => 'area.name'
             ],
             [
-                'attribute' => 'user_id',
+                'attribute' => 'user_Name',
                 'value' => 'user.first_name'
             ],
             'permission',

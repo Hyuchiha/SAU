@@ -12,6 +12,7 @@ use app\models\Request;
  */
 class RequestSearch extends Request
 {
+    public $area_name;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class RequestSearch extends Request
     {
         return [
             [['id', 'area_id'], 'integer'],
-            [['name', 'email', 'subject', 'description', 'creation_date', 'completion_date', 'status'], 'safe'],
+            [['name', 'email', 'subject', 'description', 'creation_date', 'completion_date', 'status','area_name'], 'safe'],
         ];
     }
 
@@ -47,6 +48,13 @@ class RequestSearch extends Request
             'query' => $query,
         ]);
 
+        $query->joinWith('area');
+
+        $dataProvider->sort->attributes['area_name'] = [
+            'asc' => ['areas.name' => SORT_ASC],
+            'desc' => ['areas.name' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -66,7 +74,8 @@ class RequestSearch extends Request
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'areas.name', $this->area_name]);
 
         return $dataProvider;
     }

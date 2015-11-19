@@ -28,7 +28,7 @@ class AreasController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index', 'view', 'update', 'delete'],
-                        'roles' => ['administrador'],
+                        'roles' => ['administrator'],
                     ],
                 ],
             ],
