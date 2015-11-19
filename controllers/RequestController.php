@@ -27,7 +27,7 @@ class RequestController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create'],
+                        'actions' => ['create', 'advanced-options'],
                         'roles' => ['?', '@'],
                     ],
                     [
@@ -179,7 +179,7 @@ class RequestController extends Controller
 	    public function actionAdvancedOptions($id)
     {
         $request = $this->findModel($id);
-
+		
         if ($request->load(Yii::$app->request->post()) && $request->save()) {
 			if(!empty($request->listAreas)){
 				if($request->assignAreas()){

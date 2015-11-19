@@ -40,6 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
 	}else{
 		$end_date = $model->scheduled_end_date;
 	}
+	
+	if(empty ($model->completion_date)){
+		$comp_date = "--";
+	}else{
+		$comp_date = $model->completion_date;
+	}
 
 	$area_name="";
 	if(!empty ($model->areas)){
@@ -84,6 +90,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'label' => 'Scheduled end date',
 				'value' => $end_date,
+			],
+			'creation_date',
+			[
+				'label' => 'Completion date',
+				'value' => $comp_date,
 			],
             'status',
         ],

@@ -39,17 +39,37 @@ use yii\jui\DatePicker;
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
 	
-	<?= $form->field($request, 'listAreas')->checkboxList(ArrayHelper::map(
-			Areas::find()->all(),
-			'id',
-			'name'
-	)) ?>
+	<?php
+	$arrayAreas=ArrayHelper::map(Areas::find()->all(),'id','name');
+	$areasRequests = (new \yii\db\Query())
+    ->select(['area_id'])
+    ->from('areas_request')
+    ->where(['request_id' => $request->id])
+    ->all();
+	if(!empty($areasRequests)){
+		foreach ($areasRequests as $areaRequest){
+			unset($arrayAreas[$areaRequest["area_id"]]);
+		}
+	}
+	?>
 	
-	<?= $form->field($request, 'listCategories')->checkboxList(ArrayHelper::map(
-			Categories::find()->all(),
-			'id',
-			'name'
-	)) ?>
+	<?= $form->field($request, 'listAreas')->checkboxList($arrayAreas) ?>
+	
+	<?php
+	$arrayCategories=ArrayHelper::map(Categories::find()->all(),'id','name');
+	$categoriesRequests = (new \yii\db\Query())
+    ->select(['category_id'])
+    ->from('category_request')
+    ->where(['request_id' => $request->id])
+    ->all();
+	if(!empty($categoriesRequests)){
+		foreach ($categoriesRequests as $categoryRequest){
+			unset($arrayCategories[$categoryRequest["category_id"]]);
+		}
+	}
+	?>
+	
+	<?= $form->field($request, 'listCategories')->checkboxList($arrayCategories) ?>
 	
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

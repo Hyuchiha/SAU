@@ -159,6 +159,13 @@ class Request extends \yii\db\ActiveRecord
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
 			
+			if($this->status == 'completed'){
+				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
+				$this->completion_date = $formatedDateTime;
+			}else{
+				$this->completion_date = null;
+			}
+			
 			if($this->isNewRecord){
 				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
 				$this->creation_date = $formatedDateTime;
