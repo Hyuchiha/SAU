@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "45376736690a9f5a7878492caada5811",
-    "content-hash": "71ba4ffe4d0898cfff4e1f1db1eabd2f",
+    "hash": "4fc162bdeb6e5d662330e412c09e4f30",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -647,6 +646,52 @@
             "time": "2015-06-24 05:23:50"
         },
         {
+            "name": "kartik-v/yii2-helpers",
+            "version": "v1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-helpers.git",
+                "reference": "84b9e77aad937d2662934e2664d0190a7c332dd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/84b9e77aad937d2662934e2664d0190a7c332dd3",
+                "reference": "84b9e77aad937d2662934e2664d0190a7c332dd3",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\helpers\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A collection of useful helper functions for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-helpers",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "helper",
+                "utilities",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-10-22 14:01:06"
+        },
+        {
             "name": "kartik-v/yii2-krajee-base",
             "version": "v1.7.7",
             "source": {
@@ -822,6 +867,52 @@
             "time": "2013-11-01 13:02:21"
         },
         {
+            "name": "sintret/yii2-chat-adminlte",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sintret/yii2-chat-adminlte.git",
+                "reference": "6bd1774d16078e77296c5488c0017b01ad3ff7c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sintret/yii2-chat-adminlte/zipball/6bd1774d16078e77296c5488c0017b01ad3ff7c0",
+                "reference": "6bd1774d16078e77296c5488c0017b01ad3ff7c0",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-helpers": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "sintret\\chat\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fitria",
+                    "homepage": "http://sintret.com"
+                }
+            ],
+            "description": "Yii2 extension for Chat plugin with admin lte",
+            "homepage": "https://github.com/sintret/yii2-chat-adminlte",
+            "keywords": [
+                "AdminLTE",
+                "ajax",
+                "chat",
+                "jquery",
+                "plugin",
+                "yii2"
+            ],
+            "time": "2015-01-14 13:46:53"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
@@ -876,16 +967,16 @@
         },
         {
             "name": "unclead/yii2-multiple-input",
-            "version": "1.2.5",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/unclead/yii2-multiple-input.git",
-                "reference": "d2ed6f85e95266f52e4ba165ee6209f6eb26fbc0"
+                "reference": "1151705bcf8a8a68a33a6ec89ed64483982bfc79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/unclead/yii2-multiple-input/zipball/d2ed6f85e95266f52e4ba165ee6209f6eb26fbc0",
-                "reference": "d2ed6f85e95266f52e4ba165ee6209f6eb26fbc0",
+                "url": "https://api.github.com/repos/unclead/yii2-multiple-input/zipball/1151705bcf8a8a68a33a6ec89ed64483982bfc79",
+                "reference": "1151705bcf8a8a68a33a6ec89ed64483982bfc79",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +1008,7 @@
                 "yii2 multiple input",
                 "yii2 tabular input"
             ],
-            "time": "2015-10-20 09:47:01"
+            "time": "2015-11-18 08:00:37"
         },
         {
             "name": "yiisoft/yii2",

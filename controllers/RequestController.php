@@ -215,6 +215,13 @@ class RequestController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionChat() {
+
+        //if (!empty($_POST)) {
+
+            echo \sintret\chat\ChatRoom::sendChat($_POST);
+        //}
+    }
 
     /**
      * Finds the Request model based on its primary key value.

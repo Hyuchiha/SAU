@@ -113,9 +113,21 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
     ]) ?>
+
 	
 	<?php endforeach; ?>
 	<?php endif; ?>
+
+    <?php
+    echo \sintret\chat\ChatRoom::widget([
+            'url' => \yii\helpers\Url::toRoute(['/request/chat']),
+            //'requestModel'=> \app\models\Request::className(),
+            'userModel'=>  \app\models\User::className(),
+            'userField'=>'avatarImage'
+
+        ]
+    );
+    ?>
 	
 	
 </div>

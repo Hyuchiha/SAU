@@ -1,8 +1,25 @@
 Yii2 multiple input change log
 ==============================
 
-1.2.6 in development
+1.2.9 in development
 --------------------
+
+1.2.8
+-----
+
+- Enh: Don't show action column when limit is `equal` to `min`
+
+1.2.7
+-----
+
+- Bug #55: Attach click events to the widget wrapper instead of `$(document)`
+
+1.2.6
+-----
+
+- Bug #49: urlencoded field token replacement in js template (rolmonk)
+- Enh #48: Added option `min` for setting minimum number of rows
+- Enh: added option `addButtonPosition`
 
 1.2.5
 -----

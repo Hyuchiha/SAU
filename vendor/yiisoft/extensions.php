@@ -66,16 +66,6 @@ return array (
       '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug',
     ),
   ),
-  'unclead/yii2-multiple-input' => 
-  array (
-    'name' => 'unclead/yii2-multiple-input',
-    'version' => '1.2.5.0',
-    'alias' => 
-    array (
-      '@unclead/widgets/examples' => $vendorDir . '/unclead/yii2-multiple-input/examples',
-      '@unclead/widgets' => $vendorDir . '/unclead/yii2-multiple-input/src',
-    ),
-  ),
   'kartik-v/yii2-krajee-base' => 
   array (
     'name' => 'kartik-v/yii2-krajee-base',
@@ -140,5 +130,33 @@ return array (
       '@johnitvn/rbacplus' => $vendorDir . '/johnitvn/yii2-rbac-plus/src',
     ),
     'bootstrap' => 'johnitvn\\rbacplus\\Bootstrap',
+  ),
+  'unclead/yii2-multiple-input' => 
+  array (
+    'name' => 'unclead/yii2-multiple-input',
+    'version' => '1.2.8.0',
+    'alias' => 
+    array (
+      '@unclead/widgets/examples' => $vendorDir . '/unclead/yii2-multiple-input/examples',
+      '@unclead/widgets' => $vendorDir . '/unclead/yii2-multiple-input/src',
+    ),
+  ),
+  'kartik-v/yii2-helpers' => 
+  array (
+    'name' => 'kartik-v/yii2-helpers',
+    'version' => '1.3.3.0',
+    'alias' => 
+    array (
+      '@kartik/helpers' => $vendorDir . '/kartik-v/yii2-helpers',
+    ),
+  ),
+  'sintret/yii2-chat-adminlte' => 
+  array (
+    'name' => 'sintret/yii2-chat-adminlte',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@sintret/chat' => $vendorDir . '/sintret/yii2-chat-adminlte',
+    ),
   ),
 );

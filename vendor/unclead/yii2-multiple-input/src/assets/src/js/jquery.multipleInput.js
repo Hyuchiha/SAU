@@ -54,7 +54,9 @@
         // string that collect js templates of widgets which uses in the columns
         jsTemplates: [],
         // how many row has to renders
-        limit: 1
+        limit: 1,
+        // minimum number of rows
+        min: 1
     };
 
     var defaultAttributeOptions = {
@@ -77,12 +79,13 @@
                 attributeDefaults: {}
             });
 
-            $(document).on('click.multipleInput', '#' + settings.id + ' .js-input-remove', function (e) {
+
+            $wrapper.on('click.multipleInput', '.js-input-remove', function (e) {
                 e.preventDefault();
                 methods.removeInput.apply(this);
             });
 
-            $(document).on('click.multipleInput', '#' + settings.id + ' .js-input-plus', function (e) {
+            $wrapper.on('click.multipleInput', '.js-input-plus', function (e) {
                 e.preventDefault();
                 methods.addInput.apply(this);
             });
@@ -142,7 +145,9 @@
 
             var jsTemplate;
             for (i in settings.jsTemplates) {
-                jsTemplate = settings.jsTemplates[i].replaceAll('{multiple_index}', data.currentIndex);
+                jsTemplate = settings.jsTemplates[i]
+                    .replaceAll('{multiple_index}', data.currentIndex)
+                    .replaceAll('%7Bmultiple_index%7D', data.currentIndex);
                 window.eval(jsTemplate);
             }
             $wrapper.data('multipleInput').currentIndex++;
@@ -153,23 +158,28 @@
 
         removeInput: function () {
             var $wrapper = $(this).closest('.multiple-input').first(),
-                $toDelete = $(this).closest('.multiple-input-list__item');
+                $toDelete = $(this).closest('.multiple-input-list__item'),
+                count = $('.multiple-input-list__item').length,
+                data        = $wrapper.data('multipleInput'),
+                settings    = data.settings;
 
-            var event = $.Event(events.beforeDeleteRow);
-            $wrapper.trigger(event, [$toDelete]);
-            if (event.result === false) {
-                return;
+            if (count > settings.min) {
+                var event = $.Event(events.beforeDeleteRow);
+                $wrapper.trigger(event, [$toDelete]);
+                if (event.result === false) {
+                    return;
+                }
+
+                $toDelete.find('input, select, textarea').each(function () {
+                    methods.removeAttribute.apply(this);
+                });
+                $toDelete.fadeOut(300, function () {
+                    $(this).remove();
+                });
+
+                event = $.Event(events.afterDeleteRow);
+                $wrapper.trigger(event);
             }
-
-            $toDelete.find('input, select, textarea').each(function () {
-                methods.removeAttribute.apply(this);
-            });
-            $toDelete.fadeOut(300, function () {
-                $(this).remove();
-            });
-
-            event = $.Event(events.afterDeleteRow);
-            $wrapper.trigger(event);
         },
 
         addAttribute: function () {
