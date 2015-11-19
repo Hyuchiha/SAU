@@ -72,22 +72,22 @@ class Request extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => Yii::t('app', 'ID'),
             //'user_id' => 'User ID',
-			'name' => 'Name',
-			'email' => 'Email',
-            'area_id' => 'Area',
-			'category_id' => 'Category',
-            'subject' => 'Subject',
-            'description' => 'Description',
-            'creation_date' => 'Creation Date',
-            'completion_date' => 'Completion Date',
-			'verifyCode' => 'Verification Code',
-            'status' => 'Status',
-			'scheduled_start_date' => 'Scheduled Start Date', 
-			'scheduled_end_date' => 'Scheduled End Date', 
-			'listAreas' => 'Assign Areas',
-			'listCategories' => 'Assign Categories',
+			'name' => Yii::t('app', 'Name'),
+			'email' => Yii::t('app', 'Email'),
+            'area_id' => Yii::t('app', 'Area'),
+			'category_id' => Yii::t('app', 'Category'),
+            'subject' => Yii::t('app', 'Subject'),
+            'description' => Yii::t('app', 'Description'),
+            'creation_date' => Yii::t('app', 'Creation Date'),
+            'completion_date' => Yii::t('app', 'Completion Date'),
+			'verifyCode' => Yii::t('app', 'Verification Code'),
+            'status' => Yii::t('app', 'Status'),
+			'scheduled_start_date' => Yii::t('app', 'Scheduled Start Date'), 
+			'scheduled_end_date' => Yii::t('app', 'Scheduled End Date'), 
+			'listAreas' => Yii::t('app', 'Assign Areas'),
+			'listCategories' => Yii::t('app', 'Assign Categories'),
         ];
     }
 

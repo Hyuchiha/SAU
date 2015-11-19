@@ -7,17 +7,17 @@ use yii\bootstrap\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Request */
 
-$this->title = $model->subject;
+$this->title = Yii::t('app', $model->subject);
 $this->params['breadcrumbs'][] = ['label' => 'Requests', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 ?>
 <div class="request-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -69,34 +69,34 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             //'area_id',
 			[
-				'label' => 'Area',
+				'label' => Yii::t('app', 'Area'),
 				'value' => $model->area->name,
 			],
-			'name', 
-			'email:email',
-            'subject',
+			Yii::t('app', 'name'), 
+			Yii::t('app', 'email:email'),
+            Yii::t('app', 'subject'),
 			[
-				'label' => 'Assigned areas',
+				'label' => Yii::t('app', 'Assigned areas'),
 				'value' => $area_name,
 			],
 			[
-				'label' => 'Assigned categories',
+				'label' => Yii::t('app', 'Assigned categories'),
 				'value' => $category_name,
 			],
 			[
-				'label' => 'Scheduled start date',
+				'label' => Yii::t('app', 'Scheduled start date'),
 				'value' => $start_date,
 			],
 			[
-				'label' => 'Scheduled end date',
+				'label' => Yii::t('app', 'Scheduled end date'),
 				'value' => $end_date,
 			],
 			'creation_date',
 			[
-				'label' => 'Completion date',
+				'label' => Yii::t('app', 'Completion date'),
 				'value' => $comp_date,
 			],
-            'status',
+            Yii::t('app', 'status'),
         ],
     ]) ?>
 <?php if(!empty ($model->attachedFiles)):	?>
@@ -107,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'model' => $attachedFile,
 		'attributes' => [
 			[
-				'label' => 'File',
+				'label' => Yii::t('app', 'File'),
 				'value' => Html::a($attachedFile->url,'@web/files/'.$attachedFile->url),
 				'format' => 'html',
 			],

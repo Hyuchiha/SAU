@@ -45,11 +45,11 @@ class AreasRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'request_id' => 'Request ID',
-            'area_id' => 'Area ID',
-            'completion_date' => 'Completion Date',
-            'acceptance_date' => 'Acceptance Date',
-            'assignment_date' => 'Assignment Date',
+            'request_id' => Yii::t('app', 'Request ID'),
+            'area_id' => Yii::t('app', 'Area ID'),
+            'completion_date' => Yii::t('app', 'Completion Date'),
+            'acceptance_date' => Yii::t('app', 'Acceptance Date'),
+            'assignment_date' => Yii::t('app', 'Assignment Date'),
         ];
     }
 

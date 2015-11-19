@@ -40,8 +40,8 @@ class UsersRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'request_id' => 'Request ID',
-            'user_id' => 'User ID',
+            'request_id' => Yii::t('app', 'Request ID'),
+            'user_id' => Yii::t('app', 'User ID'),
         ];
     }
 

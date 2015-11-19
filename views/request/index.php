@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Requests';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Requests');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
 ?>
 <div class="request-index">
 
@@ -25,12 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'area_id',
-			'name', 
-			'email:email', 
-            'subject',
-            'description:ntext',
+            Yii::t('app', 'id'),
+            Yii::t('app', 'area_id'),
+			Yii::t('app', 'name'), 
+			Yii::t('app', 'email:email'), 
+            Yii::t('app', 'subject'),
+            Yii::t('app', 'description:ntext'),
             // 'creation_date',
             // 'completion_date',
             // 'status',
