@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\Request */
 
 $this->title = $request->subject;
-$this->params['breadcrumbs'][] = ['label' => 'Requests', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Requests'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $request->subject, 'url' => ['view', 'id' => $request->id]];
-$this->params['breadcrumbs'][] = 'Advanced Options';
+$this->params['breadcrumbs'][] = Yii::t('app', 'Advanced Options');
 ?>
 <div class="request-update">
 

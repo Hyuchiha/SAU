@@ -40,8 +40,8 @@ class CategoryRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'request_id' => 'Request ID',
-            'category_id' => 'Category ID',
+            'request_id' => Yii::t('app', 'Request ID'),
+            'category_id' => Yii::t('app', 'Category ID'),
         ];
     }
 
