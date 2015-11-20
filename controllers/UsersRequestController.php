@@ -58,6 +58,7 @@ class UsersRequestController extends Controller
     public function actionIndex()
     {
         $searchModel = new UsersRequestSearch();
+
         $user_id = "";
         if(isset(Yii::$app->user)){
            $user_id = Yii::$app->user->getId();

@@ -12,6 +12,9 @@ use app\models\UsersRequest;
  */
 class UsersRequestSearch extends UsersRequest
 {
+    public $user_name;
+    public $request_Subject;
+
     /**
      * @inheritdoc
      */
@@ -19,6 +22,7 @@ class UsersRequestSearch extends UsersRequest
     {
         return [
             [['request_id', 'user_id'], 'integer'],
+            [['user_name','request_Subject'], 'safe']
         ];
     }
 
@@ -46,6 +50,18 @@ class UsersRequestSearch extends UsersRequest
             'query' => $query,
         ]);
 
+        $query->joinWith(['request','user']);
+
+        $dataProvider->sort->attributes['user_name'] = [
+            'asc' => ['user.first_name' => SORT_ASC],
+            'desc' => ['user.first_name' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['request_Subject'] = [
+            'asc' => ['request.subject' => SORT_ASC],
+            'desc' => ['request_subject' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -54,14 +70,12 @@ class UsersRequestSearch extends UsersRequest
             return $dataProvider;
         }
 
-        $query->joinWith('request');
-
-        $query->joinWith('user');
-
         $query->andFilterWhere([
             'request_id' => $this->request_id,
             'user_id' => $this->user_id,
-        ]);
+        ])
+        ->andFilterWhere(['like', 'user.first_name', $this->user_name])
+        ->andFilterWhere(['like', 'resquest.subject', $this->request_Subject]);
 
         return $dataProvider;
     }
