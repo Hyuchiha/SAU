@@ -1,18 +1,22 @@
 <?php
+
 /**
  * @link https://github.com/sintret/yii2-chat-adminlte
- * @copyright Copyright (c) 2015 Andy fitria <sintret@gmail.com>
+ * @copyright Copyright (c) 2014 Andy fitria 
  * @license MIT
  */
+
 namespace sintret\chat;
+
 use Yii;
 use yii\base\Widget;
 use sintret\chat\models\Chat;
-use app\models\User;
+
 /**
  * @author Andy Fitria <sintret@gmail.com>
  */
 class ChatRoom extends Widget {
+
     public $sourcePath = '@vendor/sintret/yii2-chat-adminlte/assets';
     public $css = [
     ];
@@ -24,70 +28,58 @@ class ChatRoom extends Widget {
     ];
     public $models;
     public $url;
-    public $userModel;
-    public $userField;
-    public $model;
-    public $loadingImage;
+
     public function init() {
-        $this->model = new Chat();
-        if ($this->userModel === NULL) {
-            $this->userModel = Yii::$app->getUser()->identityClass;
-        }
-        $this->model->userModel = $this->userModel;
-        if ($this->userField === NULL) {
-            $this->userField = 'avatarImage';
-        }
-        $this->model->userField = $this->userField;
-        Yii::$app->assetManager->publish("@vendor/sintret/yii2-chat-adminlte/assets/img/loadingAnimation.gif");
-        $this->loadingImage = Yii::$app->assetManager->getPublishedUrl("@vendor/sintret/yii2-chat-adminlte/assets/img/loadingAnimation.gif");
         parent::init();
     }
+
     public function run() {
         parent::init();
         ChatJs::register($this->view);
-        $model = new Chat();
-        $model->userModel = $this->userModel;
-        $model->userField = $this->userField;
-        $data = $model->data();
-        return $this->render('index', [
-                    'data' => $data,
-                    'url' => $this->url,
-                    'userModel' => $this->userModel,
-                    'userField' => $this->userField,
-                    'loading' => $this->loadingImage
-        ]);
+        $view = $this->getView();
+        $output = '';
+        $output .='<div class="box box-success">
+            <div class="box-header ui-sortable-handle" style="cursor: move;">
+                <i class="fa fa-comments-o"></i>
+                <h3 class="box-title">Chat</h3>
+            </div>';
+        $output .='<div class="slimScrollDiv" style="position: relative; overflow: scroll; width: auto; height: 350px;"><div id="chat-box" class="box-body chat" style="overflow: hidden; width: auto; height: 350px;">';
+        $output .= self::data();
+        $output.='</div><div class="slimScrollBar" style="background: none repeat scroll 0% 0% rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 187.126px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: none repeat scroll 0% 0% rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div><!-- /.chat -->
+                        <div class="box-footer">
+                            <div class="input-group">
+                                <input name="Chat[message]" id="chat_message" placeholder="Type message..." class="form-control">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-success btn-send-comment" data-url="'.$this->url.'"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                 </div><!-- /.box (chat box) -->  ';
+        return $output;
+        
     }
-    public static function sendChat($post) {
-        $user = new User();
-
-        if (isset($post['message']))
-            $message = $post['message'];
-        if (isset($post['userfield']))
-            $userField = $post['userfield'];
-        if (isset($post['model']))
-            $userModel = $post['model'];
-        else
-            $userModel = Yii::$app->getUser()->identityClass;
-        $model = new \sintret\chat\models\Chat;
-        $model->userModel = $userModel;
-        if ($userField)
-            $model->userField = $userField;
-        if ($message) {
-            $model->message = $message;
-            $model->userId = Yii::$app->user->id;
-            $usuario = $user->findIdUserName($model->userId);
-            $model->user_name = $usuario->user_name;
-
-
-
-            if ($model->save()) {
-                echo $model->data();
-            } else {
-                print_r($model->getErrors());
-                exit(0);
+    
+    public static function data(){
+        $output .='';
+        $models = Chat::records();
+        if($models)
+            foreach ($models as $model){
+                if(isset($model->user->avatarImage)){
+                    $avatar = $model->user->avatarImage;
+                } else $avatar = Yii::getAlias("@vendor/sintret/yii2-chat-adminlte/assets/img/avatar.png");
+                $output .= '<div class="item">
+                <img class="online" alt="user image" src="'.$avatar.'">
+                <p class="message">
+                    <a class="name" href="#">
+                        <small class="text-muted pull-right" style="color:green"><i class="fa fa-clock-o"></i> '.\kartik\helpers\Enum::timeElapsed($model->updateDate).'</small>
+                        '.$model->user->username.'
+                    </a>
+                   '.$model->message.'
+                </p>
+            </div>';
             }
-        } else {
-            echo $model->data();
-        }
+        
+        return $output;
     }
+
 }
