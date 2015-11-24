@@ -2,13 +2,13 @@
 return[
 	'area_id' => 'ID de Area',
     'user_id' => 'ID del usuario',
-    'permission' => 'permiso',
+    'permission' => 'Permiso',
 	'id_responsible'=> 'ID del responsable',
 	'name' => 'Nombre',
 	'description' => 'Descripcion',
-	'request_id' => 'peticion de ID',
-	'completion_date' => 'fecha de terminacion',
-	'assignment_date' => 'fecha de asignacion',
+	'request_id' => 'ID de peticion',
+	'completion_date' => 'Fecha de terminacion',
+	'assignment_date' => 'Fecha de asignacion',
 	'category_id' => 'ID de la categoria',
 	'service_level_agreement_asignment' => 'Nivel de acuerdo del servicio de asignacion',
 	'service_level_agreement_completion' => 'Nivel de acuerdo del servicio de terminacion',
@@ -23,5 +23,14 @@ return[
     'hash_password' => 'Contraseña',
     'user_name' => 'Nombre de Usuario',
     'email' => 'Correo Electronico',
+    'Create Area Personal' => 'Asignar personal a un area',
+    'Area Personals' => 'Asignacion de personal',
+    'User to assing' => 'Usuario a asignar',
+    'Search' => 'Buscar',
+    'Reset' => 'Reiniciar',
+    'Create' => 'Crear',
+    'Update' => 'Actualizar',
+    'Delete' => 'Eliminar',
+    'area name' => 'Nombre del area'
 ];
 ?>

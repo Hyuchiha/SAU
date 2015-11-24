@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'area_id',
             [
                 'attribute' => 'responsable_name',
-                'value' => 'idResponsable.first_name'
+                'value' => 'idResponsable.first_name',
+                'label' => Yii::t('app', 'firstname')
             ],
             'name',
             'description',

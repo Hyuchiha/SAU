@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
             Areas::find()->all(),
             'id',
             'name'
-        ), array('prompt' => "")) ?>
+        ), array('prompt' => ""))->label(Yii::t('app', 'area')) ?>
 
     <?php if($model->isNewRecord){ ?>
 
@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
                   'first_name'
               ),
           ]
-        ]]) ?>
+        ]])->label(Yii::t('app', 'User to assing')) ?>
 
     <?php }else{ ?>
 
@@ -51,7 +51,7 @@ use yii\widgets\ActiveForm;
             'id',
             'first_name'
         )
-    ) ?>
+    )->label(Yii::t('app', 'User to assing')) ?>
 
     <?php } ?>
 
@@ -61,7 +61,7 @@ use yii\widgets\ActiveForm;
             1 => 'Si',
             0 => 'No',
         ]
-    ) ?>
+    )->label(Yii::t('app', 'permission')) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

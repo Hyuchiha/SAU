@@ -58,7 +58,7 @@ AppAsset::register($this);
             ],
             [
                 'label' => 'Assign Personal',
-                'url' => ['/area-personal/create'],
+                'url' => ['/area-personal/index'],
                 'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
             ],
             Yii::$app->user->isGuest ?

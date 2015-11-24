@@ -28,13 +28,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'area_Name',
-                'value' => 'area.name'
+                'value' => 'area.name',
+                'label' => Yii::t('app', 'name')
             ],
             [
                 'attribute' => 'user_Name',
-                'value' => 'user.first_name'
+                'value' => 'user.first_name',
+                'label' => Yii::t('app', 'first_name')
             ],
-            'permission',
+            [
+                'attribute' => 'user_lastname',
+                'value' => 'user.lastname',
+                'label' => Yii::t('app', 'lastname')
+            ],
+            [
+                'attribute' => 'permission',
+                'value' => 'permission',
+                'label' => Yii::t('app', 'permission')
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
