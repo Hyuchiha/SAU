@@ -2,11 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9be6b160-3fad-4bff-88ca-9c4c33b77858" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ar/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/az/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/bg/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/bs/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ca/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/cs/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/da/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/de/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/el/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/es/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/et/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/fa/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/fi/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/fr/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/he/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/hr/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/hu/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/id/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/it/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ja/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ka/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/kk/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ko/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/lt/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/lv/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ms/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/nb-NO/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/nl/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/pl/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/pt-BR/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/pt/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ro/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/ru/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/sk/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/sl/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/sr-Latn/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/sr/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/sv/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/th/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/tj/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/uk/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/vi/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/zh-CN/kvbase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/messages/zh-TW/kvbase.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/UsersRequestController.php" afterPath="$PROJECT_DIR$/controllers/UsersRequestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/UsersRequestSearch.php" afterPath="$PROJECT_DIR$/models/UsersRequestSearch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/index.php" afterPath="$PROJECT_DIR$/views/request/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/users-request/index.php" afterPath="$PROJECT_DIR$/views/users-request/index.php" />
     </list>
     <ignored path="sau.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +73,7 @@
       <file leaf-file-name="RequestSearch.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/RequestSearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.653846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="73" column="60" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="60" />
               <folding />
             </state>
@@ -41,8 +83,8 @@
       <file leaf-file-name="UsersRequest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/UsersRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3620071">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.60394263">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -161,34 +203,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -197,6 +211,32 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -213,9 +253,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17700455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -253,6 +293,22 @@
     <entry file="file://$PROJECT_DIR$/models/RequestSearch.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="60" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/UsersRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RequestSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="76" column="32" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
           <folding />
         </state>
@@ -262,7 +318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -270,7 +325,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="20" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -286,7 +340,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -294,7 +347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
           <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -316,7 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.983871">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -373,7 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -424,13 +474,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3046595">
           <caret line="78" column="20" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/RequestSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.653846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="73" column="60" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="60" />
           <folding />
         </state>
@@ -440,7 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66487455">
           <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -448,7 +496,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4982079">
           <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -456,7 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6953405">
           <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -464,14 +510,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36021507">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/UsersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3620071">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.60394263">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
