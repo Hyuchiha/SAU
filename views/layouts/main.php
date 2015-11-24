@@ -38,11 +38,29 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Request', 'url' => ['/request/create']],
-            ['label' => 'Assign Request', 'url' => ['users-request/create']],
-            ['label' => 'Categories', 'url' => ['categories/index']],
-            ['label' => 'Areas', 'url' => ['areas/index']],
-            ['label' => 'Assign Personal', 'url' => ['area-personal/create']],
+            Yii::$app->user->can('executive') ?
+                ['label' => 'Request', 'url' => ['/request/create']]:
+                ['label' => 'Request', 'url' => ['/request/index']],
+            [
+                'label' => 'Assign Request',
+                'url' => ['/users-request/create'],
+                'visible' => Yii::$app->user->can('executive')
+            ],
+            [
+                'label' => 'Categories',
+                'url' => ['/categories/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
+            [
+                'label' => 'Areas',
+                'url' => ['/areas/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
+            [
+                'label' => 'Assign Personal',
+                'url' => ['/area-personal/create'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [

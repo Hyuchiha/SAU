@@ -61,22 +61,13 @@ $config = [
                 /**
                  *@var yii\base\Action $action the action to be executed.
                  */
-                $authManager = Yii::$app->getAuthManager();
-                $Roles = $authManager->getRolesByUser(Yii::$app->user->getId());
 
-                $isRole = false;
-                foreach($Roles as $role){
-                    if($role->name == "administrator"){
-                        $isRole = true;
-                    }
+                if(Yii::$app->user->can("administrator")){
+                    return true;
                 }
 
-                if($isRole){
-                    return $isRole;
-                }
-
-                //throw new NotFoundHttpException('The requested page does not exist.');
-                return true;
+                throw new NotFoundHttpException('The requested page does not exist.');
+                //return true;
             }
         ],
         'gridview' => [
