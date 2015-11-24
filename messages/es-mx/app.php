@@ -5,7 +5,7 @@ return[
     'permission' => 'permiso',
 	'id_responsible'=> 'ID del responsable',
 	'name' => 'Nombre',
-	'description' => 'descripcion',
+	'description' => 'Descripcion',
 	'request_id' => 'peticion de ID',
 	'completion_date' => 'fecha de terminacion',
 	'assignment_date' => 'fecha de asignacion',
@@ -17,12 +17,11 @@ return[
 	'subject' => 'Asunto',
 	'creation_date'=> 'Fecha de solicitud',
 	'status' => 'Estado',
+	'area' => 'Area',
 	'first_name' => 'Nombre',
     'lastname' => 'Apellido',
     'hash_password' => 'Contraseña',
     'user_name' => 'Nombre de Usuario',
     'email' => 'Correo Electronico',
-    'status' => 'Estado',
-	
 ];
 ?>
