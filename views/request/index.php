@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Requests';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Requests');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
 ?>
 <div class="request-index">
 
@@ -25,14 +25,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'user_id',
-            'area_id',
-            'subject',
-            'description:ntext',
-            // 'creation_date',
-            // 'completion_date',
-            // 'status',
+            Yii::t('app', 'id'),
+            [
+                'attribute' => 'area_name',
+                'value' => 'area.name',
+                'label' => Yii::t('app', 'area'),
+            ],
+            [
+                'attribute' => 'name',
+                'value' => 'name',
+                'label' => Yii::t('app', 'name'),
+            ],
+            [
+                'attribute' => 'email',
+                'value' => 'email',
+                'label' => Yii::t('app', 'email'),
+            ],
+            [
+                'attribute' => 'subject',
+                'value' => 'subject',
+                'label' => Yii::t('app', 'subject'),
+            ],
+            [
+                'attribute' => 'description',
+                'value' => 'description',
+                'label' => Yii::t('app', 'description'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

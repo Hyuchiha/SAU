@@ -1,5 +1,9 @@
 <?php
 
+use app\models\User;
+use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
+
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -46,6 +50,30 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        //Para la vista esta
+        'rbac' =>  [
+            'class' => 'johnitvn\rbacplus\Module',
+            'userModelClassName' => null,
+            'userModelIdField' => 'id',
+            'userModelLoginField' => 'user_name',
+            'beforeAction'=>function($action){
+                /**
+                 *@var yii\base\Action $action the action to be executed.
+                 */
+
+                if(Yii::$app->user->can("administrator")){
+                    return true;
+                }
+
+                throw new NotFoundHttpException('The requested page does not exist.');
+                //return true;
+            }
+        ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module',
+        ],
     ],
     'params' => $params,
 ];

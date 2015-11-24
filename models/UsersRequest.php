@@ -11,7 +11,7 @@ use Yii;
  * @property string $user_id
  *
  * @property Request $request
- * @property Users $user
+ * @property User $user
  */
 class UsersRequest extends \yii\db\ActiveRecord
 {
@@ -40,8 +40,8 @@ class UsersRequest extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'request_id' => 'Request ID',
-            'user_id' => 'User ID',
+            'request_id' => Yii::t('app', 'Request ID'),
+            'user_id' => Yii::t('app', 'User ID'),
         ];
     }
 
@@ -58,6 +58,6 @@ class UsersRequest extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

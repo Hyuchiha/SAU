@@ -10,7 +10,8 @@ use app\models\AttachedFiles;
  * This is the model class for table "request".
  *
  * @property string $id
- * @property string $user_id
+ * @property string $name 
+ * @property string $email
  * @property string $area_id
  * @property string $subject
  * @property string $description
@@ -24,16 +25,19 @@ use app\models\AttachedFiles;
  * @property CategoryRequest[] $categoryRequests
  * @property Categories[] $categories
  * @property Areas $area
- * @property Users $user
  * @property UsersRequest[] $usersRequests
- * @property Users[] $users
+ * @property User[] $users
+ * @property string $scheduled_start_date
+ * @property string $scheduled_end_date
  */
 class Request extends \yii\db\ActiveRecord
 {	
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
-	public $assigned_id;
+	public $verifyCode;
+	public $listAreas;
+	public $listCategories;
 	
     /**
      * @inheritdoc
@@ -49,14 +53,16 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['area_id', 'subject', 'description'], 'required'],
-            [['assigned_id', 'area_id', 'category_id','user_id'], 'integer'],
+            [['email', 'name','area_id', 'subject', 'description'], 'required'],
+            [['area_id', 'category_id'], 'integer'],
             [['description'], 'string'],
-            [['creation_date', 'completion_date'], 'safe'],
+            [['creation_date', 'completion_date', 'scheduled_start_date', 'scheduled_end_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
-            [['fileNameAttached'], 'string', 'max' => 50],
-			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
-			
+            [['fileNameAttached', 'status'], 'string', 'max' => 50],
+			[['name', 'email'], 'string', 'max' => 150],
+			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
+			[['verifyCode'], 'captcha', 'on'=>'Create'],
+			[['listAreas', 'listCategories'],'each', 'rule' => ['integer']],
         ];
     }
 
@@ -66,16 +72,22 @@ class Request extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'area_id' => 'Area',
-			'category_id' => 'Category',
-			'assigned_id' => 'Assign',
-            'subject' => 'Subject',
-            'description' => 'Description',
-            'creation_date' => 'Creation Date',
-            'completion_date' => 'Completion Date',
-            'status' => 'Status',
+            'id' => Yii::t('app', 'ID'),
+            //'user_id' => 'User ID',
+			'name' => Yii::t('app', 'Name'),
+			'email' => Yii::t('app', 'Email'),
+            'area_id' => Yii::t('app', 'Area'),
+			'category_id' => Yii::t('app', 'Category'),
+            'subject' => Yii::t('app', 'Subject'),
+            'description' => Yii::t('app', 'Description'),
+            'creation_date' => Yii::t('app', 'Creation Date'),
+            'completion_date' => Yii::t('app', 'Completion Date'),
+			'verifyCode' => Yii::t('app', 'Verification Code'),
+            'status' => Yii::t('app', 'Status'),
+			'scheduled_start_date' => Yii::t('app', 'Scheduled Start Date'), 
+			'scheduled_end_date' => Yii::t('app', 'Scheduled End Date'), 
+			'listAreas' => Yii::t('app', 'Assign Areas'),
+			'listCategories' => Yii::t('app', 'Assign Categories'),
         ];
     }
 
@@ -127,13 +139,6 @@ class Request extends \yii\db\ActiveRecord
         return $this->hasOne(Areas::className(), ['id' => 'area_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
-    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -154,15 +159,32 @@ class Request extends \yii\db\ActiveRecord
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
 			
-			$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
-			$this->creation_date = $formatedDateTime;
+			if($this->status == 'completed'){
+				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
+				$this->completion_date = $formatedDateTime;
+			}else{
+				$this->completion_date = null;
+			}
+			
+			if($this->isNewRecord){
+				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
+				$this->creation_date = $formatedDateTime;
+			}
+			
+			if(!empty($this->scheduled_start_date)){
+				$formatedDateTime = date_format(date_create($this->scheduled_start_date ." 00:00:00"),"Y/m/d H:i:s");
+				$this->scheduled_start_date = $formatedDateTime;
+			}
+			
+			if(!empty($this->scheduled_end_date)){
+				$formatedDateTime = date_format(date_create($this->scheduled_end_date ." 00:00:00"),"Y/m/d H:i:s");
+				$this->scheduled_end_date = $formatedDateTime;
+			}
 
-			if(empty($this->completion_date)){
-				$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
-			}
-			if(empty($this->user_id)){
-				$this->user_id = 1;
-			}
+			//if(empty($this->completion_date)){
+			//	$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
+			//}
+			
 			if(empty($this->status)){
 				$this->status = "Nuevo";
 			}
@@ -173,7 +195,6 @@ class Request extends \yii\db\ActiveRecord
 	}
 	
 	public function upload(){
-		if($this->validate()){
 			foreach ($this->requestFile as $file){
 				$this->fileNameAttached = uniqid() . '.' . $file->extension;
 				$file->saveAs('files/'.$this->fileNameAttached);
@@ -182,9 +203,33 @@ class Request extends \yii\db\ActiveRecord
 				$attachedFiles->url = $this->fileNameAttached;
 				$attachedFiles->save();
 			}
-			return true;
-		} else{
-			return false;
+	}
+	
+	public function assignAreas(){
+		foreach ($this->listAreas as $area){
+			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
+			//$file->saveAs('files/'.$this->fileNameAttached);
+			$area_request = new AreasRequest();
+			$area_request->request_id = $this->id;
+			$area_request->area_id = $area;
+			$area_request->save();
 		}
+		return true;
+	}
+	
+	public function assignCategories(){
+		foreach ($this->listCategories as $category){
+			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
+			//$file->saveAs('files/'.$this->fileNameAttached);
+			$category_request = new CategoryRequest();
+			$category_request->request_id = $this->id;
+			$category_request->category_id = $category;
+			$category_request->save();
+		}
+		return true;
+	}
+	
+	public function assignPersonal(){
+		//TODO
 	}
 }

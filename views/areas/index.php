@@ -27,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'area_id',
-            'id_responsable',
+            [
+                'attribute' => 'responsable_name',
+                'value' => 'idResponsable.first_name'
+            ],
             'name',
             'description',
 

@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Sau',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,8 +37,30 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            //['label' => 'Contact', 'url' => ['/site/contact']],
+            Yii::$app->user->can('executive') ?
+                ['label' => 'Request', 'url' => ['/request/create']]:
+                ['label' => 'Request', 'url' => ['/request/index']],
+            [
+                'label' => 'Assign Request',
+                'url' => ['/users-request/create'],
+                'visible' => Yii::$app->user->can('executive')
+            ],
+            [
+                'label' => 'Categories',
+                'url' => ['/categories/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
+            [
+                'label' => 'Areas',
+                'url' => ['/areas/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
+            [
+                'label' => 'Assign Personal',
+                'url' => ['/area-personal/create'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator')
+            ],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [

@@ -107,6 +107,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return self::findOne(['user_name'=>$user_name]);
     }
+    public static function findIdUserName($id){
+        return self::findOne(['id'=>$id]);
+    }
 
     /**
      * @inheritdoc
@@ -129,7 +132,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->auth_key === $authKey;
+        return $this->getAuthKey() === $authKey;
     }
 
     /**
