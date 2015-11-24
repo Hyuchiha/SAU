@@ -28,7 +28,7 @@ class RequestController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create', 'advanced-options'],
-                        'roles' => ['?', '@'],
+                        'roles' => ['administrator', 'responsibleArea','executive','employeeArea'],
                     ],
                     [
                         'allow' => true,
@@ -37,13 +37,8 @@ class RequestController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['advanced-options'],
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['responsibleArea', 'administrator', 'employeeArea'],
+                        'roles' => ['responsibleArea', 'administrator', 'employeeArea','executive'],
                     ],
                     [
                         'allow' => true,

@@ -23,22 +23,22 @@ class UsersRequestController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea','executive','employeeArea','administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['employeeArea','executive','responsibleArea','administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator','responsibleArea','employeeArea','executive'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['@'],
+                        'roles' => ['responsibleArea','executive','administrator'],
                     ],
                 ],
             ],

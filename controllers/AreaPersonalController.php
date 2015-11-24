@@ -24,22 +24,22 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                 ],
             ],
