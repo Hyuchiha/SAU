@@ -46,12 +46,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'first_name' => Yii::t('app', 'Nombre'),
-            'lastname' => Yii::t('app', 'Apellido'),
-            'hash_password' => Yii::t('app', 'Contraseña'),
-            'user_name' => Yii::t('app', 'Usuario'),
-            'email' => Yii::t('app', 'Correo electrónico'),
-            'status' => Yii::t('app', 'Estado'),
+            'first_name' => Yii::t('app', 'Name'),
+            'lastname' => Yii::t('app', 'Surname'),
+            'hash_password' => Yii::t('app', 'Password'),
+            'user_name' => Yii::t('app', 'UserName'),
+            'email' => Yii::t('app', 'email'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 
