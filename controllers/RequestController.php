@@ -12,6 +12,7 @@ use app\models\AttachedFiles;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
+use yii\web\Cookie;
 use yii\filters\VerbFilter;
 
 /**
@@ -117,6 +118,20 @@ class RequestController extends Controller
 			
 			if($valid){
 				if($request->save()){
+					
+					if(Yii::$app->user->isGuest){
+						$cookieName = new Cookie([
+						'name' => 'name',
+						'value' => $request->name,
+						]);
+						\Yii::$app->getResponse()->getCookies()->add($cookieName);
+						$cookieEmail = new Cookie([
+						'name' => 'email',
+						'value' => $request->email,
+						]);
+						\Yii::$app->getResponse()->getCookies()->add($cookieEmail);
+					}
+				
 					if($valid && !empty($request->requestFile)){
 						$request->upload();
 					}
