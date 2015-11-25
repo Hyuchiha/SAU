@@ -53,13 +53,13 @@ class UsersRequestSearch extends UsersRequest
         $query->joinWith(['request','user']);
 
         $dataProvider->sort->attributes['user_name'] = [
-            'asc' => ['user.first_name' => SORT_ASC],
-            'desc' => ['user.first_name' => SORT_DESC],
+            'asc' => ['users.first_name' => SORT_ASC],
+            'desc' => ['users.first_name' => SORT_DESC],
         ];
 
         $dataProvider->sort->attributes['request_Subject'] = [
             'asc' => ['request.subject' => SORT_ASC],
-            'desc' => ['request_subject' => SORT_DESC],
+            'desc' => ['request.subject' => SORT_DESC],
         ];
 
         $this->load($params);
@@ -74,8 +74,8 @@ class UsersRequestSearch extends UsersRequest
             'request_id' => $this->request_id,
             'user_id' => $this->user_id,
         ])
-        ->andFilterWhere(['like', 'user.first_name', $this->user_name])
-        ->andFilterWhere(['like', 'resquest.subject', $this->request_Subject]);
+        ->andFilterWhere(['like', 'users.first_name', $this->user_name])
+        ->andFilterWhere(['like', 'request.subject', $this->request_Subject]);
 
         return $dataProvider;
     }

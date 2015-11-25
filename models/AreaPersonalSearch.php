@@ -82,8 +82,8 @@ class AreaPersonalSearch extends AreaPersonal
             'first_name' => $this->user_id,
             'permission' => $this->permission,
         ])->andFilterWhere(['like', 'areas.name', $this->area_Name])
-        ->andFilterWhere(['like', 'user.first_name', $this->user_Name])
-        ->andFilterWhere(['like', 'user.lastname', $this->user_lastname]);
+        ->andFilterWhere(['like', 'users.first_name', $this->user_Name])
+        ->andFilterWhere(['like', 'users.lastname', $this->user_lastname]);
 
         return $dataProvider;
     }

@@ -31,6 +31,17 @@ return[
     'Create' => 'Crear',
     'Update' => 'Actualizar',
     'Delete' => 'Eliminar',
-    'area name' => 'Nombre del area'
+    'area name' => 'Nombre del area',
+	'Home' => 'Inicio',
+	'Request' => 'Solicitud',
+    'Categories' => 'Categorias',
+    'Areas' => 'Areas',
+    'Assign Personal' => 'Asignar personal',
+    'Assign Request' => 'Asignar solicitudes',
+    'Login' => 'Iniciar Session',
+    'Logout' => 'Cerrar sesion',
+    'responsable_name' => 'Nombre del Responsable',
+    'area_name' => 'Nombre del area',
+    'id' => 'ID'
 ];
 ?>
