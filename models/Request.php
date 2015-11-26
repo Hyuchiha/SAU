@@ -41,6 +41,7 @@ class Request extends \yii\db\ActiveRecord
 	public $listPersonel;
 	public $listRemoveCategories;
 	public $listRemoveAreas;
+	public $listRemoveUsers;
 	
     /**
      * @inheritdoc
@@ -65,7 +66,7 @@ class Request extends \yii\db\ActiveRecord
 			[['name', 'email'], 'string', 'max' => 150],
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			[['verifyCode'], 'captcha', 'on'=>'Create'],
-			[['listAreas', 'listCategories', 'listPersonel','listRemoveCategories', 'listRemoveAreas'],'each', 'rule' => ['integer']],
+			[['listAreas', 'listCategories', 'listPersonel','listRemoveCategories', 'listRemoveAreas', 'listRemoveUsers'],'each', 'rule' => ['integer']],
         ];
     }
 
@@ -94,6 +95,7 @@ class Request extends \yii\db\ActiveRecord
 			'listPersonel' => Yii::t('app', 'Assign Personel'),
 			'listRemoveCategories' => Yii::t('app', 'Remove Categories'),
 			'listRemoveAreas' => Yii::t('app', 'Remove Areas'),
+			'listRemoveUsers' => Yii::t('app', 'Remove Personel'),
         ];
     }
 
@@ -331,6 +333,14 @@ class Request extends \yii\db\ActiveRecord
 	public function removeAreas(){
 		foreach ($this->listRemoveAreas as $area){
 			$areaRequest = AreasRequest::findOne(['request_id'=>$this->id, 'area_id'=>$area]);
+			$areaRequest->delete();
+		}
+		return true;
+	}
+	
+	public function removeUsers(){
+		foreach ($this->listRemoveUsers as $user){
+			$areaRequest = UsersRequest::findOne(['request_id'=>$this->id, 'user_id'=>$user]);
 			$areaRequest->delete();
 		}
 		return true;

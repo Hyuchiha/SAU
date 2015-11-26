@@ -229,6 +229,14 @@ class RequestController extends Controller
 				}	
 			}
 			
+			if(!empty($request->listRemoveUsers)){
+				if($request->removeUsers()){
+
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			
 			return $this->redirect(['view', 'id' => $request->id]);
         } else {
             return $this->render('advanced-options', [
