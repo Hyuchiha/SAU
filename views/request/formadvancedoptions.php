@@ -116,6 +116,19 @@ use yii\jui\DatePicker;
 		
 	<?php endif ?>
 	
+	<?php
+		$usersRequests =ArrayHelper::map(User::find()
+		->innerJoin('users_request', 'users_request.user_id = users.id')
+		->where(['request_id' => $request->id])
+		->all(),'id','first_name');
+	?>
+	
+	<?php if(!empty($usersRequests)) :?>
+	
+	<?= $form->field($request, 'listRemoveUsers')->checkboxList($usersRequests) ?>
+		
+	<?php endif ?>
+	
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
