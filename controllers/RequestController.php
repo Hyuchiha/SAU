@@ -34,7 +34,7 @@ class RequestController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index', 'view','create'],
-                        'roles' => ['@'],
+                        'roles' => ['@','?'],
                     ],
                     [
                         'allow' => true,

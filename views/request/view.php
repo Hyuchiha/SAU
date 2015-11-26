@@ -72,9 +72,18 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 				'label' => Yii::t('app', 'Area'),
 				'value' => $model->area->name,
 			],
-			Yii::t('app', 'name'), 
-			Yii::t('app', 'email:email'),
-            Yii::t('app', 'subject'),
+			[
+				'label' => Yii::t('app', 'name'),
+				'value' => $model->name,
+			],
+			[
+				'label' => Yii::t('app', 'email'),
+				'value' => $model->email,
+			],
+			[
+				'label' => Yii::t('app', 'subject'),
+				'value' => $model->subject,
+			],
 			[
 				'label' => Yii::t('app', 'Assigned areas'),
 				'value' => $area_name,
@@ -96,7 +105,10 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 				'label' => Yii::t('app', 'Completion date'),
 				'value' => $comp_date,
 			],
-            Yii::t('app', 'status'),
+			[
+				'label' => Yii::t('app', 'status'),
+				'value' => $model->status,
+			],
         ],
     ]) ?>
 <?php if(!empty ($model->attachedFiles)):	?>
