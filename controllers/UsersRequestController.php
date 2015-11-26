@@ -58,16 +58,18 @@ class UsersRequestController extends Controller
     public function actionIndex()
     {
         $searchModel = new UsersRequestSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $user_id = "";
         if(isset(Yii::$app->user)){
            $user_id = Yii::$app->user->getId();
         }
 
-        $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
-        $queryParams["UsersRequestSearch"]["user_id"] = $user_id;
-        $dataProvider = $searchModel->search($queryParams);
-
+        if(Yii::$app->user->can('responsibleArea')){
+            $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
+            $queryParams["UsersRequestSearch"]["user_id"] = $user_id;
+            $dataProvider = $searchModel->search($queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,

@@ -29,17 +29,22 @@ class RequestController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['advanced-options'],
-                        'roles' => ['administrator', 'responsibleArea','executive','employeeArea'],
+                        'roles' => ['administrator', 'responsibleArea', 'executive', 'employeeArea'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view','create'],
-                        'roles' => ['@','?'],
+                        'actions' => ['view', 'create'],
+                        'roles' => ['@', '?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['responsibleArea', 'administrator', 'employeeArea','executive'],
+                        'roles' => ['responsibleArea', 'administrator', 'employeeArea', 'executive'],
                     ],
                     [
                         'allow' => true,
@@ -56,8 +61,8 @@ class RequestController extends Controller
             ],
         ];
     }
-	
-		public function actions()
+
+    public function actions()
     {
         return [
             'error' => [
@@ -104,64 +109,64 @@ class RequestController extends Controller
      */
     public function actionCreate()
     {
-        $request = new Request(['scenario'=>'Create']);
-		$areasRequest = new AreasRequest();
-		$categoryRequest = new CategoryRequest();
-		//$usersRequest = new UsersRequest();
+        $request = new Request(['scenario' => 'Create']);
+        $areasRequest = new AreasRequest();
+        $categoryRequest = new CategoryRequest();
+        //$usersRequest = new UsersRequest();
 
         if ($request->load(Yii::$app->request->post())) {
-			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
-			
-			$valid = true;
-			//$valid = $valid && $request->validate();
-			
-			
-			if($valid){
-				if($request->save()){
-					
-					if(Yii::$app->user->isGuest){
-						$cookieName = new Cookie([
-						'name' => 'name',
-						'value' => $request->name,
-						]);
-						\Yii::$app->getResponse()->getCookies()->add($cookieName);
-						$cookieEmail = new Cookie([
-						'name' => 'email',
-						'value' => $request->email,
-						]);
-						\Yii::$app->getResponse()->getCookies()->add($cookieEmail);
-					}
-				
-					if($valid && !empty($request->requestFile)){
-						$request->upload();
-					}
-					$areasRequest->request_id = $request->id;
-					$areasRequest->area_id = $request->area_id;
-					
-					$categoryRequest->request_id = $request->id;
-					$categoryRequest->category_id = $request->category_id;
+            $request->requestFile = UploadedFile::getInstances($request, 'requestFile');
 
-					if(!empty($request->category_id)){
-						$categoryRequest->save();
-					}
-					
-					if($areasRequest->save()){
+            $valid = true;
+            //$valid = $valid && $request->validate();
 
-						if($valid){
-							return $this->redirect(['view', 'id' => $request->id]);
-						
-						}else{
-							return $this->render('create', ['request' => $request,]);
-						}
-					}else {
-						return $this->render('create', ['request' => $request,]);
-					}	
-				}else {
-					return $this->render('create', ['request' => $request, ]);
-				}
-			}else {
-				return $this->render('create', ['request' => $request,]);
-			}
+
+            if ($valid) {
+                if ($request->save()) {
+
+                    if (Yii::$app->user->isGuest) {
+                        $cookieName = new Cookie([
+                            'name' => 'name',
+                            'value' => $request->name,
+                        ]);
+                        \Yii::$app->getResponse()->getCookies()->add($cookieName);
+                        $cookieEmail = new Cookie([
+                            'name' => 'email',
+                            'value' => $request->email,
+                        ]);
+                        \Yii::$app->getResponse()->getCookies()->add($cookieEmail);
+                    }
+
+                    if ($valid && !empty($request->requestFile)) {
+                        $request->upload();
+                    }
+                    $areasRequest->request_id = $request->id;
+                    $areasRequest->area_id = $request->area_id;
+
+                    $categoryRequest->request_id = $request->id;
+                    $categoryRequest->category_id = $request->category_id;
+
+                    if (!empty($request->category_id)) {
+                        $categoryRequest->save();
+                    }
+
+                    if ($areasRequest->save()) {
+
+                        if ($valid) {
+                            return $this->redirect(['view', 'id' => $request->id]);
+
+                        } else {
+                            return $this->render('create', ['request' => $request,]);
+                        }
+                    } else {
+                        return $this->render('create', ['request' => $request,]);
+                    }
+                } else {
+                    return $this->render('create', ['request' => $request,]);
+                }
+            } else {
+                return $this->render('create', ['request' => $request,]);
+            }
         } else {
             return $this->render('create', ['request' => $request,]);
         }
@@ -185,51 +190,51 @@ class RequestController extends Controller
             ]);
         }
     }
-	
-	    public function actionAdvancedOptions($id)
+
+    public function actionAdvancedOptions($id)
     {
         $request = $this->findModel($id);
-		
+
         if ($request->load(Yii::$app->request->post()) && $request->save()) {
-			if(!empty($request->listAreas)){
-				if($request->assignAreas()){
-				
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			if(!empty($request->listCategories)){
-				if($request->assignCategories()){
+            if (!empty($request->listAreas)) {
+                if ($request->assignAreas()) {
 
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			if(!empty($request->listPersonel)){
-				if($request->assignPersonel()){
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+            if (!empty($request->listCategories)) {
+                if ($request->assignCategories()) {
 
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			
-			if(!empty($request->listRemoveCategories)){
-				if($request->removeCategories()){
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+            if (!empty($request->listPersonel)) {
+                if ($request->assignPersonel()) {
 
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			
-			if(!empty($request->listRemoveAreas)){
-				if($request->removeAreas()){
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
 
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			
-			return $this->redirect(['view', 'id' => $request->id]);
+            if (!empty($request->listRemoveCategories)) {
+                if ($request->removeCategories()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+
+            if (!empty($request->listRemoveAreas)) {
+                if ($request->removeAreas()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+
+            return $this->redirect(['view', 'id' => $request->id]);
         } else {
             return $this->render('advanced-options', [
                 'request' => $request,
@@ -249,11 +254,13 @@ class RequestController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionChat() {
+
+    public function actionChat()
+    {
 
         //if (!empty($_POST)) {
 
-            echo \sintret\chat\ChatRoom::sendChat($_POST);
+        echo \sintret\chat\ChatRoom::sendChat($_POST);
         //}
     }
 

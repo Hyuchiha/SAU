@@ -41,14 +41,14 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->can('executive') ?
+            isset(Yii::$app->user) && Yii::$app->user->can('executive') ?
                 [
                     'label' => Yii::t('app', 'Request'),
                     'url' => ['/request/create']
                 ]:
                 [
                     'label' => Yii::t('app', 'Request'),
-                    'url' => ['/request/index']
+                    'url' => ['/request/create']
                 ],
             [
                 'label' => Yii::t('app', 'Categories'),

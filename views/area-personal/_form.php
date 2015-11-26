@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'usersToAssing')->widget(MultipleInput::className(), [
         'limit' => 100,
-        'allowEmptyList' => false,
+        'allowEmptyList' => true,
         'columns'=> [
           [
               'name' => 'usersToAssing',

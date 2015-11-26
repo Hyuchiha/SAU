@@ -87,7 +87,7 @@ use yii\jui\DatePicker;
 				  'lastname'
               ),
           ]
-        ]])->label(Yii::t('app', 'Assign personel')) 
+        ]])->label(Yii::t('app', 'Assign personal'))
 	?>
 	
 	<?php
