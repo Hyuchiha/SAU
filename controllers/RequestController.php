@@ -205,6 +205,30 @@ class RequestController extends Controller
 					return $this->render('advanced-options', ['request' => $request,]);
 				}	
 			}
+			if(!empty($request->listPersonel)){
+				if($request->assignPersonel()){
+
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			
+			if(!empty($request->listRemoveCategories)){
+				if($request->removeCategories()){
+
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			
+			if(!empty($request->listRemoveAreas)){
+				if($request->removeAreas()){
+
+				}else {
+					return $this->render('advanced-options', ['request' => $request,]);
+				}	
+			}
+			
 			return $this->redirect(['view', 'id' => $request->id]);
         } else {
             return $this->render('advanced-options', [
