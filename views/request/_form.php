@@ -59,9 +59,16 @@ $this->registerJs('
 	]) ?>
 	
 		<?php
+		
 		if(Yii::$app->user->isGuest){
-			$nameValue = "";
-			$emailValue = "";
+			$cookies = Yii::$app->request->cookies;
+			if (isset($cookies['name'])){
+				$nameValue = $cookies['name']->value;
+				$emailValue = $cookies['email']->value;
+			}else{
+				$nameValue = "";
+				$emailValue = "";
+			}
 		}else{
 			$user = User::findOne(\Yii::$app->user->identity->id);
 			$nameValue = $user->first_name . " " . $user->lastname;
