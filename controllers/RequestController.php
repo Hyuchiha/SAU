@@ -27,12 +27,12 @@ class RequestController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'advanced-options'],
+                        'actions' => ['advanced-options'],
                         'roles' => ['administrator', 'responsibleArea','executive','employeeArea'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view'],
+                        'actions' => ['index', 'view','create'],
                         'roles' => ['@'],
                     ],
                     [

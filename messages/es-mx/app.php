@@ -38,8 +38,8 @@ return[
     'Areas' => 'Areas',
     'Assign Personal' => 'Asignar personal',
     'Assign Request' => 'Asignar solicitudes',
-    'Login' => 'Iniciar Session',
-    'Logout' => 'Cerrar sesion',
+    'Login' => 'Iniciar Sesion',
+    'Logout' => 'Cerrar Sesion',
     'responsable_name' => 'Nombre del Responsable',
     'area_name' => 'Nombre del area',
     'id' => 'ID'
