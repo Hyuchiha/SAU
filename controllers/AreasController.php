@@ -23,12 +23,17 @@ class AreasController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['administrator'],//responsibleArea (solo subareas)
+                        'roles' => ['administrator','executive'],//responsibleArea (solo subareas)
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'update', 'delete'],
-                        'roles' => ['administrador'],
+                        'actions' => ['index', 'view'],
+                        'roles' => ['administrator', 'executive', 'employeeArea','responsibleArea'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update', 'delete'],
+                        'roles' => ['administrator', 'responsibleArea', 'executive']
                     ],
                 ],
             ],

@@ -12,6 +12,8 @@ use app\models\Areas;
  */
 class AreasSearch extends Areas
 {
+    public $responsable_name;
+
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ class AreasSearch extends Areas
     {
         return [
             [['id', 'area_id', 'id_responsable'], 'integer'],
-            [['name', 'description'], 'safe'],
+            [['name', 'description','responsable_name'], 'safe'],
         ];
     }
 
@@ -47,6 +49,13 @@ class AreasSearch extends Areas
             'query' => $query,
         ]);
 
+        $query->joinWith('idResponsable');
+
+        $dataProvider->sort->attributes['responsable_name'] = [
+            'asc' => ['users.first_name' => SORT_ASC],
+            'desc' => ['users.first_name' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -55,6 +64,7 @@ class AreasSearch extends Areas
             return $dataProvider;
         }
 
+
         $query->andFilterWhere([
             'id' => $this->id,
             'area_id' => $this->area_id,
@@ -62,7 +72,8 @@ class AreasSearch extends Areas
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'users.first_name', $this->responsable_name]);
 
         return $dataProvider;
     }

@@ -25,11 +25,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'area_id',
-            'id_responsable',
-            'name',
-            'description',
+            [
+                'attribute' => 'id',
+                'value' => 'id',
+                'label' =>  Yii::t('app', 'id')
+            ],
+            [
+                'attribute' => 'area_id',
+                'value' => 'area_id',
+                'label' =>  Yii::t('app', 'area_id')
+            ],
+            [
+                'attribute' => 'responsable_name',
+                'value' => 'idResponsable.first_name',
+                'label' => Yii::t('app', 'responsable_name')
+            ],
+            [
+                'attribute' => 'name',
+                'value' => 'name',
+                'label' => Yii::t('app', 'area_name'),
+            ],
+            [
+                'attribute' => 'description',
+                'value' => 'description',
+                'label' => Yii::t('app', 'description'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

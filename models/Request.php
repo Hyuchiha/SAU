@@ -26,7 +26,7 @@ use app\models\AttachedFiles;
  * @property Categories[] $categories
  * @property Areas $area
  * @property UsersRequest[] $usersRequests
- * @property Users[] $users
+ * @property User[] $users
  * @property string $scheduled_start_date
  * @property string $scheduled_end_date
  */
@@ -38,6 +38,10 @@ class Request extends \yii\db\ActiveRecord
 	public $verifyCode;
 	public $listAreas;
 	public $listCategories;
+	public $listPersonel;
+	public $listRemoveCategories;
+	public $listRemoveAreas;
+	public $listRemoveUsers;
     
 	
     /**
@@ -63,7 +67,7 @@ class Request extends \yii\db\ActiveRecord
 			[['name', 'email'], 'string', 'max' => 150],
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			[['verifyCode'], 'captcha', 'on'=>'Create'],
-			[['listAreas', 'listCategories'],'each', 'rule' => ['integer']],
+			[['listAreas', 'listCategories', 'listPersonel','listRemoveCategories', 'listRemoveAreas', 'listRemoveUsers'],'each', 'rule' => ['integer']],
         ];
     }
 
@@ -89,7 +93,10 @@ class Request extends \yii\db\ActiveRecord
 			'scheduled_end_date' => Yii::t('app', 'Scheduled End Date'), 
 			'listAreas' => Yii::t('app', 'Assign Areas'),
 			'listCategories' => Yii::t('app', 'Assign Categories'),
-            
+			'listPersonel' => Yii::t('app', 'Assign Personel'),
+			'listRemoveCategories' => Yii::t('app', 'Remove Categories'),
+			'listRemoveAreas' => Yii::t('app', 'Remove Areas'),
+			'listRemoveUsers' => Yii::t('app', 'Remove Personel'),
         ];
     }
 
@@ -223,6 +230,7 @@ class Request extends \yii\db\ActiveRecord
     
 	
 	public function assignAreas(){
+	/*
 		foreach ($this->listAreas as $area){
 			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
 			//$file->saveAs('files/'.$this->fileNameAttached);
@@ -231,10 +239,38 @@ class Request extends \yii\db\ActiveRecord
 			$area_request->area_id = $area;
 			$area_request->save();
 		}
+		*/
+		foreach ($this->listAreas as $area){
+			$area_request = new AreasRequest();
+			$area_request->request_id = $this->id;
+			$area_request->area_id = $area;
+			
+			$listAssigned = (new \yii\db\Query())
+			->select(['area_id'])
+			->from('areas_request')
+			->where(['request_id' => $this->id])
+			->all();
+			
+			$alreadyAssigned = false;
+			
+			foreach($listAssigned as $assigned){
+				if($area === $assigned["area_id"]){
+					$alreadyAssigned = true;
+					break;
+				}
+			}
+
+			if(!$alreadyAssigned){
+				$area_request->save();
+			}
+
+		}
+		
 		return true;
 	}
 	
 	public function assignCategories(){
+	/*
 		foreach ($this->listCategories as $category){
 			//$this->fileNameAttached = uniqid() . '.' . $file->extension;
 			//$file->saveAs('files/'.$this->fileNameAttached);
@@ -243,12 +279,89 @@ class Request extends \yii\db\ActiveRecord
 			$category_request->category_id = $category;
 			$category_request->save();
 		}
+		*/
+		
+		foreach ($this->listCategories as $category){
+			$category_request = new CategoryRequest();
+			$category_request->request_id = $this->id;
+			$category_request->category_id = $category;
+			
+			$listAssigned = (new \yii\db\Query())
+			->select(['category_id'])
+			->from('category_request')
+			->where(['request_id' => $this->id])
+			->all();
+			
+			$alreadyAssigned = false;
+			
+			foreach($listAssigned as $assigned){
+				if($category === $assigned["category_id"]){
+					$alreadyAssigned = true;
+					break;
+				}
+			}
+
+			if(!$alreadyAssigned){
+				$category_request->save();
+			}
+
+		}
 		return true;
 	}
 
    
 	
-	public function assignPersonal(){
-		//TODO
+	public function assignPersonel(){
+		foreach ($this->listPersonel as $personel){
+			$user_request = new UsersRequest();
+			$user_request->request_id = $this->id;
+			$user_request->user_id = $personel;
+			
+			$listAssigned = (new \yii\db\Query())
+			->select(['user_id'])
+			->from('users_request')
+			->where(['request_id' => $this->id])
+			->all();
+			
+			$alreadyAssigned = false;
+			
+			foreach($listAssigned as $assigned){
+				if($personel === $assigned["user_id"]){
+					$alreadyAssigned = true;
+					break;
+				}
+			}
+
+			if(!$alreadyAssigned){
+				$user_request->save();
+			}
+
+		}
+		return true;
 	}
+	
+	public function removeCategories(){
+		foreach ($this->listRemoveCategories as $category){
+			$categoryRequest = CategoryRequest::findOne(['request_id'=>$this->id, 'category_id'=>$category]);
+			$categoryRequest->delete();
+		}
+		return true;
+	}
+	
+	public function removeAreas(){
+		foreach ($this->listRemoveAreas as $area){
+			$areaRequest = AreasRequest::findOne(['request_id'=>$this->id, 'area_id'=>$area]);
+			$areaRequest->delete();
+		}
+		return true;
+	}
+	
+	public function removeUsers(){
+		foreach ($this->listRemoveUsers as $user){
+			$areaRequest = UsersRequest::findOne(['request_id'=>$this->id, 'user_id'=>$user]);
+			$areaRequest->delete();
+		}
+		return true;
+	}
+	
 }

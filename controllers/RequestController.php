@@ -12,6 +12,7 @@ use app\models\AttachedFiles;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
+use yii\web\Cookie;
 use yii\filters\VerbFilter;
 
 /**
@@ -27,8 +28,13 @@ class RequestController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'advanced-options'],
-                        'roles' => ['?', '@'],
+                        'actions' => ['advanced-options'],
+                        'roles' => ['administrator', 'responsibleArea', 'executive', 'employeeArea'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view', 'create'],
+                        'roles' => ['@', '?'],
                     ],
                     [
                         'allow' => true,
@@ -40,20 +46,18 @@ class RequestController extends Controller
                         'actions' => ['token'],
                         'roles' => ['?', '@'],
                     ],
+                    
+                       
+                   
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view'],
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['advanced-options'],
+                        'actions' => ['index'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['responsibleArea', 'administrator', 'employeeArea'],
+                        'roles' => ['responsibleArea', 'administrator', 'employeeArea', 'executive'],
                     ],
                     [
                         'allow' => true,
@@ -70,8 +74,8 @@ class RequestController extends Controller
             ],
         ];
     }
-	
-		public function actions()
+
+    public function actions()
     {
         return [
             'error' => [
@@ -142,20 +146,20 @@ class RequestController extends Controller
      */
     public function actionCreate()
     {
-        $request = new Request(['scenario'=>'Create']);
-		$areasRequest = new AreasRequest();
-		$categoryRequest = new CategoryRequest();
-		//$usersRequest = new UsersRequest();
+        $request = new Request(['scenario' => 'Create']);
+        $areasRequest = new AreasRequest();
+        $categoryRequest = new CategoryRequest();
+        //$usersRequest = new UsersRequest();
 
         if ($request->load(Yii::$app->request->post()) && $request) {
-			$request->requestFile = UploadedFile::getInstances($request, 'requestFile');
-			
-			$valid = true;
-			//$valid = $valid && $request->validate();
-			
-			
-			if($valid){
-				if($request->save()){
+            $request->requestFile = UploadedFile::getInstances($request, 'requestFile');
+
+            $valid = true;
+            //$valid = $valid && $request->validate();
+
+
+            if ($valid) {
+                if ($request->save()) {
                     if(Yii::$app->user->isGuest){
                             $tokenEmail = urlencode($request->token);
                             $idEmail = urlencode($request->id);
@@ -172,25 +176,25 @@ class RequestController extends Controller
                              ->setHtmlBody($body)
                              ->send();
                         }
-					if($valid && !empty($request->requestFile)){
-						$request->upload();
+                    if ($valid && !empty($request->requestFile)) {
+                        $request->upload();
                         
                         //localhost/SAU/web/request/view?id=15&&token=GUiSpF_XXVKnyNuof3-15bAMN7T8oBVj
 
-					}
-					$areasRequest->request_id = $request->id;
-					$areasRequest->area_id = $request->area_id;
-					
-					$categoryRequest->request_id = $request->id;
-					$categoryRequest->category_id = $request->category_id;
+                    }
+                    $areasRequest->request_id = $request->id;
+                    $areasRequest->area_id = $request->area_id;
 
-					if(!empty($request->category_id)){
-						$categoryRequest->save();
-					}
-					
-					if($areasRequest->save()){
+                    $categoryRequest->request_id = $request->id;
+                    $categoryRequest->category_id = $request->category_id;
 
-						if($valid){
+                    if (!empty($request->category_id)) {
+                        $categoryRequest->save();
+                    }
+
+                    if ($areasRequest->save()) {
+
+                        if ($valid) {
                             if(Yii::$app->user->isGuest){
                                 Yii::$app->session->setFlash('requestFormSubmitted');
                                 return $this->refresh();
@@ -199,19 +203,19 @@ class RequestController extends Controller
                             }
                             
 							
-						
-						}else{
-							return $this->render('create', ['request' => $request,]);
-						}
-					}else {
-						return $this->render('create', ['request' => $request,]);
-					}	
-				}else {
-					return $this->render('create', ['request' => $request, ]);
-				}
-			}else {
-				return $this->render('create', ['request' => $request,]);
-			}
+
+                        } else {
+                            return $this->render('create', ['request' => $request,]);
+                        }
+                    } else {
+                        return $this->render('create', ['request' => $request,]);
+                    }
+                } else {
+                    return $this->render('create', ['request' => $request,]);
+                }
+            } else {
+                return $this->render('create', ['request' => $request,]);
+            }
         } else {
             return $this->render('create', ['request' => $request,]);
         }
@@ -235,27 +239,51 @@ class RequestController extends Controller
             ]);
         }
     }
-	
-	    public function actionAdvancedOptions($id)
+
+    public function actionAdvancedOptions($id)
     {
         $request = $this->findModel($id);
-		
-        if ($request->load(Yii::$app->request->post()) && $request->save()) {
-			if(!empty($request->listAreas)){
-				if($request->assignAreas()){
-				
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			if(!empty($request->listCategories)){
-				if($request->assignCategories()){
 
-				}else {
-					return $this->render('advanced-options', ['request' => $request,]);
-				}	
-			}
-			return $this->redirect(['view', 'id' => $request->id]);
+        if ($request->load(Yii::$app->request->post()) && $request->save()) {
+            if (!empty($request->listAreas)) {
+                if ($request->assignAreas()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+            if (!empty($request->listCategories)) {
+                if ($request->assignCategories()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+            if (!empty($request->listPersonel)) {
+                if ($request->assignPersonel()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+
+            if (!empty($request->listRemoveCategories)) {
+                if ($request->removeCategories()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+
+            if (!empty($request->listRemoveAreas)) {
+                if ($request->removeAreas()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
+
+            return $this->redirect(['view', 'id' => $request->id]);
         } else {
             return $this->render('advanced-options', [
                 'request' => $request,
@@ -275,11 +303,13 @@ class RequestController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionChat() {
+
+    public function actionChat()
+    {
 
         if (!empty($_POST)) {
 
-            echo \sintret\chat\ChatRoom::sendChat($_POST);
+        echo \sintret\chat\ChatRoom::sendChat($_POST);
         }
     }
 

@@ -13,13 +13,17 @@ use app\models\User;
 
     <?php $form = ActiveForm::begin(); ?>
 
-     <?= $form->field($model, 'area_id')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name')) ?>
+     <?= $form->field($model, 'area_id')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name'))
+     ->label(Yii::t('app', 'area_id')) ?>
 
-    <?= $form->field($model, 'id_responsable')->dropDownList(ArrayHelper::map(User::find()->all(),'id','user_name')) ?>
+    <?= $form->field($model, 'id_responsable')->dropDownList(ArrayHelper::map(User::find()->all(),'id','user_name'))
+    ->label(Yii::t('app', 'id_responsable')) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])
+    ->label(Yii::t('app', 'name')) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength' => true])
+    ->label(Yii::t('app', 'description')) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

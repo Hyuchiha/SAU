@@ -24,22 +24,22 @@ class AreaPersonalController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['@'],
+                        'roles' => ['administrator', 'executive','responsibleArea'],
                     ],
                 ],
             ],
@@ -102,7 +102,18 @@ class AreaPersonalController extends Controller
                     $areaPersonalNew->user_id = $user;
                     $areaPersonalNew->permission = $areaPersonal->permission;
 
-                    $areaPersonalNew->save();
+                    $alreadyAssigned = $this->checkSave($user);
+
+                    if(!$alreadyAssigned && $user != $user1){
+                        $areaPersonalNew->save();
+                    }
+                }
+
+                $alreadyAssigned = $this->checkSave($user1);
+
+
+                if($alreadyAssigned){
+                    return $this->redirect(['index']);
                 }
 
                 $areaPersonal->setUser($user1);
@@ -122,6 +133,28 @@ class AreaPersonalController extends Controller
                 'model' => $areaPersonal,
             ]);
         }
+    }
+
+    /**
+     * @param $user
+     * @return bool
+     */
+    private function checkSave($user){
+        $listAssigned = (new \yii\db\Query())
+            ->select(['user_id'])
+            ->from('area_personal')
+            ->where(['user_id' => $user])
+            ->all();
+
+        $alreadyAssigned = false;
+
+        foreach($listAssigned as $assigned){
+            if($user === $assigned["user_id"]){
+                $alreadyAssigned = true;
+                break;
+            }
+        }
+        return $alreadyAssigned;
     }
 
     /**

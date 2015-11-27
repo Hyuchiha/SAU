@@ -8,6 +8,7 @@ use app\models\CategoriesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UnauthorizedHttpException;
 
 /**
  * CategoriesController implements the CRUD actions for Categories model.
@@ -23,22 +24,22 @@ class CategoriesController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['create'],
-                        'roles' => ['administrator'],
+                        'roles' => ['administrator','responsibleArea','executive'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
-                        'roles' => ['@'],
+                        'roles' => ['employeeArea','executive','responsibleArea','administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['update'],
-                        'roles' => ['responsibleArea'],
+                        'roles' => ['responsibleArea','executive','administrator'],
                     ],
                     [
                         'allow' => true,
                         'actions' => ['delete'],
-                        'roles' => ['administrator'],
+                        'roles' => ['administrator','responsibleArea','executive'],
                     ],
                 ],
             ],
@@ -109,9 +110,13 @@ class CategoriesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            if (\Yii::$app->user->can('updateCategory', ['id_area' => $model->id_area])) {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            } else {
+                throw new UnauthorizedHttpException("You are not allowed to access this category");
+            }
         }
     }
 

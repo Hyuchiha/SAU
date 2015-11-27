@@ -25,15 +25,32 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            Yii::t('app', 'id'),
-            Yii::t('app', 'area_id'),
-			Yii::t('app', 'name'), 
-			Yii::t('app', 'email:email'), 
-            Yii::t('app', 'subject'),
-            Yii::t('app', 'description:ntext'),
-            // 'creation_date',
-            // 'completion_date',
-            // 'status',
+            'id',
+            [
+                'attribute' => 'area_name',
+                'value' => 'area.name',
+                'label' => Yii::t('app', 'area'),
+            ],
+            [
+                'attribute' => 'name',
+                'value' => 'name',
+                'label' => Yii::t('app', 'name'),
+            ],
+            [
+                'attribute' => 'email',
+                'value' => 'email',
+                'label' => Yii::t('app', 'email'),
+            ],
+            [
+                'attribute' => 'subject',
+                'value' => 'subject',
+                'label' => Yii::t('app', 'subject'),
+            ],
+            [
+                'attribute' => 'description',
+                'value' => 'description',
+                'label' => Yii::t('app', 'description'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

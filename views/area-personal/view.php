@@ -29,9 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'area_id',
-            'user_id',
-            'permission',
+            [
+                'label' => Yii::t('app', 'area name'),
+                'value' => $model->area->name,
+            ],
+            [
+                'label' => Yii::t('app', 'name'),
+                'value' => $model->user->first_name,
+            ],
+            [
+                'label' => Yii::t('app', 'permission'),
+                'value' => $model->permission,
+            ],
         ],
     ]) ?>
 

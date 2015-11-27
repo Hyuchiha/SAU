@@ -7,6 +7,8 @@ use app\models\Areas;
 use app\models\Categories;
 use app\models\User;
 use yii\widgets\ActiveField;
+use unclead\widgets\MultipleInput;
+use unclead\widgets\MultipleInputColumn;
 use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $request app\models\Request */
@@ -38,38 +40,94 @@ use yii\jui\DatePicker;
 	<?= $form->field($request, 'scheduled_end_date')->widget(\yii\jui\DatePicker::classname(), [
 		'dateFormat' => 'yyyy-MM-dd',
 	]) ?>
-	
-	<?php
-	$arrayAreas=ArrayHelper::map(Areas::find()->all(),'id','name');
-	$areasRequests = (new \yii\db\Query())
-    ->select(['area_id'])
-    ->from('areas_request')
-    ->where(['request_id' => $request->id])
-    ->all();
-	if(!empty($areasRequests)){
-		foreach ($areasRequests as $areaRequest){
-			unset($arrayAreas[$areaRequest["area_id"]]);
-		}
-	}
+
+	<?= $form->field($request, 'listAreas')->widget(MultipleInput::className(), [
+        'limit' => 100,
+        'allowEmptyList' => true,
+        'columns'=> [
+          [
+              'name' => 'listAreas',
+              'type' => MultipleInputColumn::TYPE_DROPDOWN,
+              'items'=>ArrayHelper::map(
+                  Areas::find()->orderBy('name')->all(),
+                  'id',
+                  'name'
+              ), 
+          ]
+        ]])->label(Yii::t('app', 'Assign areas')) 
 	?>
 	
-	<?= $form->field($request, 'listAreas')->checkboxList($arrayAreas) ?>
-	
-	<?php
-	$arrayCategories=ArrayHelper::map(Categories::find()->all(),'id','name');
-	$categoriesRequests = (new \yii\db\Query())
-    ->select(['category_id'])
-    ->from('category_request')
-    ->where(['request_id' => $request->id])
-    ->all();
-	if(!empty($categoriesRequests)){
-		foreach ($categoriesRequests as $categoryRequest){
-			unset($arrayCategories[$categoryRequest["category_id"]]);
-		}
-	}
+	<?= $form->field($request, 'listCategories')->widget(MultipleInput::className(), [
+        'limit' => 100,
+        'allowEmptyList' => true,
+        'columns'=> [
+          [
+              'name' => 'listCategories',
+              'type' => MultipleInputColumn::TYPE_DROPDOWN,
+              'items'=>ArrayHelper::map(
+                  Categories::find()->orderBy('name')->all(),
+                  'id',
+                  'name'
+              ),
+          ]
+        ]])->label(Yii::t('app', 'Assign categories')) 
 	?>
 	
-	<?= $form->field($request, 'listCategories')->checkboxList($arrayCategories) ?>
+	<?= $form->field($request, 'listPersonel')->widget(MultipleInput::className(), [
+        'limit' => 100,
+        'allowEmptyList' => true,
+        'columns'=> [
+          [
+              'name' => 'listPersonel',
+              'type' => MultipleInputColumn::TYPE_DROPDOWN,
+              'items'=>ArrayHelper::map(
+                  User::find()->orderBy('lastname')->all(),
+                  'id',
+                  'first_name',
+				  'lastname'
+              ),
+          ]
+        ]])->label(Yii::t('app', 'Assign personal'))
+	?>
+	
+	<?php
+		$areasRequests =ArrayHelper::map(Areas::find()
+		->innerJoin('areas_request', 'areas_request.area_id = areas.id')
+		->where(['request_id' => $request->id])
+		->all(),'id','name');
+	?>
+	
+	<?php if(!empty($areasRequests)) :?>
+	
+	<?= $form->field($request, 'listRemoveAreas')->checkboxList($areasRequests) ?>
+	
+	<?php endif ?>
+	
+	<?php
+		$categoriesRequests =ArrayHelper::map(Categories::find()
+		->innerJoin('category_request', 'category_request.category_id = categories.id')
+		->where(['request_id' => $request->id])
+		->all(),'id','name');
+	?>
+	
+	<?php if(!empty($categoriesRequests)) :?>
+	
+	<?= $form->field($request, 'listRemoveCategories')->checkboxList($categoriesRequests) ?>
+		
+	<?php endif ?>
+	
+	<?php
+		$usersRequests =ArrayHelper::map(User::find()
+		->innerJoin('users_request', 'users_request.user_id = users.id')
+		->where(['request_id' => $request->id])
+		->all(),'id','first_name');
+	?>
+	
+	<?php if(!empty($usersRequests)) :?>
+	
+	<?= $form->field($request, 'listRemoveUsers')->checkboxList($usersRequests) ?>
+		
+	<?php endif ?>
 	
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

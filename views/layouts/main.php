@@ -36,17 +36,48 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            [
+                'label' => Yii::t('app', 'Home'),
+                'url' => ['/site/index']
+            ],
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Request', 'url' => ['/request/create']],
-            ['label' => 'Assign Request', 'url' => ['users-request/create']],
-            ['label' => 'Categories', 'url' => ['categories/index']],
-            ['label' => 'Areas', 'url' => ['areas/index']],
-            ['label' => 'Assign Personal', 'url' => ['area-personal/create']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
+            isset(Yii::$app->user) && Yii::$app->user->can('executive') ?
                 [
-                    'label' => 'Logout (' . Yii::$app->user->identity->user_name . ')',
+                    'label' => Yii::t('app', 'Request'),
+                    'url' => ['/request/create']
+                ]:
+                [
+                    'label' => Yii::t('app', 'Request'),
+                    'url' => ['/request/create']
+                ],
+            [
+                'label' => Yii::t('app', 'Categories'),
+                'url' => ['/categories/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
+                    Yii::$app->user->can('responsibleArea')
+            ],
+            [
+                'label' => Yii::t('app', 'Areas'),
+                'url' => ['/areas/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
+                    Yii::$app->user->can('responsibleArea')
+            ],
+            [
+                'label' => Yii::t('app', 'Assign Personal'),
+                'url' => ['/area-personal/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
+                    Yii::$app->user->can('responsibleArea')
+            ],
+            [
+                'label' => Yii::t('app', 'Assign Request'),
+                'url' => ['/users-request/index'],
+                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
+                    Yii::$app->user->can('responsibleArea')
+            ],
+            Yii::$app->user->isGuest ?
+                ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']] :
+                [
+                    'label' => Yii::t('app', 'Logout').' (' . Yii::$app->user->identity->user_name . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
