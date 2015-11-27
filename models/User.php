@@ -108,7 +108,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return self::findOne(['user_name'=>$user_name]);
     }
     public static function findIdUserName($id){
-        return self::findOne(['id'=>$id]);
+        return User::findOne(['id'=>$id]);
     }
 
     /**
@@ -117,6 +117,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getUserName(){
+        return $this->user_name;
     }
 
     /**

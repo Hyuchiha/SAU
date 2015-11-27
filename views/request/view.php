@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 <div class="request-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+       
+        
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -24,6 +26,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
                 'method' => 'post',
             ],
         ]) ?>
+
+
 		<?= Html::a(Yii::t('app', 'Advanced options'), ['advanced-options', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 	
@@ -123,7 +127,9 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
             'url' => \yii\helpers\Url::toRoute(['/request/chat']),
             //'requestModel'=> \app\models\Request::className(),
             'userModel'=>  \app\models\User::className(),
-            'userField'=>'avatarImage'
+            'userField'=>'avatarImage',
+            'idRequest' => $model->id,
+            'userName' => $model->name
 
         ]
     );

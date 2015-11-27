@@ -38,6 +38,7 @@ class Request extends \yii\db\ActiveRecord
 	public $verifyCode;
 	public $listAreas;
 	public $listCategories;
+    
 	
     /**
      * @inheritdoc
@@ -54,7 +55,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             [['email', 'name','area_id', 'subject', 'description'], 'required'],
-            [['area_id', 'category_id'], 'integer'],
+            [['area_id', 'category_id','user_id'], 'integer'],
             [['description'], 'string'],
             [['creation_date', 'completion_date', 'scheduled_start_date', 'scheduled_end_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
@@ -73,7 +74,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            //'user_id' => 'User ID',
+            'user_id' =>yii::t('app','User ID'),
 			'name' => Yii::t('app', 'Name'),
 			'email' => Yii::t('app', 'Email'),
             'area_id' => Yii::t('app', 'Area'),
@@ -88,6 +89,7 @@ class Request extends \yii\db\ActiveRecord
 			'scheduled_end_date' => Yii::t('app', 'Scheduled End Date'), 
 			'listAreas' => Yii::t('app', 'Assign Areas'),
 			'listCategories' => Yii::t('app', 'Assign Categories'),
+            
         ];
     }
 
@@ -181,6 +183,19 @@ class Request extends \yii\db\ActiveRecord
 				$this->scheduled_end_date = $formatedDateTime;
 			}
 
+            
+            if(!Yii::$app->user->isGuest){
+                $user = User::findOne(\Yii::$app->user->identity->id);
+                $this->user_id = $user->id;
+            }
+            
+
+
+            if(Yii::$app->user->isGuest){
+                $this->token = Yii::$app->getSecurity()->generateRandomString();
+            }
+            
+
 			//if(empty($this->completion_date)){
 			//	$this->completion_date = date_format(date_create("0000-00-00 00:00:00"),"Y/m/d H:i:s");
 			//}
@@ -204,6 +219,8 @@ class Request extends \yii\db\ActiveRecord
 				$attachedFiles->save();
 			}
 	}
+
+    
 	
 	public function assignAreas(){
 		foreach ($this->listAreas as $area){
@@ -228,6 +245,8 @@ class Request extends \yii\db\ActiveRecord
 		}
 		return true;
 	}
+
+   
 	
 	public function assignPersonal(){
 		//TODO
