@@ -7,15 +7,15 @@ $this->title = 'SAU';
 <div class="site-index">
 
     <div class="jumbotron">
+        <img src="logouady.jpg">
+        <h1>Sistema de Atención a Usuarios</h1>
 
-        <h1>Sistema De Atención a Usuarios</h1>
+        <p class="lead">FACULTAD DE MATEMÁTICAS</p>
 
-        <p class="lead">Facultad de Matemáticas UADY</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <!--<p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>-->
     </div>
 
-    <div class="body-content">
+    <!--<div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
@@ -50,5 +50,5 @@ $this->title = 'SAU';
             </div>
         </div>
 
-    </div>
+    </div>-->
 </div>
