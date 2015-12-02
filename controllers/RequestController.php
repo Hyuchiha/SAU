@@ -38,6 +38,19 @@ class RequestController extends Controller
                     ],
                     [
                         'allow' => true,
+                        'actions' => ['chat'],
+                        'roles' => ['?', '@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['token'],
+                        'roles' => ['?', '@'],
+                    ],
+                    
+                       
+                   
+                    [
+                        'allow' => true,
                         'actions' => ['index'],
                         'roles' => ['@'],
                     ],
@@ -95,11 +108,35 @@ class RequestController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id, $token='')
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        
+        $model = $this->findModel($id);
+        if(Yii::$app->user->isGuest && !empty($model->token) && $token == $model->token )
+        {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }else{
+            if(!Yii::$app->user->isGuest){
+                return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+            }else{
+                throw new NotFoundHttpException('The requested page does not exist.');    
+            }
+            
+        }
+
+    }
+
+
+    public function actionToken($token){
+        $request = Request::findOne(['token'=>$token]);
+        
+        
+        return $this->redirect(['view', 'id' => $request->id]);
+
     }
 
     /**
@@ -114,7 +151,7 @@ class RequestController extends Controller
         $categoryRequest = new CategoryRequest();
         //$usersRequest = new UsersRequest();
 
-        if ($request->load(Yii::$app->request->post())) {
+        if ($request->load(Yii::$app->request->post()) && $request) {
             $request->requestFile = UploadedFile::getInstances($request, 'requestFile');
 
             $valid = true;
@@ -123,22 +160,27 @@ class RequestController extends Controller
 
             if ($valid) {
                 if ($request->save()) {
+                    if(Yii::$app->user->isGuest){
+                            $tokenEmail = urlencode($request->token);
+                            $idEmail = urlencode($request->id);
+                            $subject = "Token Solicitud";
+                            $body = "<h1>Haga click en el siguiente enlace para poder dar seguimiento </h1>";                            
+                            $body .= $tokenEmail;
+                            $body .= "<a href='http://localhost/SAU/web/request/view?id=".$idEmail."&token=".$tokenEmail."'>Ver Solicitud</a>";
 
-                    if (Yii::$app->user->isGuest) {
-                        $cookieName = new Cookie([
-                            'name' => 'name',
-                            'value' => $request->name,
-                        ]);
-                        \Yii::$app->getResponse()->getCookies()->add($cookieName);
-                        $cookieEmail = new Cookie([
-                            'name' => 'email',
-                            'value' => $request->email,
-                        ]);
-                        \Yii::$app->getResponse()->getCookies()->add($cookieEmail);
-                    }
-
+                            //Enviamos el correo
+                            Yii::$app->mailer->compose()
+                             ->setTo($request->email)
+                             ->setFrom([Yii::$app->params["adminEmail"] => Yii::$app->params["title"]])
+                             ->setSubject($subject)
+                             ->setHtmlBody($body)
+                             ->send();
+                        }
                     if ($valid && !empty($request->requestFile)) {
                         $request->upload();
+                        
+                        //localhost/SAU/web/request/view?id=15&&token=GUiSpF_XXVKnyNuof3-15bAMN7T8oBVj
+
                     }
                     $areasRequest->request_id = $request->id;
                     $areasRequest->area_id = $request->area_id;
@@ -153,7 +195,14 @@ class RequestController extends Controller
                     if ($areasRequest->save()) {
 
                         if ($valid) {
-                            return $this->redirect(['view', 'id' => $request->id]);
+                            if(Yii::$app->user->isGuest){
+                                Yii::$app->session->setFlash('requestFormSubmitted');
+                                return $this->refresh();
+                            }else{
+                                return $this->redirect(['view', 'id' => $request->id]);    
+                            }
+                            
+							
 
                         } else {
                             return $this->render('create', ['request' => $request,]);
@@ -233,6 +282,14 @@ class RequestController extends Controller
                     return $this->render('advanced-options', ['request' => $request,]);
                 }
             }
+			
+			if (!empty($request->listRemoveUsers)) {
+                if ($request->removeUsers()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
 
             return $this->redirect(['view', 'id' => $request->id]);
         } else {
@@ -258,10 +315,10 @@ class RequestController extends Controller
     public function actionChat()
     {
 
-        //if (!empty($_POST)) {
+        if (!empty($_POST)) {
 
         echo \sintret\chat\ChatRoom::sendChat($_POST);
-        //}
+        }
     }
 
     /**

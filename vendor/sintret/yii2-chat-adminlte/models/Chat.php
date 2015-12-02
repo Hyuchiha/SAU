@@ -12,6 +12,8 @@ use Yii;
 class Chat extends \yii\db\ActiveRecord {
     public $userModel;
     public $userField;
+    public $idRequest;
+    public $userName;
     /**
      * @inheritdoc
      */
@@ -41,40 +43,54 @@ class Chat extends \yii\db\ActiveRecord {
         return [
             'id' => 'ID',
             'message' => 'Message',
-            'userId' => 'User',
+            'userId' => 'User',            
             'updateDate' => 'Update Date',
         ];
     }
     public function beforeSave($insert) {
         $this->userId = Yii::$app->user->id;
+
         return parent::beforeSave($insert);
     }
-    public static function records() {
-        return static::find()->orderBy('id desc')->limit(10)->all();
+    public static function records($requestId) {
+        //return static::find()->orderBy('id desc')->limit(10)->all();
+        
+        $messages = Chat::find()
+        ->where(['request_id' => $requestId])
+        ->orderBy('id desc')
+        ->limit(10)
+        ->all();
+
+        return $messages;
     }
-    public function data() {
+    public function data($requestId) {
         $userField = $this->userField;
         $output = '';
-        $models = Chat::records();
+        $models = Chat::records($requestId);
+        
         if ($models)
             foreach ($models as $model) {
                 if (isset($model->user->$userField)) {
                     $avatar = $model->user->$userField;
                 } else{
                     $avatar = Yii::$app->assetManager->getPublishedUrl("@vendor/sintret/yii2-chat-adminlte/assets/img/avatar.png");
-                }
-                    
-                $output .= '<div class="item">
-                <img class="online" alt="user image" src="' . $avatar . '">
+                }                
+                                    
+                    $output .= '<div class="item">
+                
                 <p class="message">
                     <a class="name" href="#">
                         <small class="text-muted pull-right" style="color:green"><i class="fa fa-clock-o"></i> ' . \kartik\helpers\Enum::timeElapsed($model->updateDate) . '</small>
-                        ' . $model->user->user_name . '
+                        ' . $model->user_name . '
                     </a>
                    ' . $model->message . '
                 </p>
             </div>';
+                
+                    
+                
             }
-        return $output;
+            return $output;
+                }
+        
     }
-}

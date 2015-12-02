@@ -14,17 +14,25 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 <div class="request-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+       
+        
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        
+		<?php if(Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') || Yii::$app->user->can('responsibleArea')): ?>
+		
+		<?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+		
 		<?= Html::a(Yii::t('app', 'Advanced options'), ['advanced-options', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		
+		<?php endif ?>
     </p>
 	
 <?php	
@@ -54,10 +62,18 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 		}
 	}
 	
+	
 	$category_name="";
 	if(!empty ($model->categories)){
 		foreach($model->categories as $category){
 			$category_name = $category_name . $category->name . ", ";
+		}
+	}
+	
+	$user_name="";
+	if(!empty ($model->users)){
+		foreach($model->users as $user){
+			$user_name = $user_name . $user->first_name . " " . $user->lastname . ", ";
 		}
 	}
 
@@ -68,10 +84,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
         'attributes' => [
             //'id',
             //'area_id',
-			[
-				'label' => Yii::t('app', 'Area'),
-				'value' => $model->area->name,
-			],
+			
 			[
 				'label' => Yii::t('app', 'name'),
 				'value' => $model->name,
@@ -85,12 +98,28 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 				'value' => $model->subject,
 			],
 			[
+				'label' => Yii::t('app', 'description'),
+				'value' => $model->description,
+			],
+			[
+				'label' => Yii::t('app', 'Area'),
+				'value' => $model->area->name,
+			],
+			[
 				'label' => Yii::t('app', 'Assigned areas'),
 				'value' => $area_name,
 			],
 			[
+				'label' => Yii::t('app', 'Area'),
+				'value' => $model->area->name,
+			],
+			[
 				'label' => Yii::t('app', 'Assigned categories'),
 				'value' => $category_name,
+			],
+			[
+				'label' => Yii::t('app', 'Assigned users'),
+				'value' => $user_name,
 			],
 			[
 				'label' => Yii::t('app', 'Scheduled start date'),
@@ -100,7 +129,10 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 				'label' => Yii::t('app', 'Scheduled end date'),
 				'value' => $end_date,
 			],
-			'creation_date',
+			[
+				'label' => Yii::t('app', 'creation_date'),
+				'value' => $model->creation_date,
+			],
 			[
 				'label' => Yii::t('app', 'Completion date'),
 				'value' => $comp_date,
@@ -135,7 +167,9 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
             'url' => \yii\helpers\Url::toRoute(['/request/chat']),
             //'requestModel'=> \app\models\Request::className(),
             'userModel'=>  \app\models\User::className(),
-            'userField'=>'avatarImage'
+            'userField'=>'avatarImage',
+            'idRequest' => $model->id,
+            'userName' => $model->name
 
         ]
     );
