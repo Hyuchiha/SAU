@@ -301,6 +301,14 @@ class RequestController extends Controller
                     return $this->render('advanced-options', ['request' => $request,]);
                 }
             }
+			
+			if (!empty($request->listRemoveUsers)) {
+                if ($request->removeUsers()) {
+
+                } else {
+                    return $this->render('advanced-options', ['request' => $request,]);
+                }
+            }
 
             return $this->redirect(['view', 'id' => $request->id]);
         } else {

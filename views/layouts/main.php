@@ -68,12 +68,6 @@ AppAsset::register($this);
                 'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
                     Yii::$app->user->can('responsibleArea')
             ],
-            [
-                'label' => Yii::t('app', 'Assign Request'),
-                'url' => ['/users-request/index'],
-                'visible' => Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') ||
-                    Yii::$app->user->can('responsibleArea')
-            ],
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']] :
                 [

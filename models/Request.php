@@ -162,7 +162,7 @@ class Request extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['id' => 'user_id'])->viaTable('users_request', ['request_id' => 'id']);
+        return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('users_request', ['request_id' => 'id']);
     }
     public function getUser()
     {
@@ -177,6 +177,10 @@ class Request extends \yii\db\ActiveRecord
 				$this->completion_date = $formatedDateTime;
 			}else{
 				$this->completion_date = null;
+			}
+			
+			if (!empty($this->listPersonel)){
+				$this->status = "assigned";
 			}
 			
 			if($this->isNewRecord){
