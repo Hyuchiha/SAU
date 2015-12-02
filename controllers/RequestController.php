@@ -95,13 +95,32 @@ class RequestController extends Controller
     public function actionIndex()
     {
         $searchModel = new RequestSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        
+
+        $user_id = "";
+        if(isset(Yii::$app->user)){
+           $user_id = Yii::$app->user->getId();
+        }
+        if(Yii::$app->user->can('administrator')){
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);        
+        }else{
+            $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
+            $queryParams["RequestSearch"]["user_id"] = $user_id;
+            $dataProvider = $searchModel->search($queryParams);
+        }
+            
+            
+        
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+
+        
+    
 
     /**
      * Displays a single Request model.

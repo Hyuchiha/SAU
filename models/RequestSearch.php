@@ -19,7 +19,7 @@ class RequestSearch extends Request
     public function rules()
     {
         return [
-            [['id', 'area_id'], 'integer'],
+            [['id', 'area_id','user_id'], 'integer'],
             [['name', 'email', 'subject', 'description', 'creation_date', 'completion_date', 'status','area_name'], 'safe'],
         ];
     }
@@ -48,7 +48,7 @@ class RequestSearch extends Request
             'query' => $query,
         ]);
 
-        $query->joinWith('area');
+        $query->joinWith(['area','user']);
 
         $dataProvider->sort->attributes['area_name'] = [
             'asc' => ['areas.name' => SORT_ASC],
@@ -68,6 +68,7 @@ class RequestSearch extends Request
             'area_id' => $this->area_id,
             'creation_date' => $this->creation_date,
             'completion_date' => $this->completion_date,
+            'user_id' => $this->user_id,
         ]);
 
         $query->andFilterWhere(['like', 'request.name', $this->name])

@@ -164,6 +164,10 @@ class Request extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Users::className(), ['id' => 'user_id'])->viaTable('users_request', ['request_id' => 'id']);
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
 	
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
