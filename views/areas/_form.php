@@ -13,11 +13,16 @@ use app\models\User;
 
     <?php $form = ActiveForm::begin(); ?>
 
-     <?= $form->field($model, 'area_id')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name'))
-     ->label(Yii::t('app', 'area_id')) ?>
+     <?= $form->field($model, 'area_id')->dropDownList(
+         ArrayHelper::map(
+             Areas::find()->all(),
+             'id',
+             'name'
+         ), array('prompt' => "")
+     )->label(Yii::t('app', 'area_id')) ?>
 
     <?= $form->field($model, 'id_responsable')->dropDownList(ArrayHelper::map(User::find()->all(),'id','user_name'))
-    ->label(Yii::t('app', 'id_responsable')) ?>
+    ->label(Yii::t('app', 'id_responsible')) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true])
     ->label(Yii::t('app', 'name')) ?>

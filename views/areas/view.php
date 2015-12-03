@@ -28,11 +28,26 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'area_id',
-            'id_responsable',
-            'name',
-            'description',
+            [
+                'label' => Yii::t('app', 'id'),
+                'value' => $model->id,
+            ],
+            [
+                'label' => Yii::t('app', 'area_id'),
+                'value' => $model->area_id,
+            ],
+            [
+                'label' => Yii::t('app', 'id_responsible'),
+                'value' => $model->idResponsable->first_name,
+            ],
+            [
+                'label' => Yii::t('app', 'name'),
+                'value' => $model->name,
+            ],
+            [
+                'label' => Yii::t('app', 'description'),
+                'value' => $model->description,
+            ],
         ],
     ]) ?>
 

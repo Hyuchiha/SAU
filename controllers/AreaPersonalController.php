@@ -186,13 +186,8 @@ class AreaPersonalController extends Controller
      */
     public function actionDelete($area_id, $user_id)
     {
-        $authManager = Yii::$app->authManager;
-        $role = $authManager->getRole('employeeArea');
 
         $model = $this->findModel($area_id, $user_id);
-
-        $authManager->revoke($role, $model->user_id);
-
         $model->delete();
 
         return $this->redirect(['index']);
