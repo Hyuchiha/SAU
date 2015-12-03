@@ -65,7 +65,7 @@ class RequestSearch extends Request
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+            'request.id' => $this->id,
             'area_id' => $this->area_id,
             'creation_date' => $this->creation_date,
             'completion_date' => $this->completion_date,
