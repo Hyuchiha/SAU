@@ -38,7 +38,8 @@ use yii\widgets\ActiveForm;
               'items'=>ArrayHelper::map(
                   User::find()->all(),
                   'id',
-                  'first_name'
+                  'first_name',
+                  'lastname'
               ),
           ]
         ]])->label(Yii::t('app', 'User to assing')) ?>
