@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\User;
 use app\models\Request;
 use app\models\AreasRequest;
+use app\models\AreaPersonal;
 use app\models\CategoryRequest;
 use app\models\UsersRequest;
 use app\models\RequestSearch;
@@ -94,10 +96,30 @@ class RequestController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new RequestSearch();
-
+        if(Yii::$app->user->can('administrator') || Yii::$app->user->can('executive')){
+            $searchModel = new RequestSearch();
+        }else{
+            if(Yii::$app->user->can('responsibleArea')){
+                //$user = User::findOne([Yii::$app->user->getId()]);
+                $areaPersonal = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()]);
+                $areaID = $areaPersonal->area_id;
+                //$areaRequest = AreasRequest::findOne(['area_id'=>$areaPersonal->area_id]);
+                $searchModel = new RequestSearch([
+                    'area_id' => $areaID,
+                ]);
+            }else{
+                $user = User::findOne([Yii::$app->user->getId()]);
+                $searchModel = new RequestSearch([
+                    'email' => $user->email,
+                ]);
+            }
+        }
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
-
+        //$sql='SELECT field FROM table WHERE LEFT(field,1)<>0 UNION SELECT field FROM table WHERE LEFT(field,1)=0';
+        //$dataProvider=new CSqlDataProvider($sql);
+        
+/*
         $user_id = "";
         if(isset(Yii::$app->user)){
            $user_id = Yii::$app->user->getId();
@@ -112,7 +134,7 @@ class RequestController extends Controller
             
             
         
-        
+        */
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
