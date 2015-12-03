@@ -3,11 +3,12 @@ function reloadchat(message, clearChat) {
     
     var model = $(".btn-send-comment").data("model");
     var userfield = $(".btn-send-comment").data("userfield");
-    alert('asdasdsad');
+    var idRequest = $(".btn-send-comment").data("idrequest");
+    var userName = $(".btn-send-comment").data("username");;
     $.ajax({
         url: url,
         type: "POST",
-        data: {message: message, model: model, userfield: userfield},
+        data: {message: message, model: model, userfield: userfield, idRequest: idRequest, userName: userName},
         success: function (html) {
             if (clearChat == true) {
                 $("#chat_message").val("");
