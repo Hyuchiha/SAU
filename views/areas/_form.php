@@ -21,7 +21,7 @@ use app\models\User;
          ), array('prompt' => "")
      )->label(Yii::t('app', 'area_id')) ?>
 
-    <?= $form->field($model, 'id_responsable')->dropDownList(ArrayHelper::map(User::find()->all(),'id','user_name'))
+    <?= $form->field($model, 'id_responsable')->dropDownList(ArrayHelper::map(User::find()->all(),'id','first_name', 'lastname'))
     ->label(Yii::t('app', 'id_responsible')) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true])

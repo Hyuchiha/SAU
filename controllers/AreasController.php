@@ -101,6 +101,10 @@ class AreasController extends Controller
     {
         $model = $this->findModel($id);
 
+        $auth = Yii::$app->authManager;
+        $jefeArea = $auth->getRole('responsibleArea');
+        $auth->revoke($jefeArea, $model->id_responsable);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

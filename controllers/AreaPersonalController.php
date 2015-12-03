@@ -168,6 +168,10 @@ class AreaPersonalController extends Controller
     {
         $model = $this->findModel($area_id, $user_id);
 
+        $auth = Yii::$app->authManager;
+        $employee = $auth->getRole('employeeArea');
+        $auth->revoke($employee, $model->user_id);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'area_id' => $model->area_id, 'user_id' => $model->user_id]);
         } else {
