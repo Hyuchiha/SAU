@@ -36,10 +36,10 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            [
+            /*[
                 'label' => Yii::t('app', 'Home'),
                 'url' => ['/site/index']
-            ],
+            ],*/
             //['label' => 'Contact', 'url' => ['/site/contact']],
             isset(Yii::$app->user) && Yii::$app->user->can('executive') ?
                 [
