@@ -172,7 +172,7 @@ class Request extends \yii\db\ActiveRecord
 	public function beforeSave($insert){
 		if(parent::beforeSave($insert)){
 			
-			if($this->status == 'completed'){
+			if($this->status == 'Finalizado'){
 				$formatedDateTime = date_format(date_create(),"Y/m/d H:i:s");
 				$this->completion_date = $formatedDateTime;
 			}else{
@@ -180,7 +180,7 @@ class Request extends \yii\db\ActiveRecord
 			}
 			
 			if (!empty($this->listPersonel)){
-				$this->status = "assigned";
+				$this->status = "Asignado";
 			}
 			
 			if($this->isNewRecord){

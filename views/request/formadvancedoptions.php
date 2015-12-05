@@ -24,12 +24,12 @@ use yii\jui\DatePicker;
 
 	<?= $form->field($request, 'status')->dropDownList(
 		[
-			'new'=>'New',					//Nuevo
-			'assigned'=>'Assigned',			//Asignado
-			'inProcess'=>'In process',		//En proceso
-			'checked'=>'Checked',			//Verificado
-			'denied'=>'Denaied',			//Rechazado
-			'completed'=>'Completed',		//Finalizado
+			'Nuevo'=>Yii::t('app', 'New'),				//Nuevo
+			'Asignado'=>Yii::t('app', 'Assigned'),		//Asignado
+			'En proceso'=>Yii::t('app', 'In process'),	//En proceso
+			'Verificado'=>Yii::t('app', 'Checked'),		//Verificado
+			'Rechazado'=>Yii::t('app', 'Denaied'),		//Rechazado
+			'Finalizado'=>Yii::t('app', 'Completed'),	//Finalizado
 		]
 	) ?>
 	
@@ -46,13 +46,13 @@ use yii\jui\DatePicker;
         'allowEmptyList' => true,
         'columns'=> [
           [
-              'name' => 'listAreas',
-              'type' => MultipleInputColumn::TYPE_DROPDOWN,
-              'items'=>ArrayHelper::map(
+				'name' => 'listAreas',
+				'type' => MultipleInputColumn::TYPE_DROPDOWN,
+				'items'=>ArrayHelper::map(
                   Areas::find()->orderBy('name')->all(),
                   'id',
                   'name'
-              ), 
+				),
           ]
         ]])->label(Yii::t('app', 'Assign areas')) 
 	?>

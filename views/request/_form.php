@@ -76,28 +76,40 @@ $this->registerJs('
 		}
 	?>
 	
-	<?= $form->field($request, 'name')->textInput(['value'=>$nameValue,'maxlength' => true]) ?>
+	<?= $form->field($request, 'name')->textInput([
+		'value'=>$nameValue,'maxlength' => true,
+		'placeholder' => Yii::t('app', 'Please enter your name'),
+	]) ?>
 	
-	<?= $form->field($request, 'email')->textInput(['value'=> $emailValue,'maxlength' => true]) ?>
+	<?= $form->field($request, 'email')->textInput([
+		'value'=> $emailValue,'maxlength' => true,
+		'placeholder' => Yii::t('app', 'Please enter your email'),
+	]) ?>
 	
     <?= $form->field($request, 'area_id')->dropDownList(
 		ArrayHelper::map(
 			Areas::find()->all(),
 			'id',
 			'name'
-		), array('prompt'=> "")) ?>
+		), array('prompt'=> Yii::t('app', 'Please select an area'),)) ?>
 		
 	<?= $form->field($request, 'category_id')->dropDownList(
 		ArrayHelper::map(
 			Categories::find()->all(),
 			'id',
 			'name'
-		), array('prompt'=> "")) ?>
+		), array('prompt'=> Yii::t('app', 'Optional: Please select a category'),)) ?>
 		
 
-    <?= $form->field($request, 'subject')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($request, 'subject')->textInput([
+		'maxlength' => true,
+		'placeholder' => Yii::t('app', 'Please enter your subject'),
+	]) ?>
 
-    <?= $form->field($request, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($request, 'description')->textarea([
+		'rows' => 6,
+		'placeholder' => Yii::t('app', 'Please enter the request´s description'),
+	]) ?>
 	
 
     <a id="agregarCampo" class="btn btn-info" >Agregar Archivo</a>

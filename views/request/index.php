@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\models\Request;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequestSearch */
@@ -13,7 +15,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
 <div class="request-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Request', ['create'], ['class' => 'btn btn-success']) ?>
@@ -25,7 +27,11 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'attribute' => 'id',
+                'value' => 'id',
+                'label' => Yii::t('app', 'id'),
+            ],
             [
                 'attribute' => 'area_name',
                 'value' => 'area.name',
@@ -50,6 +56,21 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
                 'attribute' => 'description',
                 'value' => 'description',
                 'label' => Yii::t('app', 'description'),
+            ],
+			[
+                'attribute' => 'creation_date',
+                'value' => 'creation_date',
+                'label' => Yii::t('app', 'creation_date'),
+            ],
+			[
+                'attribute' => 'status',
+                'value' => 'status',
+				'filter' => Html::activeDropDownList(
+					$searchModel, 'status', 
+						ArrayHelper::map(Request::find()->asArray()->all(),'status', 'status'),
+					['class'=>'form-control','prompt' => Yii::t('app', 'Select one status')]
+				),
+                'label' => Yii::t('app', 'status'),
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

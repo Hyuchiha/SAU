@@ -71,13 +71,24 @@ class RequestSearch extends Request
             'completion_date' => $this->completion_date,
             //'user_id' => $this->user_id,
         ]);
+		
+		if(!$this->status == "Rechazado" || !$this->status == "Finalizado"){
+			$query->orFilterWhere(['like', 'status', "Nuevo"])
+			->orFilterWhere(['like', 'status', "En proceso"])
+			->orFilterWhere(['like', 'status', "Asignado"])
+			->orFilterWhere(['like', 'status', "Verificado"]);
+		}
+		
+		
+		
 
         $query->andFilterWhere(['like', 'request.name', $this->name])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'request.description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'areas.name', $this->area_name]);
+            ->andFilterWhere(['like', 'areas.name', $this->area_name])
+			->andFilterWhere(['like', 'request.id', $this->id]);
 
         return $dataProvider;
     }
