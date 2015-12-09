@@ -70,6 +70,13 @@ class RequestSearch extends Request
             'request.completion_date' => $this->completion_date,
         ]);
         
+        if(!$this->status == "Rechazado" || !$this->status == "Finalizado"){
+			$query->orFilterWhere(['like', 'request.status', "Nuevo"])
+			->orFilterWhere(['like', 'request.status', "En proceso"])
+			->orFilterWhere(['like', 'request.status', "Asignado"])
+			->orFilterWhere(['like', 'request.status', "Verificado"]);
+		}
+        
         if(!Yii::$app->user->can('administrator') || !Yii::$app->user->can('executive')){
             //Quien creó la solicitud
             $query->andFilterWhere([
@@ -88,16 +95,6 @@ class RequestSearch extends Request
                 }
             }
         }
-        
-		if(!$this->status == "Rechazado" || !$this->status == "Finalizado"){
-			$query->orFilterWhere(['like', 'request.status', "Nuevo"])
-			->orFilterWhere(['like', 'request.status', "En proceso"])
-			->orFilterWhere(['like', 'request.status', "Asignado"])
-			->orFilterWhere(['like', 'request.status', "Verificado"]);
-		}
-		
-		
-		
         
         $query->andFilterWhere(['like', 'request.name', $this->name])
             ->andFilterWhere(['like', 'request.email', $this->email])
