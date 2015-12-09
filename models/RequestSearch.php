@@ -49,7 +49,7 @@ class RequestSearch extends Request
             'query' => $query,
         ]);
 
-        $query->joinWith('area');
+        $query->joinWith(['area','users']);
 
         $dataProvider->sort->attributes['area_name'] = [
             'asc' => ['areas.name' => SORT_ASC],
@@ -66,30 +66,47 @@ class RequestSearch extends Request
 
         $query->andFilterWhere([
             'request.id' => $this->id,
-            'area_id' => $this->area_id,
-            'creation_date' => $this->creation_date,
-            'completion_date' => $this->completion_date,
-            //'user_id' => $this->user_id,
+            'request.creation_date' => $this->creation_date,
+            'request.completion_date' => $this->completion_date,
         ]);
-		
+        
+        if(!Yii::$app->user->can('administrator') || !Yii::$app->user->can('executive')){
+            //Quien creó la solicitud
+            $query->andFilterWhere([
+                'request.user_id' => $_SESSION['__id']
+            ]);
+            if(Yii::$app->user->can('responsibleArea')){
+                //Quien tiene asignada la solicitud y pertenece a cierta área
+                $query->orFilterWhere(['users_request.user_id' => $_SESSION['__id']])
+                    ->orFilterWhere(['request.area_id' => $this->area_id,]);
+            }else{
+                if(Yii::$app->user->can('employeeArea')){
+                    //Quien tiene asignada la solicitud
+                    $query->orFilterWhere([
+                        'users_request.user_id' => $_SESSION['__id'],
+                    ]);
+                }
+            }
+        }
+        
 		if(!$this->status == "Rechazado" || !$this->status == "Finalizado"){
-			$query->orFilterWhere(['like', 'status', "Nuevo"])
-			->orFilterWhere(['like', 'status', "En proceso"])
-			->orFilterWhere(['like', 'status', "Asignado"])
-			->orFilterWhere(['like', 'status', "Verificado"]);
+			$query->orFilterWhere(['like', 'request.status', "Nuevo"])
+			->orFilterWhere(['like', 'request.status', "En proceso"])
+			->orFilterWhere(['like', 'request.status', "Asignado"])
+			->orFilterWhere(['like', 'request.status', "Verificado"]);
 		}
 		
 		
 		
-
+        
         $query->andFilterWhere(['like', 'request.name', $this->name])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'subject', $this->subject])
+            ->andFilterWhere(['like', 'request.email', $this->email])
+            ->andFilterWhere(['like', 'request.subject', $this->subject])
             ->andFilterWhere(['like', 'request.description', $this->description])
-            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'request.status', $this->status])
             ->andFilterWhere(['like', 'areas.name', $this->area_name])
 			->andFilterWhere(['like', 'request.id', $this->id]);
-
+        
         return $dataProvider;
     }
 }

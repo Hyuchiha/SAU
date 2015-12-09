@@ -97,44 +97,24 @@ class RequestController extends Controller
     public function actionIndex()
     {
         if(Yii::$app->user->can('administrator') || Yii::$app->user->can('executive')){
+            //Ver todas las solicitudes
             $searchModel = new RequestSearch();
-        }else{
-            if(Yii::$app->user->can('responsibleArea')){
-                //$user = User::findOne([Yii::$app->user->getId()]);
-                $areaPersonal = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()]);
-                $areaID = $areaPersonal->area_id;
-                //$areaRequest = AreasRequest::findOne(['area_id'=>$areaPersonal->area_id]);
-                $searchModel = new RequestSearch([
-                    'area_id' => $areaID,
-                ]);
-            }else{
-                $user = User::findOne([Yii::$app->user->getId()]);
-                $searchModel = new RequestSearch([
-                    'email' => $user->email,
-                ]);
-            }
-        }
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
-        //$sql='SELECT field FROM table WHERE LEFT(field,1)<>0 UNION SELECT field FROM table WHERE LEFT(field,1)=0';
-        //$dataProvider=new CSqlDataProvider($sql);
-        
-/*
-        $user_id = "";
-        if(isset(Yii::$app->user)){
-           $user_id = Yii::$app->user->getId();
-        }
-        if(Yii::$app->user->can('administrator')){
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);        
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         }else{
             $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
-            $queryParams["RequestSearch"]["user_id"] = $user_id;
-            $dataProvider = $searchModel->search($queryParams);
+            
+            if(Yii::$app->user->can('responsibleArea')){
+                //Ver solo las solicitudes del área correspondiente, las asignadas al usuario y las creadas por este
+                $areaID = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->area_id;
+                $queryParams["RequestSearch"]["area_id"] = $areaID;
+                $searchModel = new RequestSearch();
+                $dataProvider = $searchModel->search($queryParams);
+            }else{
+                $searchModel = new RequestSearch();
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            }
         }
-            
-            
         
-        */
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
