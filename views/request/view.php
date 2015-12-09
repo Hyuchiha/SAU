@@ -110,10 +110,6 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 				'value' => $area_name,
 			],
 			[
-				'label' => Yii::t('app', 'Area'),
-				'value' => $model->area->name,
-			],
-			[
 				'label' => Yii::t('app', 'Assigned categories'),
 				'value' => $category_name,
 			],
