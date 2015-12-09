@@ -26,6 +26,11 @@ class CategoriesController extends Controller
                         'actions' => ['create'],
                         'roles' => ['administrator','responsibleArea','executive'],
                     ],
+					[
+                        'allow' => true,
+                        'actions' => ['lists'],
+                        'roles' => ['@', '?'],
+                    ],
                     [
                         'allow' => true,
                         'actions' => ['index', 'view'],
@@ -131,6 +136,17 @@ class CategoriesController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+	
+	public function actionLists($id){
+        $rows = \app\models\Categories::find()->where(['id_area' => $id])->all();
+        if(count($rows)>0){
+            foreach($rows as $row){
+                echo "<option value='$row->id'>$row->name</option>";
+			}
+        }else{
+			 echo "<option value='0'>No hay categorias en esta área</option>";
+        }
     }
 
     /**

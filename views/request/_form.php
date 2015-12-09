@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use app\models\Areas;
 use app\models\Categories;
@@ -13,9 +14,6 @@ use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $request app\models\Request */
 /* @var $form yii\widgets\ActiveForm */
- /*   <?= $form->field($request, 'completion_date')->widget(\yii\jui\DatePicker::classname(), [
-		'dateFormat' => 'yyyy-MM-dd',
-	]) ?>*/
 ?>
 
 <?php
@@ -91,7 +89,14 @@ $this->registerJs('
 			Areas::find()->all(),
 			'id',
 			'name'
-		), array('prompt'=> Yii::t('app', 'Please select an area'),)) ?>
+		),
+		['prompt'=> Yii::t('app', 'Please select an area'),
+		'onchange'=>'$.get( "'.Url::toRoute('/categories/lists').'", { id: $(this).val() } )
+            .done(function( data ) {
+					$( "#'.Html::getInputId($request, 'category_id').'" ).html( data );
+				}
+            );'
+		]) ?>
 		
 	<?= $form->field($request, 'category_id')->dropDownList(
 		ArrayHelper::map(
