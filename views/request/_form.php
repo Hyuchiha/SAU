@@ -128,7 +128,7 @@ $this->registerJs('
 	
 	<?= $form->field($request, 'verifyCode')->widget(Captcha::className(), [
         'template' => '<div class="row"><div class="col-lg-1.5">{image}</div><div class="col-lg-2">{input}</div></div>',
-    ]) ?>
+    ])->label(Yii::t('app', 'verifyCode')) ?>
 
     <div class="form-group">
         <?= Html::submitButton($request->isNewRecord ? 'Create' : 'Update', ['class' => $request->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

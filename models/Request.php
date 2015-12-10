@@ -83,7 +83,7 @@ class Request extends \yii\db\ActiveRecord
 			'email' => Yii::t('app', 'Email'),
             'area_id' => Yii::t('app', 'Area'),
 			'category_id' => Yii::t('app', 'Category'),
-            'subject' => Yii::t('app', 'Subject'),
+            'subject' => Yii::t('app', 'subject'),
             'description' => Yii::t('app', 'Description'),
             'creation_date' => Yii::t('app', 'Creation Date'),
             'completion_date' => Yii::t('app', 'Completion Date'),
