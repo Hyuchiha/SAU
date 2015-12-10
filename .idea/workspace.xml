@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1cd216b1-06d7-49d9-9992-34d3be67ddfd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/CategoriesController.php" afterPath="$PROJECT_DIR$/controllers/CategoriesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/AreaPersonal.php" afterPath="$PROJECT_DIR$/models/AreaPersonal.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messages/es-mx/app.php" afterPath="$PROJECT_DIR$/messages/es-mx/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/formadvancedoptions.php" afterPath="$PROJECT_DIR$/views/request/formadvancedoptions.php" />
     </list>
     <ignored path="SAU.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,48 +26,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AreaPersonal.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/AreaPersonal.php">
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/request/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42010772">
-              <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
-              <folding>
-                <element signature="e#30#57#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2727273">
-              <caret line="325" column="24" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoriesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
+      <file leaf-file-name="formadvancedoptions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/request/formadvancedoptions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.509091">
-              <caret line="141" column="81" selection-start-line="141" selection-start-column="81" selection-end-line="141" selection-end-column="81" />
-              <folding>
-                <marker date="1449768088317" expanded="true" signature="4514:5057" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-6.1509433">
+              <caret line="127" column="117" selection-start-line="127" selection-start-column="117" selection-end-line="127" selection-end-column="117" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyAreaRule.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rbac/MyAreaRule.php">
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
-              <folding>
-                <element signature="e#27#45#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.48114902">
+              <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,10 +86,11 @@
         <option value="$PROJECT_DIR$/views/request/create.php" />
         <option value="$PROJECT_DIR$/views/request/_form.php" />
         <option value="$PROJECT_DIR$/views/categories/_form.php" />
-        <option value="$PROJECT_DIR$/messages/es-mx/app.php" />
         <option value="$PROJECT_DIR$/controllers/CategoriesController.php" />
         <option value="$PROJECT_DIR$/models/AreaPersonal.php" />
         <option value="$PROJECT_DIR$/rbac/AssignRequest.php" />
+        <option value="$PROJECT_DIR$/views/request/formadvancedoptions.php" />
+        <option value="$PROJECT_DIR$/messages/es-mx/app.php" />
       </list>
     </option>
   </component>
@@ -231,7 +216,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="categories" />
+              <option name="myItemId" value="area-personal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,11 +230,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="area-personal" />
+              <option name="myItemId" value="es-mx" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,7 +305,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449767022051</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Agregado prompt">
+      <created>1449768623952</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1449768623952</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -364,7 +355,8 @@
     <MESSAGE value="Arreglado error con el chat&#10;&#10;Si a alguno le da problema lo unico q tiene q hacer es Borrar Sus assets de /web/assets y luego haga un composer update y se arregla el chat" />
     <MESSAGE value="Arreglados problemas con la traduccion de algunas vistas" />
     <MESSAGE value="Agregado prompt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregado prompt" />
+    <MESSAGE value="Traducciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Traducciones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -406,13 +398,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/area-personal/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45601436">
-          <caret line="33" column="46" selection-start-line="32" selection-start-column="16" selection-end-line="33" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Categories.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3518851">
@@ -428,13 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/request/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9389587">
-          <caret line="161" column="18" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/logouady.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -444,13 +422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3357271">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/areas/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24955116">
-          <caret line="32" column="38" selection-start-line="31" selection-start-column="16" selection-end-line="32" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -554,14 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/area-personal/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42190304">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/request/_form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3846154">
@@ -584,14 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42010772">
           <caret line="39" column="49" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8025135">
-          <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -642,11 +597,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/AreaPersonal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42010772">
-          <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
+        <state vertical-scroll-proportion="-5.730769">
+          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="e#30#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/area-personal/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47755834">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/areas/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2621185">
+          <caret line="32" column="38" selection-start-line="31" selection-start-column="16" selection-end-line="32" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/area-personal/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9389587">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/advanced-options.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/formadvancedoptions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1509433">
+          <caret line="127" column="117" selection-start-line="127" selection-start-column="117" selection-end-line="127" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48114902">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

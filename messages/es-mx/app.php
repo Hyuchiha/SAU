@@ -65,5 +65,17 @@ return[
     'rememberMe' => 'Recuerdame',
     'Please select a category' => 'Porfavor seleccione una categoria',
     'id_area' => 'ID de area',
+    'Assigned areas'=> 'Areas Asignadas',
+    'Assigned categories' => 'Categorias Asignadas',
+    'Assigned users' => 'Usuarios asignados',
+    'Scheduled start date' => 'Fecha de inicio estimada',
+    'Scheduled end date' => 'Fecha de termino estimada',
+    'Completion date' => 'Fecha de Termino',
+    'Assign areas' => 'Asignar areas',
+    'Assign categories' => 'Asignar categorias',
+    'Assign personal' => 'Asignar personal',
+    'Remove areas' => 'Remover areas',
+    'Remove categories' => 'Remover categorias',
+    'Remove personal' => 'Remover personal'
 ];
 ?>
