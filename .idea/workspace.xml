@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cd216b1-06d7-49d9-9992-34d3be67ddfd" name="Default" comment="Agregada traduccion de vistas categorias y areas&#10;&#10;Agregada la eliminacion de roles al eliminar un area y eliminar un empleado de area&#10;&#10;Agregado el auto setup de">
+    <list default="true" id="1cd216b1-06d7-49d9-9992-34d3be67ddfd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messages/es-mx/app.php" afterPath="$PROJECT_DIR$/messages/es-mx/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Request.php" afterPath="$PROJECT_DIR$/models/Request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/categories/_form.php" afterPath="$PROJECT_DIR$/views/categories/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layouts/main.php" afterPath="$PROJECT_DIR$/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/_form.php" afterPath="$PROJECT_DIR$/views/request/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/create.php" afterPath="$PROJECT_DIR$/views/request/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/index.php" afterPath="$PROJECT_DIR$/views/request/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/site/login.php" afterPath="$PROJECT_DIR$/views/site/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/CategoriesController.php" afterPath="$PROJECT_DIR$/controllers/CategoriesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/AreaPersonal.php" afterPath="$PROJECT_DIR$/models/AreaPersonal.php" />
     </list>
     <ignored path="SAU.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,9 +29,45 @@
       <file leaf-file-name="AreaPersonal.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/AreaPersonal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6032316">
-              <caret line="146" column="34" selection-start-line="146" selection-start-column="34" selection-end-line="146" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.42010772">
+              <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
+              <folding>
+                <element signature="e#30#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.2727273">
+              <caret line="325" column="24" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoriesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.509091">
+              <caret line="141" column="81" selection-start-line="141" selection-start-column="81" selection-end-line="141" selection-end-column="81" />
+              <folding>
+                <marker date="1449768088317" expanded="true" signature="4514:5057" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyAreaRule.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rbac/MyAreaRule.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
+              <folding>
+                <element signature="e#27#45#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,7 +89,6 @@
         <option value="$PROJECT_DIR$/views/categories/view.php" />
         <option value="$PROJECT_DIR$/views/categories/index.php" />
         <option value="$PROJECT_DIR$/models/Areas.php" />
-        <option value="$PROJECT_DIR$/models/AreaPersonal.php" />
         <option value="$PROJECT_DIR$/views/site/index.php" />
         <option value="$PROJECT_DIR$/controllers/AreasController.php" />
         <option value="$PROJECT_DIR$/controllers/AreaPersonalController.php" />
@@ -74,6 +103,9 @@
         <option value="$PROJECT_DIR$/views/request/_form.php" />
         <option value="$PROJECT_DIR$/views/categories/_form.php" />
         <option value="$PROJECT_DIR$/messages/es-mx/app.php" />
+        <option value="$PROJECT_DIR$/controllers/CategoriesController.php" />
+        <option value="$PROJECT_DIR$/models/AreaPersonal.php" />
+        <option value="$PROJECT_DIR$/rbac/AssignRequest.php" />
       </list>
     </option>
   </component>
@@ -221,20 +253,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -296,7 +314,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449116247716</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Arreglados problemas con la traduccion de algunas vistas">
+      <created>1449767022051</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1449767022051</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -305,6 +329,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17549168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -313,7 +338,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -338,7 +362,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Arreglado error con el chat&#10;&#10;Si a alguno le da problema lo unico q tiene q hacer es Borrar Sus assets de /web/assets y luego haga un composer update y se arregla el chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglado error con el chat&#10;&#10;Si a alguno le da problema lo unico q tiene q hacer es Borrar Sus assets de /web/assets y luego haga un composer update y se arregla el chat" />
+    <MESSAGE value="Arreglados problemas con la traduccion de algunas vistas" />
+    <MESSAGE value="Agregado prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregado prompt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -356,6 +382,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#174#182#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -363,6 +392,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54480284">
           <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+          <folding>
+            <element signature="e#174#182#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -422,25 +454,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9390681">
-          <caret line="132" column="9" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Areas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.576923">
           <caret line="90" column="60" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -578,11 +596,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.115385">
+          <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/ActiveRecord.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="164" column="56" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rbac/MyAreaRule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#27#45#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2727273">
+          <caret line="325" column="24" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.509091">
+          <caret line="141" column="81" selection-start-line="141" selection-start-column="81" selection-end-line="141" selection-end-column="81" />
+          <folding>
+            <marker date="1449768088317" expanded="true" signature="4514:5057" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/AreaPersonal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6032316">
-          <caret line="146" column="34" selection-start-line="146" selection-start-column="34" selection-end-line="146" selection-end-column="34" />
-          <folding />
+        <state vertical-scroll-proportion="0.42010772">
+          <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
+          <folding>
+            <element signature="e#30#57#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
