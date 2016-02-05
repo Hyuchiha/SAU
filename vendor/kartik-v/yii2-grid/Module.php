@@ -3,8 +3,8 @@
 /**
  * @package   yii2-grid
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   3.0.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @version   3.1.0
  */
 
 namespace kartik\grid;
@@ -34,7 +34,8 @@ class Module extends \kartik\base\Module
         $this->_msgCat = 'kvgrid';
         parent::init();
         if (isset($dummyDemoTranslations)) {
-            $messages = Yii::t('kvgrid', 'Add Book') .
+            /** @noinspection PhpUnusedLocalVariableInspection */
+            $dummyMessages = Yii::t('kvgrid', 'Add Book') .
                 Yii::t('kvgrid', 'Book Listing') .
                 Yii::t('kvgrid', 'Download Selected') .
                 Yii::t('kvgrid', 'Library') .

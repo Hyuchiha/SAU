@@ -2,9 +2,181 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd216b1-06d7-49d9-9992-34d3be67ddfd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/ReportController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/ReportForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/report/index.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/cz/kvgrid.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messages/es-mx/app.php" afterPath="$PROJECT_DIR$/messages/es-mx/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/request/formadvancedoptions.php" afterPath="$PROJECT_DIR$/views/request/formadvancedoptions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Request.php" afterPath="$PROJECT_DIR$/models/Request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/.gitattributes" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/.gitattributes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/.gitignore" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/README.md" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/composer.json" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/Bootstrap.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/Bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/BulkButtonWidget.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/BulkButtonWidget.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/CrudAsset.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/CrudAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ModalRemote.js" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ModalRemote.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ModalRemote.min.js" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ModalRemote.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.css" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.js" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.min.js" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/assets/ajaxcrud.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/Generator.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/Generator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/controller.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/search.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/_columns.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/_columns.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/_form.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/create.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/create.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/index.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/update.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/update.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/view.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/default/views/view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/form.php" afterPath="$PROJECT_DIR$/vendor/johnitvn/yii2-ajaxcrud/src/generators/form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/CHANGE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/CHANGE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/Editable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/Editable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/EditableAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/EditableAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/EditablePjaxAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/EditablePjaxAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/LICENSE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/README.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/css/editable.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/css/editable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/css/editable.min.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/css/editable.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable-pjax.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable-pjax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable-pjax.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable-pjax.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/assets/js/editable.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/composer.json" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/config.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/da/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/da/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/de/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/de/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/en/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/en/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/es/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/es/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/fr/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/fr/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/hu/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/hu/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/it/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/it/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/lt/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/lt/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/pl/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/pl/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/pt-BR/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/pt-BR/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/ru/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/ru/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/vi/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/vi/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/zh-CN/kveditable.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-editable/messages/zh-CN/kveditable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ActionColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ActionColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/BooleanColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/BooleanColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CHANGE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CHANGE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CheckboxColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CheckboxColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CheckboxColumnAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/CheckboxColumnAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ColumnTrait.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ColumnTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/DataColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/DataColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/EditableColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/EditableColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ExpandRowColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ExpandRowColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ExpandRowColumnAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/ExpandRowColumnAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/FormulaColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/FormulaColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridExportAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridExportAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridFloatHeadAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridFloatHeadAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridResizeColumnsAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridResizeColumnsAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridResizeStoreAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridResizeStoreAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridView.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridView.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridViewAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/GridViewAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/LICENSE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/Module.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/Module.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/README.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/RadioColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/RadioColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/RadioColumnAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/RadioColumnAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/SerialColumn.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/SerialColumn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/jquery.resizableColumns.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/jquery.resizableColumns.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid-expand.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid-expand.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid-expand.min.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid-expand.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid.min.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/css/kv-grid.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.floatThead.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.floatThead.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.floatThead.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.floatThead.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.resizableColumns.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.resizableColumns.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.resizableColumns.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/jquery.resizableColumns.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-checkbox.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-checkbox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-checkbox.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-checkbox.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-expand.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-expand.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-expand.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-expand.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-export.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-export.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-export.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-export.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-radio.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-radio.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-radio.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/kv-grid-radio.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/store.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/store.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/store.min.js" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/assets/js/store.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/composer.json" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/controllers/ExportController.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/controllers/ExportController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/config.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/da/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/da/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/de/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/de/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/el-GR/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/el-GR/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/en/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/en/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/es/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/es/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/fa-IR/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/fa-IR/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/fr/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/fr/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/hu/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/hu/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/id/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/id/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/it/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/it/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/lt/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/lt/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/nl/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/nl/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/pl/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/pl/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/pt/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/pt/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/ru/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/ru/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/vi/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/vi/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/zh/kvgrid.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/messages/zh/kvgrid.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/CHANGE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/CHANGE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/Enum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/Enum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/Html.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/Html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/da/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/da/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/de/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/de/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/en/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/en/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/es/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/es/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/fr/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/fr/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/hu/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/hu/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/it/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/it/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/nl/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/nl/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/pl/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/pl/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/pt/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/pt/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/ru/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/ru/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/vi/kvenum.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/messages/vi/kvenum.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/AnimateAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/AnimateAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/AssetBundle.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/AssetBundle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/CHANGE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/CHANGE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Config.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Html5Input.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Html5Input.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Html5InputAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Html5InputAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/InputWidget.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/InputWidget.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/LICENSE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Module.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Module.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/PluginAssetBundle.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/PluginAssetBundle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/README.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/TranslationTrait.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/TranslationTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Widget.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/Widget.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/WidgetAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/WidgetAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/WidgetTrait.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/WidgetTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/html5input.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/html5input.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/html5input.min.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/html5input.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/kv-widgets.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/kv-widgets.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/kv-widgets.min.css" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/assets/css/kv-widgets.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/composer.json" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/CHANGE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/CHANGE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/LICENSE.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/PopoverX.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/PopoverX.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/PopoverXAsset.php" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/PopoverXAsset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/README.md" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/composer.json" afterPath="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/CHANGELOG.md" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/README.md" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/composer.json" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/examples/views/multiple-input.php" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/examples/views/multiple-input.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/MultipleInput.php" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/MultipleInput.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/TabularInput.php" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/TabularInput.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/components/BaseRenderer.php" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/components/BaseRenderer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/renderers/TableRenderer.php" afterPath="$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/src/renderers/TableRenderer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/yiisoft/extensions.php" afterPath="$PROJECT_DIR$/vendor/yiisoft/extensions.php" />
     </list>
     <ignored path="SAU.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,38 +197,7 @@
     <favorites_list name="SAU" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/request/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formadvancedoptions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/request/formadvancedoptions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1509433">
-              <caret line="127" column="117" selection-start-line="127" selection-start-column="117" selection-end-line="127" selection-end-column="117" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48114902">
-              <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -80,17 +221,22 @@
         <option value="$PROJECT_DIR$/views/areas/index.php" />
         <option value="$PROJECT_DIR$/views/area-personal/_form.php" />
         <option value="$PROJECT_DIR$/views/layouts/main.php" />
-        <option value="$PROJECT_DIR$/models/Request.php" />
         <option value="$PROJECT_DIR$/views/site/login.php" />
         <option value="$PROJECT_DIR$/views/request/index.php" />
         <option value="$PROJECT_DIR$/views/request/create.php" />
-        <option value="$PROJECT_DIR$/views/request/_form.php" />
         <option value="$PROJECT_DIR$/views/categories/_form.php" />
         <option value="$PROJECT_DIR$/controllers/CategoriesController.php" />
         <option value="$PROJECT_DIR$/models/AreaPersonal.php" />
         <option value="$PROJECT_DIR$/rbac/AssignRequest.php" />
         <option value="$PROJECT_DIR$/views/request/formadvancedoptions.php" />
         <option value="$PROJECT_DIR$/messages/es-mx/app.php" />
+        <option value="$PROJECT_DIR$/models/Request.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/views/request/_form.php" />
+        <option value="$PROJECT_DIR$/models/LoginForm.php" />
+        <option value="$PROJECT_DIR$/models/ReportForm.php" />
+        <option value="$PROJECT_DIR$/views/report/index.php" />
+        <option value="$PROJECT_DIR$/controllers/ReportController.php" />
       </list>
     </option>
   </component>
@@ -98,6 +244,9 @@
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -152,102 +301,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="request" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="area-personal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="messages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="es-mx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -314,18 +377,27 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17549168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18381241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -356,53 +428,18 @@
     <MESSAGE value="Arreglados problemas con la traduccion de algunas vistas" />
     <MESSAGE value="Agregado prompt" />
     <MESSAGE value="Traducciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Traducciones" />
+    <MESSAGE value="Creado exportado de CSV falta validacion de fechas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creado exportado de CSV falta validacion de fechas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/layouts/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/sintret/yii2-chat-adminlte/ChatRoom.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#174#182#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/sintret/yii2-chat-adminlte/ChatRoom.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54480284">
-          <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
-          <folding>
-            <element signature="e#174#182#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/UsersRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.37701976">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Categories.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3518851">
-          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -425,21 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Areas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.576923">
-          <caret line="90" column="60" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/AreasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.807693">
-          <caret line="105" column="20" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/areas/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45698926">
@@ -454,50 +476,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/AreaPersonalController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5788531">
-          <caret line="172" column="50" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layouts/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.518851">
           <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/area-personal/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2172352">
-          <caret line="26" column="62" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Request.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7360862">
-          <caret line="98" column="66" selection-start-line="98" selection-start-column="66" selection-end-line="98" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/request/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24416517">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/site/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.192308">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -505,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.82405746">
           <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -513,33 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/request/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24416517">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/request/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3846154">
-          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/categories/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26750448">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-          <folding>
-            <marker date="1449766624612" expanded="true" signature="1137:1198" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -547,15 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42010772">
           <caret line="39" column="49" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.115385">
-          <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -563,7 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="164" column="56" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -571,27 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
           <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="e#27#45#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2727273">
-          <caret line="325" column="24" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.509091">
-          <caret line="141" column="81" selection-start-line="141" selection-start-column="81" selection-end-line="141" selection-end-column="81" />
-          <folding>
-            <marker date="1449768088317" expanded="true" signature="4514:5057" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,9 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.730769">
           <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-          <folding>
-            <element signature="e#30#57#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -609,7 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47755834">
           <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2621185">
           <caret line="32" column="38" selection-start-line="31" selection-start-column="16" selection-end-line="32" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,39 +543,296 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9389587">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5035842">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/CategoriesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.9243698">
+          <caret line="141" column="81" selection-start-line="141" selection-start-column="81" selection-end-line="141" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/area-personal/_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/AreaPersonalController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-51.692307">
+          <caret line="172" column="50" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/area-personal/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/site/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/AreasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4397759">
+          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/advanced-options.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69187677">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26330534">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="e#7#28#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.4615383">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Areas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1923075">
+          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/AreasRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85714287">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/_search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/AreasSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/sintret/yii2-chat-adminlte/ChatJs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9039548">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/sintret/yii2-chat-adminlte/assets/js/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048022598">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/request/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="57" />
+        <state vertical-scroll-proportion="1.6863799">
+          <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/request/advanced-options.php">
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/web/Request.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.4390681">
+          <caret line="449" column="28" selection-start-line="449" selection-start-column="28" selection-end-line="449" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/request/formadvancedoptions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1509433">
-          <caret line="127" column="117" selection-start-line="127" selection-start-column="117" selection-end-line="127" selection-end-column="117" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messages/es-mx/app.php">
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap/ActiveForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48114902">
-          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        <state vertical-scroll-proportion="-15.269231">
+          <caret line="104" column="30" selection-start-line="104" selection-start-column="30" selection-end-line="104" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/request/_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9390681">
+          <caret line="93" column="43" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/RequestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-53.307693">
+          <caret line="239" column="9" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="66" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/AttachedFilesSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10215054">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/LoginForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9390681">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#30#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/report/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.576923">
+          <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+          <folding>
+            <element signature="e#7#36#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/ReportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38135594">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding>
+            <element signature="e#35#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65254235">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+          <folding>
+            <element signature="e#30#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/ReportForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5762712">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/categories/_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24011299">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/unclead/yii2-multiple-input/examples/views/multiple-input.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3557423">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <marker date="1454696854562" expanded="true" signature="4204:4279" placeholder="{...}" />
+            <marker date="1454696854562" expanded="true" signature="4312:4381" placeholder="{...}" />
+            <marker date="1454696854562" expanded="true" signature="4413:4481" placeholder="{...}" />
+            <marker date="1454696854562" expanded="true" signature="4522:4692" placeholder="{...}" />
+            <marker date="1454696854562" expanded="true" signature="4725:4796" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

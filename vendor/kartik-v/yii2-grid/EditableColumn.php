@@ -3,8 +3,8 @@
 /**
  * @package   yii2-grid
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   3.0.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @version   3.1.0
  */
 
 namespace kartik\grid;
@@ -14,11 +14,12 @@ use Closure;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use kartik\editable\Editable;
+use kartik\base\Config;
 
 /**
- * The EditableColumn converts the data to editable using
- * the Editable widget [[\kartik\editable\Editable]]
+ * The EditableColumn converts the data to editable using the Editable widget [[\kartik\editable\Editable]]
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -43,10 +44,7 @@ class EditableColumn extends DataColumn
     public $refreshGrid = false;
 
     /**
-     * @var boolean|Closure whether to prevent rendering the editable behavior
-     * and display a readonly data. You can also set this up as an anonymous function
-     * of the form `function($model, $key, $index, $widget)` that will return a boolean
-     * value, where:
+     * @var boolean|Closure whether to prevent rendering the editable behavior and display a readonly data. You can also set this up as an anonymous function of the form `function($model, $key, $index, $widget)` that will return a boolean value, where:
      * - $model mixed is the data model
      * - $key mixed is the key associated with the data model
      * - $index integer is the zero-based index of the data model among the models array
@@ -54,7 +52,7 @@ class EditableColumn extends DataColumn
      * - $widget EditableColumn is the editable column widget instance
      */
     public $readonly = false;
-    
+
     /**
      * @var array the computed editable options
      */
@@ -64,7 +62,7 @@ class EditableColumn extends DataColumn
      * @var string the css class to be appended for the editable inputs in this column
      */
     protected $_css;
-    
+
     /**
      * @inheritdoc
      * @throws InvalidConfigException
@@ -72,8 +70,11 @@ class EditableColumn extends DataColumn
     public function init()
     {
         parent::init();
-        \kartik\base\Config::checkDependency('editable\Editable', 'yii2-editable', 'for GridView EditableColumn');
-        $this->_css = 'kv-edcol-' . hash('crc32', uniqid(rand(1,100), true)); 
+        Config::checkDependency('editable\Editable', 'yii2-editable', 'for GridView EditableColumn');
+        $this->_css = 'kv-edcol-' . hash('crc32', uniqid(rand(1, 100), true));
+        if ($this->refreshGrid) {
+            EditableColumnAsset::register($this->_view);
+        }
     }
 
     /**
@@ -109,52 +110,38 @@ class EditableColumn extends DataColumn
         if ($this->grid->pjax && empty($this->_editableOptions['pjaxContainerId'])) {
             $this->_editableOptions['pjaxContainerId'] = $this->grid->pjaxSettings['options']['id'];
         }
-        $strKey = $key;
-        if (empty($key)) {
+        if (!isset($key)) {
             throw new InvalidConfigException("Invalid or no primary key found for the grid data.");
-        } elseif (!is_string($key) && !is_numeric($key)) {
-            $strKey = serialize($key);
         }
+        $strKey = !is_string($key) && !is_numeric($key) ? (is_array($key) ? Json::encode($key) : (string) $key) : $key;
         if ($this->attribute !== null) {
             $this->_editableOptions['model'] = $model;
             $this->_editableOptions['attribute'] = "[{$index}]{$this->attribute}";
-            $type = ArrayHelper::getValue($this->_editableOptions, 'inputType', Editable::INPUT_TEXT);
         } elseif (empty($this->_editableOptions['name']) && empty($this->_editableOptions['model']) ||
             !empty($this->_editableOptions['model']) && empty($this->_editableOptions['attribute'])
         ) {
             throw new InvalidConfigException(
-                "You must setup the 'attribute' for your EditableColumn OR set one of 'name' OR 'model' & 'attribute' in 'editableOptions' (Exception at index: '{$index}', key: '{$strKey}')."
+                "You must setup the 'attribute' for your EditableColumn OR set one of 'name' OR 'model' & 'attribute'" .
+                " in 'editableOptions' (Exception at index: '{$index}', key: '{$strKey}')."
             );
         }
         $val = $this->getDataCellValue($model, $key, $index);
         if (!isset($this->_editableOptions['displayValue']) && $val !== null && $val !== '') {
             $this->_editableOptions['displayValue'] = parent::renderDataCellContent($model, $key, $index);
         }
-        $params = Html::hiddenInput('editableIndex', $index) . Html::hiddenInput('editableKey', $strKey);
+        $params = Html::hiddenInput('editableIndex', $index) . Html::hiddenInput('editableKey', $strKey) .
+            Html::hiddenInput('editableAttribute', $this->attribute);
         if (empty($this->_editableOptions['beforeInput'])) {
             $this->_editableOptions['beforeInput'] = $params;
         } else {
             $output = $this->_editableOptions['beforeInput'];
-            $this->_editableOptions['beforeInput'] = function($form, $widget) use ($output, $params) {
-                if ($output instanceof Closure) {
-                    return $params . call_user_func($output, $form, $widget);
-                } else {
-                    return $params . $output;
-                }
+            $this->_editableOptions['beforeInput'] = function ($form, $widget) use ($output, $params) {
+                return $params . ($output instanceof Closure ? call_user_func($output, $form, $widget) : $output);
             };
         }
         if ($this->refreshGrid) {
-            $view = $this->grid->getView();
-            $grid = 'jQuery("#' . $this->grid->options['id'] . '")';
-            $script = <<< JS
-{$grid}.find('.{$this->_css}').each(function() {
-    var \$el = $(this);
-    \$el.on('editableSuccess', function(){
-        {$grid}.yiiGridView("applyFilter");
-    });
-});
-JS;
-            $view->registerJs($script);
+            $id = $this->grid->options['id'];
+            $this->_view->registerJs("kvRefreshEC('{$id}','{$this->_css}');");
         }
         return Editable::widget($this->_editableOptions);
     }

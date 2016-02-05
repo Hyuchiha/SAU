@@ -3,13 +3,13 @@
 /**
  * @package   yii2-grid
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   3.0.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @version   3.1.0
  */
 
 namespace kartik\grid;
 
-use yii\web\View;
+use kartik\base\AssetBundle;
 
 /**
  * Asset bundle for GridView Widget
@@ -17,7 +17,7 @@ use yii\web\View;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class GridViewAsset extends \kartik\base\AssetBundle
+class GridViewAsset extends AssetBundle
 {
     /**
      * @inheritdoc

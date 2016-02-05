@@ -148,7 +148,6 @@ class Request extends \yii\db\ActiveRecord
         return $this->hasOne(Areas::className(), ['id' => 'area_id']);
     }
 
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -371,5 +370,19 @@ class Request extends \yii\db\ActiveRecord
 		}
 		return true;
 	}
-	
+
+    /**
+     * @return String
+     */
+    public function getStringOfCategories(){
+        $categoriesString  = null;
+        foreach($this->categories as $category){
+            if($categoriesString == null){
+                $categoriesString = $category->name;
+            }else{
+                $categoriesString .= ",".$category->name;
+            }
+        }
+        return $categoriesString;
+    }
 }
