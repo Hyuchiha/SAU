@@ -10,6 +10,27 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Reports');
 $this->params['breadcrumbs'][] = Yii::t('app', 'Reports');
 ?>
+
+<?php $this->registerJs('
+    $(\'#w0\').on(\'submit\', function(e) {
+        var dateInit = $(\'#reportform-dateinit\').val();
+        var dateFinish = $(\'#reportform-datefinish\').val();
+
+        if (!/Invalid|NaN/.test(new Date(dateInit))) {
+            if(new Date(dateFinish) > new Date(dateInit)){
+                return true;
+            }else{
+                alert("Porfavor ingrese una bien la fecha");
+                return false;
+            }
+        }else{
+            alert(\'Date not valid\');
+            return false;
+        }
+    });
+'); ?>
+
+
 <div class="reports-form">
 
     <h1><?= Html::encode($this->title) ?></h1>
