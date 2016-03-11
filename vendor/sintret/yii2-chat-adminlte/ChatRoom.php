@@ -134,7 +134,8 @@ class ChatRoom extends Widget {
                             array_push($user_mails, $userLogin->email);
                         }
                     }
-                    array_push($user_mails, $request->user->email);
+                    if(!$request->user == NULL)
+                        array_push($user_mails, $request->user->email);
                 }
 
                 $name = "Sistema de Atención a Usuarios";

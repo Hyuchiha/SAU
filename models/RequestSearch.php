@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Request;
+use app\models\AreaPersonal;
 
 /**
  * RequestSearch represents the model behind the search form about `app\models\Request`.
@@ -69,33 +70,30 @@ class RequestSearch extends Request
             'request.creation_date' => $this->creation_date,
             'request.completion_date' => $this->completion_date,
         ]);
-        
+
         if(!$this->status == "Rechazado" || !$this->status == "Finalizado"){
 			$query->orFilterWhere(['like', 'request.status', "Nuevo"])
 			->orFilterWhere(['like', 'request.status', "En proceso"])
 			->orFilterWhere(['like', 'request.status', "Asignado"])
 			->orFilterWhere(['like', 'request.status', "Verificado"]);
 		}
-        
-        if(!Yii::$app->user->can('administrator') || !Yii::$app->user->can('executive')){
-            //Quien creó la solicitud
-            $query->andFilterWhere([
-                'request.user_id' => $_SESSION['__id']
-            ]);
-            if(Yii::$app->user->can('responsibleArea')){
-                //Quien tiene asignada la solicitud y pertenece a cierta área
-                $query->orFilterWhere(['users_request.user_id' => $_SESSION['__id']])
-                    ->orFilterWhere(['request.area_id' => $this->area_id,]);
-            }else{
-                if(Yii::$app->user->can('employeeArea')){
-                    //Quien tiene asignada la solicitud
-                    $query->orFilterWhere([
-                        'users_request.user_id' => $_SESSION['__id'],
-                    ]);
-                }
-            }
+
+        if(Yii::$app->user->can('employeeArea')){
+            echo "Soy empleado de area";
+            //Quien tiene asignada la solicitud
+            $query->andFilterWhere(['request.user_id' => Yii::$app->user->id])
+                ->orFilterWhere(['users_request.user_id' => Yii::$app->user->id]);
         }
-        
+
+        $permission = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission;
+        if(Yii::$app->user->can('responsibleArea') || $permission == 1){
+            echo "Soy responsable de area o tengo permisos";
+            //Quien tiene asignada la solicitud y pertenece a cierta área
+            $query->andFilterWhere(['request.user_id' => Yii::$app->user->id])
+                ->orFilterWhere(['users_request.user_id' => Yii::$app->user->id])
+                ->orFilterWhere(['request.area_id' => $this->area_id,]);
+        }
+
         $query->andFilterWhere(['like', 'request.name', $this->name])
             ->andFilterWhere(['like', 'request.email', $this->email])
             ->andFilterWhere(['like', 'request.subject', $this->subject])
@@ -103,7 +101,7 @@ class RequestSearch extends Request
             ->andFilterWhere(['like', 'request.status', $this->status])
             ->andFilterWhere(['like', 'areas.name', $this->area_name])
 			->andFilterWhere(['like', 'request.id', $this->id]);
-        
+
         return $dataProvider;
     }
 }

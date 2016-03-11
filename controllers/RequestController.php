@@ -48,9 +48,9 @@ class RequestController extends Controller
                         'actions' => ['token'],
                         'roles' => ['?', '@'],
                     ],
-                    
-                       
-                   
+
+
+
                     [
                         'allow' => true,
                         'actions' => ['index'],
@@ -102,27 +102,27 @@ class RequestController extends Controller
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         }else{
             $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
-            
-            if(Yii::$app->user->can('responsibleArea')){
+            $permission = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission;
+            if(Yii::$app->user->can('responsibleArea') || $permission == 1){
                 //Ver solo las solicitudes del área correspondiente, las asignadas al usuario y las creadas por este
                 $areaID = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->area_id;
                 $queryParams["RequestSearch"]["area_id"] = $areaID;
                 $searchModel = new RequestSearch();
                 $dataProvider = $searchModel->search($queryParams);
             }else{
+                $queryParams["RequestSearch"]["user_id"] = Yii::$app->user->id;
                 $searchModel = new RequestSearch();
-                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                $dataProvider = $searchModel->search($queryParams);
             }
         }
-        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
-        
-    
+
+
 
     /**
      * Displays a single Request model.
@@ -131,7 +131,7 @@ class RequestController extends Controller
      */
     public function actionView($id, $token='')
     {
-        
+
         $model = $this->findModel($id);
         if(Yii::$app->user->isGuest && !empty($model->token) && $token == $model->token )
         {
@@ -144,9 +144,9 @@ class RequestController extends Controller
                 'model' => $this->findModel($id),
             ]);
             }else{
-                throw new NotFoundHttpException('The requested page does not exist.');    
+                throw new NotFoundHttpException('The requested page does not exist.');
             }
-            
+
         }
 
     }
@@ -154,8 +154,8 @@ class RequestController extends Controller
 
     public function actionToken($token){
         $request = Request::findOne(['token'=>$token]);
-        
-        
+
+
         return $this->redirect(['view', 'id' => $request->id]);
 
     }
@@ -185,7 +185,7 @@ class RequestController extends Controller
                             $tokenEmail = urlencode($request->token);
                             $idEmail = urlencode($request->id);
                             $subject = "Token Solicitud";
-                            $body = "<h1>Haga click en el siguiente enlace para poder dar seguimiento </h1>";                            
+                            $body = "<h1>Haga click en el siguiente enlace para poder dar seguimiento </h1>";
                             $body .= $tokenEmail;
                             $body .= "<a href='http://localhost/SAU/web/request/view?id=".$idEmail."&token=".$tokenEmail."'>Ver Solicitud</a>";
 
@@ -199,7 +199,7 @@ class RequestController extends Controller
                         }
                     if ($valid && !empty($request->requestFile)) {
                         $request->upload();
-                        
+
                         //localhost/SAU/web/request/view?id=15&&token=GUiSpF_XXVKnyNuof3-15bAMN7T8oBVj
 
                     }
@@ -220,10 +220,10 @@ class RequestController extends Controller
                                 Yii::$app->session->setFlash('requestFormSubmitted');
                                 return $this->refresh();
                             }else{
-                                return $this->redirect(['view', 'id' => $request->id]);    
+                                return $this->redirect(['view', 'id' => $request->id]);
                             }
-                            
-							
+
+
 
                         } else {
                             return $this->render('create', ['request' => $request,]);
@@ -303,7 +303,7 @@ class RequestController extends Controller
                     return $this->render('advanced-options', ['request' => $request,]);
                 }
             }
-			
+
 			if (!empty($request->listRemoveUsers)) {
                 if ($request->removeUsers()) {
 
