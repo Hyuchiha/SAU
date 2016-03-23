@@ -11,6 +11,15 @@ $this->title = Yii::t('app', $model->subject);
 $this->params['breadcrumbs'][] = ['label' => 'Requests', 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 ?>
+
+<?php if (Yii::$app->session->hasFlash('requestFormSubmitted')): ?>
+
+    <div class="alert alert-success">
+        Su solicitud fue registrada.
+    </div>
+
+<?php endif; ?> 
+
 <div class="request-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -18,8 +27,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
         
 
     <p>
+    	<?php if(!Yii::$app->user->isGuest): ?>
+
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        
+
+        <?php endif ?>
+
 		<?php if(Yii::$app->user->can('executive') || Yii::$app->user->can('administrator') || Yii::$app->user->can('responsibleArea')): ?>
 		
 		<?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [

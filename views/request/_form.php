@@ -86,7 +86,7 @@ $this->registerJs('
 	
     <?= $form->field($request, 'area_id')->dropDownList(
 		ArrayHelper::map(
-			Areas::find()->all(),
+			Areas::find()->orderBy('name')->all(),
 			'id',
 			'name'
 		),
@@ -100,7 +100,7 @@ $this->registerJs('
 		
 	<?= $form->field($request, 'category_id')->dropDownList(
 		ArrayHelper::map(
-			Categories::find()->all(),
+			Categories::find()->orderBy('name')->all(),
 			'id',
 			'name'
 		), array('prompt'=> Yii::t('app', 'Optional: Please select a category'),)) ?>

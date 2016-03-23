@@ -216,8 +216,8 @@ class RequestController extends Controller
                     if ($areasRequest->save()) {
 
                         if ($valid) {
+                            Yii::$app->session->setFlash('requestFormSubmitted');
                             if(Yii::$app->user->isGuest){
-                                Yii::$app->session->setFlash('requestFormSubmitted');
                                 return $this->refresh();
                             }else{
                                 return $this->redirect(['view', 'id' => $request->id]);

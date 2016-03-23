@@ -49,7 +49,17 @@ AppAsset::register($this);
                 [
                     'label' => Yii::t('app', 'Request'),
                     'url' => ['/request/create']
-                ],
+                ], 
+            [
+                'label' => Yii::t('app', 'Requests'),
+                'url' => ['/request/index'],
+                'visible' => Yii::$app->user->can('responsibleArea')
+            ],
+            [
+            'label' => Yii::t('app', 'Users'),
+            'url' => ['/user/index'],
+            'visible' => Yii::$app->user->can('administrator')
+            ],
             [
                 'label' => Yii::t('app', 'Categories'),
                 'url' => ['/categories/index'],
