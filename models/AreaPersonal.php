@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\rbac\AssignRequest;
 use Yii;
 
 /**

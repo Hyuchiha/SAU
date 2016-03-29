@@ -20,9 +20,14 @@ use app\models\Areas;
             Categories::find()->all(),
             'id',
             'name'
-        ), array('prompt'=>''))?>
+        ), array('prompt'=>Yii::t('app', 'Please select a category')))?>
 
-    <?= $form->field($model, 'id_area')->dropDownList(ArrayHelper::map(Areas::find()->all(),'id','name')) ?>
+    <?= $form->field($model, 'id_area')->dropDownList(
+        ArrayHelper::map(
+            Areas::find()->all(),
+            'id',
+            'name'
+        ), array('prompt' => Yii::t('app', 'Please select an area'))) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

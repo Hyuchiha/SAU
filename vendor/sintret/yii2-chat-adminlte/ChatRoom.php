@@ -9,6 +9,8 @@ use Yii;
 use yii\base\Widget;
 use sintret\chat\models\Chat;
 use app\models\User;
+use app\models\Request;
+use yii\helpers\Html;
 /**
  * @author Andy Fitria <sintret@gmail.com>
  */
@@ -108,6 +110,53 @@ class ChatRoom extends Widget {
             
             
             if ($model->save()) {
+                
+                $request = Request::findOne($idRequest);
+                $user_mails = array();
+                if(!Yii::$app->user->isGuest){
+                    array_push($user_mails, $request->email);
+                    //Identificar y saltar email de usuario logueado
+                    $userLogin = User::findIdUserName(Yii::$app->user->id);
+                    $email = $userLogin->email;
+                    if(!empty ($request->users)){
+                        foreach($request->users as $userLogin){
+                            if (strcmp($userLogin->email, $email) !== 0) {
+                                array_push($user_mails, $userLogin->email);
+                            }
+                        }
+                    }
+                    if (strcmp($request->user->email, $email) !== 0) {
+                        array_push($user_mails, $request->user->email);
+                    }
+                } else {
+                    if(!empty ($request->users)){
+                        foreach($request->users as $userLogin){
+                            array_push($user_mails, $userLogin->email);
+                        }
+                    }
+                    if(!$request->user == NULL)
+                        array_push($user_mails, $request->user->email);
+                }
+
+                $name = "Sistema de Atención a Usuarios";
+                $subject = "Nuevo mensaje en la solicitud: ".$request->subject;
+                $body = "Tiene un nuevo mensaje en una solicitud";
+
+                /*
+                Mensaje en italica, 
+                Html::a($subject, ['contr/acc','id'=>$id])
+                */
+                foreach($user_mails as $email){
+                    $content = "<p>Tiene un nuevo mensaje en la solicitud: " . Html::a($request->subject, ['Request/view','id'=>$request->id]) . "</p>";
+                    $content .= "<p><i>". $message ."</i><p>";
+                    Yii::$app->mailer->compose("@app/mail/layouts/html", ["content" => $content])
+                        ->setTo($email)
+                        ->setFrom([$email => $name])
+                        ->setSubject($subject)
+                        ->setTextBody($body)
+                        ->send();
+                }
+                
                 echo $model->data($idRequest);
             } else {
                 print_r($model->getErrors());

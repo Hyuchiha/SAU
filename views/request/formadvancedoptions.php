@@ -31,15 +31,15 @@ use yii\jui\DatePicker;
 			'Rechazado'=>Yii::t('app', 'Denaied'),		//Rechazado
 			'Finalizado'=>Yii::t('app', 'Completed'),	//Finalizado
 		]
-	) ?>
+	)->label(Yii::t('app', 'status')) ?>
 	
 	<?= $form->field($request, 'scheduled_start_date')->widget(\yii\jui\DatePicker::classname(), [
 		'dateFormat' => 'yyyy-MM-dd',
-	]) ?>
+	])->label(Yii::t('app', 'Scheduled start date')) ?>
 	
 	<?= $form->field($request, 'scheduled_end_date')->widget(\yii\jui\DatePicker::classname(), [
 		'dateFormat' => 'yyyy-MM-dd',
-	]) ?>
+	])->label(Yii::t('app', 'Scheduled end date')) ?>
 
 	<?= $form->field($request, 'listAreas')->widget(MultipleInput::className(), [
         'limit' => 100,
@@ -54,7 +54,7 @@ use yii\jui\DatePicker;
                   'name'
 				),
           ]
-        ]])->label(Yii::t('app', 'Assign areas')) 
+        ]])->label(Yii::t('app', 'Assign areas'))
 	?>
 	
 	<?= $form->field($request, 'listCategories')->widget(MultipleInput::className(), [
@@ -99,7 +99,7 @@ use yii\jui\DatePicker;
 	
 	<?php if(!empty($areasRequests)) :?>
 	
-	<?= $form->field($request, 'listRemoveAreas')->checkboxList($areasRequests) ?>
+	<?= $form->field($request, 'listRemoveAreas')->checkboxList($areasRequests)->label(Yii::t('app', 'Remove areas')) ?>
 	
 	<?php endif ?>
 	
@@ -112,7 +112,7 @@ use yii\jui\DatePicker;
 	
 	<?php if(!empty($categoriesRequests)) :?>
 	
-	<?= $form->field($request, 'listRemoveCategories')->checkboxList($categoriesRequests) ?>
+	<?= $form->field($request, 'listRemoveCategories')->checkboxList($categoriesRequests)->label(Yii::t('app', 'Remove categories')) ?>
 		
 	<?php endif ?>
 	
@@ -125,7 +125,7 @@ use yii\jui\DatePicker;
 	
 	<?php if(!empty($usersRequests)) :?>
 	
-	<?= $form->field($request, 'listRemoveUsers')->checkboxList($usersRequests) ?>
+	<?= $form->field($request, 'listRemoveUsers')->checkboxList($usersRequests)->label(Yii::t('app', 'Remove personal')) ?>
 		
 	<?php endif ?>
 	

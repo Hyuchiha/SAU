@@ -141,6 +141,7 @@ class CategoriesController extends Controller
 	public function actionLists($id){
         $rows = \app\models\Categories::find()->where(['id_area' => $id])->all();
         if(count($rows)>0){
+            echo "<option value='0'>Opcional: Selecciona una opcion</option>";
             foreach($rows as $row){
                 echo "<option value='$row->id'>$row->name</option>";
 			}

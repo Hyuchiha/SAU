@@ -41,15 +41,25 @@ AppAsset::register($this);
                 'url' => ['/site/index']
             ],*/
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            isset(Yii::$app->user) && Yii::$app->user->can('executive') ?
+            !Yii::$app->user->isGuest && Yii::$app->user->can('executive') ?
                 [
                     'label' => Yii::t('app', 'Request'),
-                    'url' => ['/request/create']
+                    'url' => ['/request/index']
                 ]:
                 [
                     'label' => Yii::t('app', 'Request'),
                     'url' => ['/request/create']
-                ],
+                ], 
+            [
+                'label' => Yii::t('app', 'Requests'),
+                'url' => ['/request/index'],
+                'visible' => Yii::$app->user->can('responsibleArea')
+            ],
+            [
+            'label' => Yii::t('app', 'Users'),
+            'url' => ['/user/index'],
+            'visible' => Yii::$app->user->can('administrator')
+            ],
             [
                 'label' => Yii::t('app', 'Categories'),
                 'url' => ['/categories/index'],

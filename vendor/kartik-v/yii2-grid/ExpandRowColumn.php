@@ -3,23 +3,22 @@
 /**
  * @package   yii2-grid
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version   3.0.4
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @version   3.1.0
  */
 
 namespace kartik\grid;
 
 use Yii;
+use Closure;
 use yii\base\InvalidConfigException;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 use yii\web\View;
 
 /**
- * An ExpandRowColumn can be used to expand a row and add content in a new
- * row below it either directly or via ajax.
+ * An ExpandRowColumn can be used to expand a row and add content in a new row below it either directly or via ajax.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -45,25 +44,25 @@ class ExpandRowColumn extends DataColumn
     public $value = GridView::ROW_NONE;
 
     /**
-     * @var boolean whether to toggle the expansion/collapse by clicking on the table row. To disable row 
-     * click for specific elements within the row you can add the CSS class `kv-disable-click` to tags/elements  
-     * to disable the toggle functionality.
+     * @var boolean whether to toggle the expansion/collapse by clicking on the table row. To disable row click for
+     *     specific elements within the row you can add the CSS class `kv-disable-click` to tags/elements to disable
+     *     the toggle functionality.
      */
     public $enableRowClick = false;
 
     /**
      * @var array list of tags in the row on which row click will be disabled.
      */
-    public $rowClickExcludedTags = ['a', 'button', 'input'];    
+    public $rowClickExcludedTags = ['a', 'button', 'input'];
 
     /**
      * @var array additional data that will be passed to the ajax load function as key value pairs
      */
     public $extraData = [];
-    
+
     /**
-     * @var string icon for the expand indicator. If this is not set, it will derive values automatically
-     * using the following rules:
+     * @var string icon for the expand indicator. If this is not set, it will derive values automatically using the
+     *     following rules:
      * - If GridView `bootstrap` property is set to `true`, it will default to [[GridView::ICON_EXPAND]]
      *   or `<span class="glyphicon glyphicon-expand"></span>`
      * - If GridView `bootstrap` property is set to `false`, then it will default to `+`.
@@ -71,8 +70,8 @@ class ExpandRowColumn extends DataColumn
     public $expandIcon;
 
     /**
-     * @var string icon for the collapse indicator. If this is not set, it will derive values automatically
-     * using the following rules:
+     * @var string icon for the collapse indicator. If this is not set, it will derive values automatically using the
+     *     following rules:
      * - If GridView `bootstrap` property is set to `true`, it will default to [[GridView::ICON_COLLAPSE]]
      *   or `<span class="glyphicon glyphicon-collapse-down"></span>`
      * - If GridView `bootstrap` property is set to `false`, then it will default to `-`.
@@ -105,23 +104,28 @@ class ExpandRowColumn extends DataColumn
      * - GridView::ROW_EXPANDED : Will set all rows to expanded and display the `collapseIcon`
      */
     public $defaultHeaderState = GridView::ROW_COLLAPSED;
-    
+
     /**
-     * @var boolean whether to allow only one row to be expanded at a time and auto collapse other 
-     * expanded rows whenever a row is expanded. Defaults to `false`.
+     * @var boolean whether to enable caching of expanded row content while expanding the row using ajax triggered
+     *     action (applicable when `detailUrl` is set). Defaults to `true`.
+     */
+    public $enableCache = true;
+
+    /**
+     * @var boolean whether to allow only one row to be expanded at a time and auto collapse other expanded rows
+     *     whenever a row is expanded. Defaults to `false`.
      */
     public $expandOneOnly = false;
 
     /**
-     * @var boolean allow batch expansion or batch collapse of all rows by clicking
-     * the header indicator. Defaults to `true`.
+     * @var boolean allow batch expansion or batch collapse of all rows by clicking the header indicator. Defaults to
+     *     `true`.
      */
     public $allowBatchToggle = true;
 
     /**
-     * @var boolean|Closure whether the expand icon indicator is disabled. Defaults to `false`.
-     * If set to `true`, one cannot collapse or expand the sections. This can be setup as an
-     * anonymous function having the signature:
+     * @var boolean|Closure whether the expand icon indicator is disabled. Defaults to `false`. If set to `true`, one
+     *     cannot collapse or expand the sections. This can be setup as an anonymous function having the signature:
      * `function ($model, $key, $index, $column)`, where:
      * - $model mixed is the data model
      * - $key mixed is the key associated with the data model
@@ -156,14 +160,14 @@ class ExpandRowColumn extends DataColumn
     public $detailUrl;
 
     /**
-     * @var string|JsExpression the javascript callback to execute after loading the content via ajax.
-     * Only applicable when detailUrl is provided.
+     * @var string|JsExpression the javascript callback to execute after loading the content via ajax. Only applicable
+     *     when detailUrl is provided.
      */
     public $onDetailLoaded = '';
 
     /**
-     * @var array|Closure the HTML attributes for the expanded table row. This can be an array
-     * or an anonymous function of the signature:
+     * @var array|Closure the HTML attributes for the expanded table row. This can be an array or an anonymous function
+     *     of the signature:
      * `function ($model, $key, $index, $column)`, where:
      * - $model mixed is the data model
      * - $key mixed is the key associated with the data model
@@ -185,30 +189,28 @@ class ExpandRowColumn extends DataColumn
     public $detailAnimationDuration = 'slow';
 
     /**
-     * @var boolean|array whether the column is hidden in export output. If set to boolean `true`,
-     * it will hide the column for all export formats. If set as an array, it will accept the
-     * list of GridView export `formats` and hide output only for them.
+     * @var boolean|array whether the column is hidden in export output. If set to boolean `true`, it will hide the
+     *     column for all export formats. If set as an array, it will accept the list of GridView export `formats` and
+     *     hide output only for them.
      */
     public $hiddenFromExport = true;
 
     /**
-     * @var string the horizontal alignment of each column. Should be one of
-     * 'left', 'right', or 'center'. Defaults to `center`.
+     * @var string the horizontal alignment of each column. Should be one of 'left', 'right', or 'center'. Defaults to
+     *     `center`.
      */
     public $hAlign = 'center';
 
     /**
-     * @var string the width of each column (matches the CSS width property).
-     * Defaults to `50px`.
+     * @var string the width of each column (matches the CSS width property). Defaults to `50px`.
      * @see http://www.w3schools.com/cssref/pr_dim_width.asp
      */
     public $width = '50px';
 
     /**
-     * @var boolean whether to merge the header title row and the filter row
-     * This will not render the filter for the column and can be used when `filter`
-     * is set to `false`. Defaults to `false`. This is only applicable when `filterPosition`
-     * for the grid is set to FILTER_POS_BODY.
+     * @var boolean whether to merge the header title row and the filter row This will not render the filter for the
+     *     column and can be used when `filter` is set to `false`. Defaults to `false`. This is only applicable when
+     *     `filterPosition` for the grid is set to FILTER_POS_BODY.
      */
     public $mergeHeader = true;
 
@@ -270,7 +272,8 @@ class ExpandRowColumn extends DataColumn
                 'animationDuration' => $this->detailAnimationDuration,
                 'expandOneOnly' => $this->expandOneOnly,
                 'enableRowClick' => $this->enableRowClick,
-                'rowClickExcludedTags' => array_map('strtoupper',$this->rowClickExcludedTags),
+                'enableCache' => $this->enableCache,
+                'rowClickExcludedTags' => array_map('strtoupper', $this->rowClickExcludedTags),
                 'collapseAll' => false,
                 'expandAll' => false,
                 'extraData' => $this->extraData
@@ -301,6 +304,7 @@ class ExpandRowColumn extends DataColumn
         if ($type === 'collapse') {
             return $bs ? GridView::ICON_COLLAPSE : '-';
         }
+        return null;
     }
 
     /**
@@ -322,6 +326,7 @@ class ExpandRowColumn extends DataColumn
     public function getDataCellValue($model, $key, $index)
     {
         $value = parent::getDataCellValue($model, $key, $index);
+        /** @noinspection PhpUnusedLocalVariableInspection */
         $icon = '';
         if ($value === GridView::ROW_EXPANDED) {
             $type = 'collapsed';
@@ -337,15 +342,16 @@ class ExpandRowColumn extends DataColumn
         $disabled = static::parseData($this->disabled, $model, $key, $index, $this) ? ' kv-state-disabled' : '';
         if ($this->hiddenFromExport) {
             Html::addCssClass($detailOptions, 'skip-export');
-        }        
+        }
         $detailOptions['data-index'] = $index;
-        $detailOptions['data-key'] = $key;
+        $detailOptions['data-key'] = !is_string($key) && !is_numeric($key) ?
+            (is_array($key) ? Json::encode($key) : (string)$key) : $key;
         Html::addCssClass($detailOptions, 'kv-expanded-row');
         $content = Html::tag('div', $detail, $detailOptions);
         return <<< HTML
         <div class="kv-expand-row{$disabled}">
             <div class="kv-expand-icon kv-state-{$type}{$disabled}">{$icon}</div>
-            <div class="kv-expand-detail skip-export" style='display:none;'>
+            <div class="kv-expand-detail skip-export" style="display:none;">
                 {$content}
             </div>
         </div>
@@ -355,6 +361,7 @@ HTML;
     /**
      * Parses data for Closure and returns accordingly
      *
+     * @param mixed           $data the data to parse
      * @param mixed           $model is the data model
      * @param mixed           $key is the key associated with the data model
      * @param integer         $index is the zero-based index of the data model among the models array returned by
@@ -391,9 +398,8 @@ HTML;
     }
 
     /**
-     * Renders the header cell content.
-     * The default implementation simply renders [[header]].
-     * This method may be overridden to customize the rendering of the header cell.
+     * Renders the header cell content. The default implementation simply renders [[header]]. This method may be
+     * overridden to customize the rendering of the header cell.
      *
      * @return string the rendering result
      */
@@ -404,7 +410,6 @@ HTML;
         }
         $icon = $this->expandIcon;
         $css = 'kv-expand-header-icon kv-state-collapsed';
-        $view = $this->grid->getView();
         if ($this->defaultHeaderState === GridView::ROW_EXPANDED) {
             $icon = $this->collapseIcon;
             $css = 'kv-expand-header-icon kv-state-expanded';
