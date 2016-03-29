@@ -81,6 +81,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', $this->title);//$this->title;
 
     <?= DetailView::widget([
  'model' => $model,
+
         'attributes' => [
             //'id',
             //'area_id',

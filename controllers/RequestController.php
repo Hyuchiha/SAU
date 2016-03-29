@@ -47,13 +47,15 @@ class RequestController extends Controller
                         'allow' => true,
                         'actions' => ['token'],
                         'roles' => ['?', '@'],
-                    ],
-                    
-                       
-                   
+                    ],                                                              
                     [
                         'allow' => true,
                         'actions' => ['index'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['report'],
                         'roles' => ['@'],
                     ],
                     [
@@ -121,6 +123,22 @@ class RequestController extends Controller
         ]);
     }
 
+    public function actionReport(){
+        
+            //Ver todas las solicitudes
+            $searchModel = new RequestSearch();
+  
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);            
+            $datos = $searchModel->searchCount();
+            
+        
+        return $this->render('reports', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'arrayDataProvider' => $datos
+        ]);   
+    }
+
         
     
 
@@ -129,6 +147,7 @@ class RequestController extends Controller
      * @param string $id
      * @return mixed
      */
+
     public function actionView($id, $token='')
     {
         
@@ -222,8 +241,7 @@ class RequestController extends Controller
                             }else{
                                 return $this->redirect(['view', 'id' => $request->id]);    
                             }
-                            
-							
+    
 
                         } else {
                             return $this->render('create', ['request' => $request,]);

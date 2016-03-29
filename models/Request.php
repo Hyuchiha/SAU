@@ -42,6 +42,7 @@ class Request extends \yii\db\ActiveRecord
 	public $listRemoveCategories;
 	public $listRemoveAreas;
 	public $listRemoveUsers;
+	public $totales;
     
 	
     /**

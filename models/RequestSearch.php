@@ -5,7 +5,10 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\data\SqlDataProvider;
+use yii\data\ArrayDataProvider;
 use app\models\Request;
+use app\models\Areas;
 
 /**
  * RequestSearch represents the model behind the search form about `app\models\Request`.
@@ -32,6 +35,41 @@ class RequestSearch extends Request
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
+    }
+
+    public function searchCount(){
+        /*$query = Request::find()
+        ->count();        
+
+        $dataProvider = new SqlDataProvider([
+            'query' => $query,
+        ]);*/
+
+        
+
+
+        $areas = Areas::find()
+        ->count();
+
+        $arreglo = array();
+        for($i=1;$i<=$areas;$i++){
+            $query = Request::find()
+        ->where(['area_id'=>$i])
+        ->count();
+
+        $nombreArea = Areas::findOne($i);            
+
+        $object = array('area'.$i=>array('nombre'.$i => $nombreArea->name,'count'.$i => $query));
+        $arreglo = array_merge($object,$arreglo);
+        }
+        
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $arreglo,
+            
+        ]);
+        
+        return $dataProvider;   
     }
 
     /**
