@@ -56,6 +56,11 @@ AppAsset::register($this);
                 'visible' => Yii::$app->user->can('responsibleArea')
             ],
             [
+                'label' => Yii::t('app', 'Reportes'),
+                'url' => ['/report/control-report'],
+                'visible' => Yii::$app->user->can('administrator')
+            ],
+            [
             'label' => Yii::t('app', 'Users'),
             'url' => ['/user/index'],
             'visible' => Yii::$app->user->can('administrator')
