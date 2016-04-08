@@ -127,10 +127,6 @@ class ReportController extends Controller
 
     }
 
-    public function actionAreas()
-    {
-    }
-
     public function actionCategories()
     {
     }

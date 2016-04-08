@@ -18,6 +18,7 @@ use app\models\AttachedFiles;
  * @property string $description
  * @property string $creation_date
  * @property string $completion_date
+ * @property string $token
  * @property string $status
  * @property string $satisfaccion
  * @property string $level
@@ -35,7 +36,6 @@ use app\models\AttachedFiles;
  */
 class Request extends \yii\db\ActiveRecord
 {
-	public $cnt;
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
