@@ -15,6 +15,9 @@ use Yii;
  */
 class CategoryRequest extends \yii\db\ActiveRecord
 {
+    public $cnt;
+    public $categoryname;
+    public $idCategory;
     /**
      * @inheritdoc
      */

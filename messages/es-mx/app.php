@@ -81,6 +81,7 @@ return[
     'Assign personal' => 'Asignar personal',
     'Remove areas' => 'Remover areas',
     'Remove categories' => 'Remover categorias',
-    'Remove personal' => 'Remover personal'
+    'Remove personal' => 'Remover personal',
+    'Advanced options' => 'Opciones avanzadas'
 ];
 ?>
