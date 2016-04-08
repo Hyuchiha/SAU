@@ -1,8 +1,24 @@
 Yii2 multiple input change log
 ==============================
 
-1.2.10 in development
---------------------
+1.2.13 in development
+---------------------
+
+1.2.12
+------
+- Hotfix: Fixed error when array_key_exits (kongoon)
+
+1.2.11
+------
+
+- Bug #61: Fixed a rendering of remove button
+- Bug #62: Incorrect behavior is case when `min` is equal to `limit`
+- Bug #64: Radio/checkbox lists doesn't work correctly
+
+1.2.10
+------
+
+- Enh #59 Added columnClass property (unclead)
 
 1.2.9
 -----

@@ -13,11 +13,14 @@ use app\models\AttachedFiles;
  * @property string $name 
  * @property string $email
  * @property string $area_id
+ * @property string $user_id
  * @property string $subject
  * @property string $description
  * @property string $creation_date
  * @property string $completion_date
  * @property string $status
+ * @property string $satisfaccion
+ * @property string $level
  *
  * @property AreasRequest[] $areasRequests
  * @property Areas[] $areas
@@ -31,7 +34,8 @@ use app\models\AttachedFiles;
  * @property string $scheduled_end_date
  */
 class Request extends \yii\db\ActiveRecord
-{	
+{
+	public $cnt;
 	public $requestFile;
 	public $fileNameAttached;
 	public $category_id;
@@ -60,7 +64,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             [['email', 'name','area_id', 'subject', 'description'], 'required'],
-            [['area_id', 'category_id','user_id'], 'integer'],
+            [['area_id', 'category_id','user_id','level'], 'integer'],
             [['description'], 'string'],
             [['creation_date', 'completion_date', 'scheduled_start_date', 'scheduled_end_date'], 'safe'],
             [['subject'], 'string', 'max' => 500],
@@ -69,7 +73,8 @@ class Request extends \yii\db\ActiveRecord
 			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
 			[['verifyCode'], 'captcha', 'on'=>'Create'],
 			[['listAreas', 'listCategories', 'listPersonel','listRemoveCategories', 'listRemoveAreas', 'listRemoveUsers'],'each', 'rule' => ['integer']],
-        ];
+			[['satisfaccion'], 'string', 'max' => 50],
+		];
     }
 
     /**

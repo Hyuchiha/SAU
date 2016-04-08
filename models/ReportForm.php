@@ -11,8 +11,8 @@ namespace app\models;
 use yii\base\Model;
 
 class ReportForm extends Model{
-    public $dateInit;
-    public $dateFinish;
+    public $startDate;
+    public $endDate;
 
     /**
      * @return array the validation rules.
@@ -21,9 +21,9 @@ class ReportForm extends Model{
     {
         return [
             // username and password are both required
-            [['dateInit', 'date', 'format' => 'yyyy-MM-dd'], 'required'],
+            [['startDate', 'date', 'format' => 'yyyy-MM-dd'], 'required'],
             // rememberMe must be a boolean value
-            ['dateFinish', 'date', 'format' => 'yyyy-MM-dd'],
+            [['endDate', 'date', 'format' => 'yyyy-MM-dd'],'required'],
         ];
     }
 }

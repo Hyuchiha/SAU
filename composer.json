@@ -21,7 +21,8 @@
         "yiisoft/yii2-jui": "*",
         "unclead/yii2-multiple-input": "~1.0",
         "johnitvn/yii2-rbac-plus": "*",
-        "sintret/yii2-chat-adminlte": "^1.0"
+        "sintret/yii2-chat-adminlte": "^1.0",
+        "kartik-v/yii2-tabs-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
