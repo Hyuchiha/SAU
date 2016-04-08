@@ -40,7 +40,7 @@ class ReportController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','export', 'attended','areas','categories','user','polls',
+                        'actions' => ['index','export', 'recibidos','areas','atendidos','categorias','user','polls','control-report',
                             'import'],
                         'roles' => ['administrator', 'responsibleArea','executive','?'],
                     ],

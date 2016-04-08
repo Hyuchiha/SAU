@@ -13,6 +13,8 @@ use yii\base\Model;
 class ReportForm extends Model{
     public $startDate;
     public $endDate;
+    public $dateInit;
+    public $dateFinish;
 
     /**
      * @return array the validation rules.
@@ -24,6 +26,9 @@ class ReportForm extends Model{
             [['startDate', 'date', 'format' => 'yyyy-MM-dd'], 'required'],
             // rememberMe must be a boolean value
             [['endDate', 'date', 'format' => 'yyyy-MM-dd'],'required'],
+            [['dateInit', 'date', 'format' => 'yyyy-MM-dd'], 'required'],
+            // rememberMe must be a boolean value
+            [['dateFinish', 'date', 'format' => 'yyyy-MM-dd'],'required'],
         ];
     }
 }
