@@ -102,7 +102,9 @@ class RequestController extends Controller
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         }else{
             $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
-            $permission = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission;
+            $permission = NULL;
+            if(!Yii::$app->user->can('responsibleArea'))
+                $permission = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission;
             if(Yii::$app->user->can('responsibleArea') || $permission == 1){
                 //Ver solo las solicitudes del área correspondiente, las asignadas al usuario y las creadas por este
                 $areaID = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->area_id;
