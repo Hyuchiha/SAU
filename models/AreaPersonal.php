@@ -81,6 +81,8 @@ class AreaPersonal extends \yii\db\ActiveRecord
             if(!$isEmployee){
                 $auth->assign($employeeArea, $this->user_id);
                 return true;
+            }else{
+                return true;
             }
         }
         return false;

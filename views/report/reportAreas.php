@@ -60,12 +60,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
             ['class' => 'yii\grid\SerialColumn'],
             [
 
-                'attribute'=>Yii::t('app','Id Área'),
+                'attribute'=>Yii::t('app','Nombre de Área Padre'),
                 'value'=>'idArea'
             ],
             [
 
-                'attribute'=>Yii::t('app','Nombre de Área'),
+                'attribute'=>Yii::t('app','Nombre de Área/Sub-Área'),
                 'value'=>'areaname'
             ],
             [

@@ -18,6 +18,7 @@ class CategoryRequest extends \yii\db\ActiveRecord
     public $cnt;
     public $categoryname;
     public $idCategory;
+    public $name;
     /**
      * @inheritdoc
      */

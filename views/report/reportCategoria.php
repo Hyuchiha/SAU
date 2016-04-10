@@ -62,12 +62,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
 
         [
 
-            'attribute'=>Yii::t('app','Id Categoria'),
+            'attribute'=>Yii::t('app','Nombre de Categoria Padre'),
             'value'=>'idCategory'
         ],
         [
 
-            'attribute'=>Yii::t('app','Nombre de Categoria/subCtegoria'),
+            'attribute'=>Yii::t('app','Nombre de Categoria/Sub-Categoria'),
             'value'=>'categoryname'
         ],
         [
