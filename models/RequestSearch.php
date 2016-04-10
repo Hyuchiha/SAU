@@ -51,7 +51,7 @@ class RequestSearch extends Request
             'query' => $query,
         ]);
 
-        $query->joinWith(['area','users']);
+        $query->joinWith(['area','users','areasRequests']);
 
         $dataProvider->sort->attributes['area_name'] = [
             'asc' => ['areas.name' => SORT_ASC],
@@ -80,7 +80,6 @@ class RequestSearch extends Request
 		}
 
         if(Yii::$app->user->can('employeeArea')){
-            echo "Soy empleado de area";
             //Quien tiene asignada la solicitud
             $query->andFilterWhere(['request.user_id' => Yii::$app->user->id])
                 ->orFilterWhere(['users_request.user_id' => Yii::$app->user->id]);
@@ -92,11 +91,11 @@ class RequestSearch extends Request
         if (!empty(AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission)){
             $permission = AreaPersonal::findOne(['user_id'=>Yii::$app->user->getId()])->permission;
             if(Yii::$app->user->can('responsibleArea') || $permission == 1){
-                echo "Soy responsable de area o tengo permisos";
                 //Quien tiene asignada la solicitud y pertenece a cierta área
                 $query->andFilterWhere(['request.user_id' => Yii::$app->user->id])
                     ->orFilterWhere(['users_request.user_id' => Yii::$app->user->id])
-                    ->orFilterWhere(['request.area_id' => $this->area_id,]);
+                    ->orFilterWhere(['request.area_id' => $this->area_id,])
+                    ->orFilterWhere(['areas_request.area_id' => $this->area_id,]);
             }
         }
 
