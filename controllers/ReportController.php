@@ -217,6 +217,7 @@ class ReportController extends Controller
 
     public function actionControlReport(){
         return $this->render('controls');
+        
     }
 
     public function actionAreas(){        
@@ -252,6 +253,7 @@ class ReportController extends Controller
                     'pageSize' => 10,
                 ],
             ]);
+
             return $this->render('reportAreas',['dataProvider'=>$dataProvider,'model'=>$model]);
         }else{
             $consulta1 = AreasRequest::find()
@@ -281,6 +283,7 @@ class ReportController extends Controller
                     'pageSize' => 10,
                 ],
             ]);
+            
             
             return $this->render('reportAreas',['dataProvider'=>$dataProvider,'model'=>$model]);
         }
