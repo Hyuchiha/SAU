@@ -72,7 +72,7 @@ class Request extends \yii\db\ActiveRecord
             [['subject'], 'string', 'max' => 500],
             [['fileNameAttached', 'status'], 'string', 'max' => 50],
 			[['name', 'email'], 'string', 'max' => 150],
-			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500],
+			[['requestFile'], 'file', 'skipOnEmpty' => true, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx', 'maxFiles' => 500, 'maxSize' => \Yii::$app->params['max_size_file_MB']],
 			[['verifyCode'], 'captcha', 'on'=>'Create'],
 			[['listAreas', 'listCategories', 'listPersonel','listRemoveCategories', 'listRemoveAreas', 'listRemoveUsers'],'each', 'rule' => ['integer']],
 			[['satisfaccion'], 'string', 'max' => 50],
