@@ -92,27 +92,27 @@ class ReportController extends Controller
                 $request = $this->findModel($row->getAttribute('id'));
 
                 $data = array(
-                    $row->getAttribute('id'),
-                    $row->getAttribute('name'),
-                    '\'\'',
-                    $row->getAttribute('email'),
-                    'OK',
-                    '\'\'',
-                    'es',
-                    '\'\'',
-                    '\'\'',
-                    'N',
-                    'N',
-                    $row->getAttribute('status'),
-                    'N',
-                    '1',
-                    $row->getAttribute('id'),
-                    $request->getStringOfCategories(),
-                    $request->area->name,
-                    $row->getAttribute('subject'),
-                    $row->getAttribute('description'));
+                    "\"".$request->id."\"",
+                    "\"".$request->name."\"",
+                    "\"\"",
+                    "\"".$request->email."\"",
+                    "\"OK\"",
+                    "\"\"",
+                    "\"es\"",
+                    "\"\"",
+                    "\"\"",
+                    "\"N\"",
+                    "\"N\"",
+                    "\"".$request->status."\"",
+                    "\"N\"",
+                    "\"1\"",
+                    "\"".$request->id."\"",
+                    "\"".$request->getStringOfCategories()."\"",
+                    "\"".$request->area->name."\"",
+                    "\"".$request->subject."\"",
+                    "\"".$request->creation_date."\"");
 
-                fputcsv($output, $data);
+                fputcsv($output, $data, ',', ' ');
             }
 
             fclose($output);
