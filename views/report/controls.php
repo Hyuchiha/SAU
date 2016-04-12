@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Reports');
         <?= Html::a ( 'Categorias', $url = 'categorias', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Recibidos', $url = 'recibidos', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Atendidos', $url = 'atendidos', $options = ['class'=>'btn btn-primary'] ) ?>
+        <?= Html::a ( 'Reportes Encuestas', $url = 'index', $options = ['class'=>'btn btn-primary'] ) ?>
         
 
         <br>

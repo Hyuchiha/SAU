@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Areas;
+use app\models\AreaPersonal;
 use app\models\AreasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -81,10 +82,21 @@ class AreasController extends Controller
     public function actionCreate()
     {
         $model = new Areas();
+        $modelPersonal = new AreaPersonal();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $modelPersonal->area_id = $model->id;
+            $modelPersonal->user_id = $model->id_responsable;
+            $modelPersonal->permission = 1;
+            if($modelPersonal->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                echo "Ha sucecido un error al agregar el responsable de área al personal de área";
+            }
+            
+            
         } else {
+            
             return $this->render('create', [
                 'model' => $model,
             ]);

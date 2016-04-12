@@ -76,6 +76,8 @@ class Areas extends \yii\db\ActiveRecord
             if(!$isResponsibleOfArea){
                 $auth->assign($jefeArea, $this->id_responsable);
                 return true;
+            }else{
+                return true;
             }
 
         }

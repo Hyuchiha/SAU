@@ -9,7 +9,9 @@
 namespace app\controllers;
 
 use app\models\AreasRequest;
+use app\models\Areas;
 use app\models\CategoryRequest;
+use app\models\Categories;
 use app\models\UsersRequest;
 
 use app\models\importForm;
@@ -25,6 +27,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
+use yii\helpers\ArrayHelper;
 use DateTime;
 
 class ReportController extends Controller
@@ -214,76 +217,145 @@ class ReportController extends Controller
 
     public function actionControlReport(){
         return $this->render('controls');
+        
     }
 
-    public function actionAreas(){
+    public function actionAreas(){        
 
         $model = new ReportForm();
         if($model->load(Yii::$app->request->post()) && $model) {
-            $dataProvider = new ArrayDataProvider([
-                'allModels' => AreasRequest::find()
+            $consulta = AreasRequest::find()
                     ->select(['areas.name AS areaname', 'COUNT(`areas_request`.`area_id`) AS cnt',
                     'areas.area_id AS idArea'])
                     ->leftJoin('areas','areas_request.area_id = areas.id')
                     ->leftJoin('request','areas_request.request_id = request.id')
                     ->Where(['between', 'request.creation_date', $model->dateInit, $model->dateFinish])
                     ->groupBy('areas_request.area_id')
-                    ->all(),
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
-            ]);
-            return $this->render('reportAreas',['dataProvider'=>$dataProvider,'model'=>$model]);
-        }else{
+                    ->all();
+
+            foreach ($consulta as $key => $value) {
+                if(empty($value->idArea)){
+                    $value->idArea = 'Área Padre';                                    
+                    
+                }else{
+                    $nameA = Areas::find()
+                    ->select('areas.name')
+                    ->where(['areas.id'=>$value->idArea])
+                    ->one();
+                    $value->idArea = $nameA->name;                                                            
+                }
+            }
+
+
             $dataProvider = new ArrayDataProvider([
-                'allModels' => AreasRequest::find()
-                    ->select(['areas.name AS areaname', 'COUNT(`areas_request`.`area_id`) AS cnt'])
-                    ->leftJoin('areas','areas_request.area_id = areas.id')
-                    ->leftJoin('request','areas_request.request_id = request.id')
-                    ->groupBy('areas_request.area_id')
-                    ->all(),
+                'allModels' => $consulta,
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
 
             return $this->render('reportAreas',['dataProvider'=>$dataProvider,'model'=>$model]);
+        }else{
+            $consulta1 = AreasRequest::find()
+                    ->select(['areas.name AS areaname', 'COUNT(`areas_request`.`area_id`) AS cnt',
+                        'areas.area_id AS idArea'])
+                    ->leftJoin('areas','areas_request.area_id = areas.id')
+                    ->leftJoin('request','areas_request.request_id = request.id')
+                    ->groupBy('areas_request.area_id')
+                    ->all();
+                   
+            foreach ($consulta1 as $key => $value) {
+                if(empty($value->idArea)){
+                    $value->idArea = 'Área Padre';                                    
+                    
+                }else{
+                    $nameA = Areas::find()
+                    ->select('areas.name')
+                    ->where(['areas.id'=>$value->idArea])
+                    ->one();
+                    $value->idArea = $nameA->name;                                                            
+                }
+            }
+
+            $dataProvider = new ArrayDataProvider([
+                'allModels' => $consulta1,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
+            ]);
+            
+            
+            return $this->render('reportAreas',['dataProvider'=>$dataProvider,'model'=>$model]);
         }
+
 
     }
 
     public function actionCategorias(){
         $model = new ReportForm();
         if($model->load(Yii::$app->request->post()) && $model) {
-            $dataProvider = new ArrayDataProvider([
-                'allModels' => CategoryRequest::find()
+
+            $consulta = CategoryRequest::find()
                     ->select(['categories.name AS categoryname', 'COUNT(`category_request`.`category_id`) AS cnt',
                         'categories.category_id AS idCategory'])
                     ->leftJoin('categories','category_request.category_id = categories.id')
                     ->leftJoin('request','category_request.request_id = request.id')
                     ->Where(['between', 'request.creation_date', $model->dateInit, $model->dateFinish])
                     ->groupBy('category_request.category_id')
-                    ->all(),
+                    ->all();
+
+                foreach ($consulta as $key => $value) {
+                if(empty($value->idCategory)){
+                    $value->idCategory = 'Categoria Padre';                                    
+                    
+                }else{
+                    $nameC = Categories::find()
+                    ->select('categories.name')
+                    ->where(['categories.id'=>$value->idCategory])
+                    ->one();
+                    $value->idCategory = $nameC->name;                                                            
+                }
+            }
+            $dataProvider = new ArrayDataProvider([
+                'allModels' => $consulta,
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
             return $this->render('reportCategoria',['dataProvider'=>$dataProvider,'model'=>$model]);
         }else{
-            $dataProvider = new ArrayDataProvider([
-                'allModels' => CategoryRequest::find()
+
+            $consulta1 = CategoryRequest::find()
                     ->select(['categories.name AS categoryname',
                         'COUNT(`category_request`.`category_id`) AS cnt','categories.category_id AS idCategory'])
                     ->leftJoin('categories','category_request.category_id = categories.id')
-                    ->leftJoin('request','category_request.request_id = request.id')
+                    ->leftJoin('request','category_request.request_id = request.id')                    
                     ->groupBy('category_request.category_id')
-                    ->all(),
+                    ->all();
+
+            foreach ($consulta1 as $key => $value) {
+                if(empty($value->idCategory)){
+                    $value->idCategory = 'Categoria Padre';                                    
+                    
+                }else{
+                    $nameC = Categories::find()
+                    ->select('categories.name')
+                    ->where(['categories.id'=>$value->idCategory])
+                    ->one();
+                    $value->idCategory = $nameC->name;                                                            
+                }
+            }
+                                    
+            $dataProvider = new ArrayDataProvider([
+                'allModels' => $consulta1,                    
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
 
+
             return $this->render('reportCategoria',['dataProvider'=>$dataProvider,'model'=>$model]);
+            
         }
     }
 
@@ -371,7 +443,7 @@ class ReportController extends Controller
                     'areas.name AS areaname'])
                     ->innerJoin('areas','request.area_id = areas.id')
                     ->where(['between', 'request.completion_date', $model->dateInit, $model->dateFinish])
-                    ->groupBy('MONTHNAME(request.completion_date)')
+                    ->groupBy('MONTHNAME(request.completion_date)')                    
                     ->all(),
                 'pagination' => [
                     'pageSize' => 10,

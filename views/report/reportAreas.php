@@ -7,12 +7,15 @@ use app\models\Request;
 use yii\bootstrap\ActiveForm;
 use yii\widgets\Pjax;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Reportes Áreas');
 $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
+
+
 ?>
 <div class="request-index">
 
@@ -23,6 +26,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
         <?= Html::a ( 'Categorias', $url = 'categorias', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Recibidos', $url = 'recibidos', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Atendidos', $url = 'atendidos', $options = ['class'=>'btn btn-primary'] ) ?>
+        <?= Html::a ( 'Reportes Encuestas', $url = 'index', $options = ['class'=>'btn btn-primary'] ) ?>
 
 
         <br>
@@ -60,12 +64,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
             ['class' => 'yii\grid\SerialColumn'],
             [
 
-                'attribute'=>Yii::t('app','Id Área'),
+                'attribute'=>Yii::t('app','Nombre de Área Padre'),
                 'value'=>'idArea'
             ],
             [
 
-                'attribute'=>Yii::t('app','Nombre de Área'),
+                'attribute'=>Yii::t('app','Nombre de Área/Sub-Área'),
                 'value'=>'areaname'
             ],
             [

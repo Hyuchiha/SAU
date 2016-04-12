@@ -34,7 +34,7 @@ class AttachedFiles extends \yii\db\ActiveRecord
             [['request_id'], 'integer'],
 			[['url'], 'string', 'max' => 100],
 			[['url'], 'unique'],
-			//[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx'],
+			[['requestFile'], 'file', 'skipOnEmpty' => false, 'extensions'=>'pdf,png,jpg,jpeg,bmp,doc,docx'],
         ];
     }
 

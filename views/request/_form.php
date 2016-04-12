@@ -123,7 +123,7 @@ $this->registerJs('
             <!--<input type="file" name="Request[requestFile][]" id="campo_1" placeholder="Texto 1"/><a href="#" class="eliminar">&times;</a>-->
         </div>
     </div>
-
+    <?= Html::error($request, 'requestFile', ['class' => 'error']) ?>
     <br>
 	
 	<?= $form->field($request, 'verifyCode')->widget(Captcha::className(), [

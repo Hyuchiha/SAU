@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
         <?= Html::a ( 'Categorias', $url = 'categorias', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Recibidos', $url = 'recibidos', $options = ['class'=>'btn btn-primary'] ) ?>
         <?= Html::a ( 'Atendidos', $url = 'atendidos', $options = ['class'=>'btn btn-primary'] ) ?>
+        <?= Html::a ( 'Reportes Encuestas', $url = 'index', $options = ['class'=>'btn btn-primary'] ) ?>
 
 
         <br>
@@ -62,12 +63,12 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Requests');
 
         [
 
-            'attribute'=>Yii::t('app','Id Categoria'),
+            'attribute'=>Yii::t('app','Nombre de Categoria Padre'),
             'value'=>'idCategory'
         ],
         [
 
-            'attribute'=>Yii::t('app','Nombre de Categoria/subCtegoria'),
+            'attribute'=>Yii::t('app','Nombre de Categoria/Sub-Categoria'),
             'value'=>'categoryname'
         ],
         [
