@@ -96,7 +96,7 @@ class ReportController extends Controller
 
                 $data = array(
                     "\"".$request->id."\"",
-                    "\"".$request->name."\"",
+                    $request->name, //No se colocan
                     "\"\"",
                     "\"".$request->email."\"",
                     "\"OK\"",
@@ -111,9 +111,9 @@ class ReportController extends Controller
                     "\"1\"",
                     "\"".$request->id."\"",
                     "\"".$request->getStringOfCategories()."\"",
-                    "\"".$request->area->name."\"",
+                    $request->area->name,
                     "\"".$request->subject."\"",
-                    "\"".$request->creation_date."\"");
+                    $request->creation_date);
 
                 fputcsv($output, $data, ',', ' ');
             }
