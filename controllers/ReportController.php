@@ -88,34 +88,34 @@ class ReportController extends Controller
                 'attribute_3 <Área>', 'attribute_4 <Título>', 'attribute_5 <dtSolicitud>'));
 
             // fetch the data
-            $rows = Request::find()->andFilterWhere(['between', 'creation_date', $init, $finish])->all();
+            $rows = Request::find()->andFilterWhere(['between', 'creation_date', $init, $finish])->andFilterWhere(['status' => 'Finalizado'])->all();
 
             // loop over the rows, outputting them
             foreach ($rows as $row) {
                 $request = $this->findModel($row->getAttribute('id'));
 
                 $data = array(
-                    "\"".$request->id."\"",
+                    $request->id,
                     $request->name, //No se colocan
-                    "\"\"",
-                    "\"".$request->email."\"",
-                    "\"OK\"",
-                    "\"\"",
-                    "\"es\"",
-                    "\"\"",
-                    "\"\"",
-                    "\"N\"",
-                    "\"N\"",
-                    "\"".$request->status."\"",
-                    "\"N\"",
-                    "\"1\"",
-                    "\"".$request->id."\"",
-                    "\"".$request->getStringOfCategories()."\"",
+                    "",
+                    $request->email,
+                    "OK",
+                    "",
+                    "es",
+                    "",
+                    "",
+                    "N",
+                    "N",
+                    $request->status,
+                    "N",
+                    "1",
+                    $request->id,
+                    $request->getStringOfCategories(),
                     $request->area->name,
-                    "\"".$request->subject."\"",
+                    $request->subject,
                     $request->creation_date);
 
-                fputcsv($output, $data, ',', ' ');
+                fputcsv($output, $data);
             }
 
             fclose($output);
@@ -125,19 +125,6 @@ class ReportController extends Controller
         }
     }
 
-    public function actionAttended()
-    {
-
-    }
-
-    public function actionCategories()
-    {
-    }
-
-    public function actionUser()
-    {
-
-    }
     public function actionPolls()
     {
         if(Yii::$app->request->isAjax){
