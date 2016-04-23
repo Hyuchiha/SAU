@@ -88,7 +88,7 @@ class ReportController extends Controller
                 'attribute_3 <Área>', 'attribute_4 <Título>', 'attribute_5 <dtSolicitud>'));
 
             // fetch the data
-            $rows = Request::find()->andFilterWhere(['between', 'creation_date', $init, $finish])->andFilterWhere(['status' => 'Finalizado'])->all();
+            $rows = Request::find()->andFilterWhere(['between', 'completion_date', $init, $finish])->andFilterWhere(['status' => 'Finalizado'])->all();
 
             // loop over the rows, outputting them
             foreach ($rows as $row) {
